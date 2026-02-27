@@ -1,0 +1,45 @@
+name: Paradox APIs
+description: APIs and resources for Paradox, a conversational AI recruiting assistant platform
+image: https://www.paradox.ai/images/paradox-logo.png
+url: https://www.paradox.ai
+created: '2025'
+modified: '2025'
+apis:
+- name: Paradox Conversational AI API
+  description: API for integrating Paradox conversational AI recruiting assistant capabilities into your applications
+  image: https://www.paradox.ai/images/api-icon.png
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Recruiting
+  - AI
+  - Conversational AI
+  - HR Technology
+  - Chatbot
+  - Candidate Experience
+  properties:
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: OpenAPI
+    url: https://api.paradox.ai/openapi.json
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: Rate Limits
+    url: https://developers.paradox.ai/docs/rate-limits
+  contact:
+  - type: Support
+    url: https://www.paradox.ai/support
+  - type: Email
+    url: mailto:support@paradox.ai
+maintainers:
+- name: Paradox
+  email: support@paradox.ai
+  url: https://www.paradox.ai
+tags:
+- Recruiting
+- HR Technology
+- Artificial Intelligence
+- Chatbot
+- Talent Acquisition
+- Candidate Screening
+- Interview Scheduling
