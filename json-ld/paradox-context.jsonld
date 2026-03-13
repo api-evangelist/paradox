@@ -1,0 +1,376 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "paradox": "https://api.paradox.ai/ns/",
+    "hr": "https://purl.org/hr-terms/",
+
+    "Candidate": {
+      "@id": "paradox:Candidate",
+      "@context": {
+        "OID": {
+          "@id": "paradox:candidateOID",
+          "@type": "xsd:integer"
+        },
+        "external_oid": {
+          "@id": "paradox:externalOID",
+          "@type": "xsd:string"
+        },
+        "name": "schema:name",
+        "first_name": "schema:givenName",
+        "last_name": "schema:familyName",
+        "email": "schema:email",
+        "phone": "schema:telephone",
+        "ex_id": {
+          "@id": "paradox:externalId",
+          "@type": "xsd:string"
+        },
+        "ex_status": {
+          "@id": "paradox:externalStatus",
+          "@type": "xsd:string"
+        },
+        "ex_step": {
+          "@id": "paradox:externalStep",
+          "@type": "xsd:string"
+        },
+        "ex_reason": {
+          "@id": "paradox:externalReason",
+          "@type": "xsd:string"
+        },
+        "job_req_id": {
+          "@id": "paradox:jobRequisitionId",
+          "@type": "xsd:string"
+        },
+        "job_title": "schema:jobTitle",
+        "job_loc_code": {
+          "@id": "paradox:jobLocationCode",
+          "@type": "xsd:string"
+        },
+        "primary_contact_method": {
+          "@id": "paradox:primaryContactMethod",
+          "@type": "xsd:integer"
+        },
+        "hired_date": {
+          "@id": "hr:hiredDate",
+          "@type": "xsd:dateTime"
+        },
+        "hirevue_link": {
+          "@id": "paradox:hirevueLink",
+          "@type": "@id"
+        },
+        "pymetrics_link": {
+          "@id": "paradox:pymetricsLink",
+          "@type": "@id"
+        },
+        "adp_link": {
+          "@id": "paradox:adpLink",
+          "@type": "@id"
+        },
+        "hirevue_instructions": {
+          "@id": "paradox:hirevueInstructions",
+          "@type": "xsd:string"
+        },
+        "audience_type": {
+          "@id": "paradox:audienceType",
+          "@type": "xsd:string"
+        },
+        "referrer_email": {
+          "@id": "paradox:referrerEmail",
+          "@type": "xsd:string"
+        },
+        "referrer_name": {
+          "@id": "paradox:referrerName",
+          "@type": "xsd:string"
+        },
+        "recruiter_email": {
+          "@id": "paradox:recruiterEmail",
+          "@type": "xsd:string"
+        },
+        "hiring_manager": {
+          "@id": "paradox:hiringManager",
+          "@type": "xsd:string"
+        },
+        "external_referrer": {
+          "@id": "paradox:externalReferrer",
+          "@type": "xsd:string"
+        },
+        "language_preference": "schema:knowsLanguage",
+        "candidate_journey": {
+          "@id": "paradox:candidateJourney",
+          "@type": "xsd:string"
+        },
+        "candidate_journey_status": {
+          "@id": "paradox:candidateJourneyStatus",
+          "@type": "xsd:string"
+        },
+        "candidate_attribute_data": {
+          "@id": "paradox:candidateAttributes",
+          "@type": "@json"
+        },
+        "job_application_id": {
+          "@id": "paradox:jobApplicationId",
+          "@type": "xsd:string"
+        },
+        "candidate_location_info": "schema:homeLocation",
+        "external_source_id": {
+          "@id": "paradox:externalSourceId",
+          "@type": "xsd:string"
+        },
+        "talent_community": {
+          "@id": "paradox:talentCommunity",
+          "@type": "xsd:boolean"
+        },
+        "consent_to_marketing": {
+          "@id": "paradox:consentToMarketing",
+          "@type": "xsd:string"
+        },
+        "note": {
+          "@id": "paradox:note",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "User": {
+      "@id": "paradox:User",
+      "@context": {
+        "OID": {
+          "@id": "paradox:userOID",
+          "@type": "xsd:string"
+        },
+        "name": "schema:name",
+        "email": "schema:email",
+        "phone_number": "schema:telephone",
+        "role_id": {
+          "@id": "paradox:roleId",
+          "@type": "xsd:string"
+        },
+        "timezone": {
+          "@id": "paradox:timezone",
+          "@type": "xsd:string"
+        },
+        "language_preference": "schema:knowsLanguage",
+        "employee_id": {
+          "@id": "paradox:employeeId",
+          "@type": "xsd:string"
+        },
+        "job_title": "schema:jobTitle",
+        "location_ids": {
+          "@id": "paradox:locationIds",
+          "@container": "@set"
+        },
+        "active": {
+          "@id": "paradox:isActive",
+          "@type": "xsd:boolean"
+        },
+        "created_at": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "updated_at": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Location": {
+      "@id": "paradox:Location",
+      "@context": {
+        "oid": {
+          "@id": "paradox:locationOID",
+          "@type": "xsd:string"
+        },
+        "name": "schema:name",
+        "job_loc_code": {
+          "@id": "paradox:jobLocationCode",
+          "@type": "xsd:string"
+        },
+        "address": "schema:streetAddress",
+        "city": "schema:addressLocality",
+        "state": "schema:addressRegion",
+        "zip_code": "schema:postalCode",
+        "country": "schema:addressCountry",
+        "timezone": {
+          "@id": "paradox:timezone",
+          "@type": "xsd:string"
+        },
+        "active": {
+          "@id": "paradox:isActive",
+          "@type": "xsd:boolean"
+        },
+        "created_at": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "updated_at": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Interview": {
+      "@id": "paradox:Interview",
+      "@context": {
+        "id": {
+          "@id": "paradox:interviewId",
+          "@type": "xsd:string"
+        },
+        "candidate_id": {
+          "@id": "paradox:candidateId",
+          "@type": "xsd:string"
+        },
+        "interviewer_id": {
+          "@id": "paradox:interviewerId",
+          "@type": "xsd:string"
+        },
+        "location_id": {
+          "@id": "paradox:locationId",
+          "@type": "xsd:string"
+        },
+        "room_id": {
+          "@id": "paradox:roomId",
+          "@type": "xsd:string"
+        },
+        "scheduled_at": {
+          "@id": "schema:startDate",
+          "@type": "xsd:dateTime"
+        },
+        "duration": {
+          "@id": "schema:duration",
+          "@type": "xsd:integer"
+        },
+        "status": {
+          "@id": "paradox:interviewStatus",
+          "@type": "xsd:string"
+        },
+        "type": {
+          "@id": "paradox:interviewType",
+          "@type": "xsd:string"
+        },
+        "created_at": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "updated_at": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Conversation": {
+      "@id": "paradox:Conversation",
+      "@context": {
+        "oid": {
+          "@id": "paradox:conversationOID",
+          "@type": "xsd:string"
+        },
+        "label": "schema:name",
+        "is_remote": {
+          "@id": "paradox:isRemote",
+          "@type": "xsd:integer"
+        },
+        "deactivated": {
+          "@id": "paradox:isDeactivated",
+          "@type": "xsd:integer"
+        },
+        "created_at": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "updated_at": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Room": {
+      "@id": "paradox:Room",
+      "@context": {
+        "oid": {
+          "@id": "paradox:roomOID",
+          "@type": "xsd:string"
+        },
+        "name": "schema:name",
+        "location_id": {
+          "@id": "paradox:locationId",
+          "@type": "xsd:string"
+        },
+        "capacity": {
+          "@id": "paradox:roomCapacity",
+          "@type": "xsd:integer"
+        },
+        "active": {
+          "@id": "paradox:isActive",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "Area": {
+      "@id": "paradox:Area",
+      "@context": {
+        "oid": {
+          "@id": "paradox:areaOID",
+          "@type": "xsd:string"
+        },
+        "name": "schema:name",
+        "location_id": {
+          "@id": "paradox:locationId",
+          "@type": "xsd:string"
+        },
+        "type": {
+          "@id": "paradox:areaType",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "Report": {
+      "@id": "paradox:Report",
+      "@context": {
+        "id": {
+          "@id": "paradox:reportId",
+          "@type": "xsd:string"
+        },
+        "name": "schema:name",
+        "type": {
+          "@id": "paradox:reportType",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "paradox:reportStatus",
+          "@type": "xsd:string"
+        },
+        "created_at": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "updated_at": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "AiAssistant": {
+      "@id": "paradox:AiAssistant",
+      "@context": {
+        "id": {
+          "@id": "paradox:assistantId",
+          "@type": "xsd:string"
+        },
+        "ai_name": "schema:name",
+        "ai_logo_uri": {
+          "@id": "schema:image",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  }
+}

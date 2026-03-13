@@ -1,0 +1,3091 @@
+openapi: 3.1.0
+info:
+  title: Paradox API
+  description: >-
+    API for the Paradox conversational AI recruiting platform powered by Olivia.
+    Provides endpoints for managing candidates, users, interview scheduling,
+    locations, company data, reporting, and candidate attributes. Paradox
+    automates candidate screening, interview scheduling, and hiring workflows
+    through chat, SMS, and mobile-driven experiences.
+  version: 1.0.0
+  contact:
+    name: Paradox Support
+    url: https://www.paradox.ai/contact
+    email: support@paradox.ai
+  license:
+    name: Proprietary
+    url: https://www.paradox.ai/legal/service-terms
+  termsOfService: https://www.paradox.ai/legal/service-terms
+
+externalDocs:
+  description: Paradox API Documentation
+  url: https://readme.paradox.ai/docs
+
+servers:
+  - url: https://api.paradox.ai/api/v1/public
+    description: Production (US)
+  - url: https://api.eu1.paradox.ai/api/v1/public
+    description: Production (EU)
+  - url: https://stgapi.paradox.ai/api/v1/public
+    description: Staging (US)
+  - url: https://api.stg.eu1.paradox.ai/api/v1/public
+    description: Staging (EU)
+  - url: https://testapi.paradox.ai/api/v1/public
+    description: Test
+  - url: https://dev2api.paradox.ai/api/v1/public
+    description: Development
+
+security:
+  - oauth2: []
+  - bearerAuth: []
+
+tags:
+  - name: Authentication
+    description: OAuth 2.0 token and JWT verification endpoints
+  - name: Candidates
+    description: Manage candidates including creating, retrieving, updating, deleting, messaging, and unsubscribing
+  - name: Candidate Attributes
+    description: Manage custom candidate attribute data
+  - name: Users
+    description: Manage users including creating, retrieving, updating, deleting, deactivating, and reactivating
+  - name: User Permissions
+    description: Manage user location permissions
+  - name: Scheduling
+    description: Manage interview scheduling, interviewers, settings, rooms, alerts, and history
+  - name: Locations
+    description: Manage locations including creating, retrieving, updating, deleting, and lookup by job location code
+  - name: Location Areas
+    description: Manage location areas
+  - name: Location Rooms
+    description: Manage location rooms
+  - name: Company
+    description: Access company-level data including conversations, groups, schools, areas, and AI assistant
+  - name: Reporting
+    description: Access and generate reports
+
+paths:
+
+  # ── Authentication ──────────────────────────────────────────────────
+
+  /auth/token:
+    post:
+      operationId: getAuthToken
+      summary: Get OAuth 2.0 access token
+      description: >-
+        Obtain an access token using OAuth 2.0 client credentials grant.
+        The returned token should be included in the Authorization header
+        as a Bearer token for subsequent API requests.
+      tags:
+        - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - client_id
+                - client_secret
+                - grant_type
+              properties:
+                client_id:
+                  type: string
+                  description: Account ID provided by Paradox
+                client_secret:
+                  type: string
+                  description: Secret key provided by Paradox
+                grant_type:
+                  type: string
+                  enum:
+                    - client_credentials
+                  description: OAuth 2.0 grant type
+      responses:
+        '200':
+          description: Access token issued successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: Bearer access token
+                  expires_in:
+                    type: integer
+                    description: Token expiration time in seconds
+                  token_type:
+                    type: string
+                    description: Token type (Bearer)
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /verify-jwt:
+    post:
+      operationId: verifyJwt
+      summary: Verify JWT token
+      description: Verify the validity of a JWT authentication token.
+      tags:
+        - Authentication
+      responses:
+        '200':
+          description: Token is valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '432':
+          description: Token expired
+
+  # ── Candidates ──────────────────────────────────────────────────────
+
+  /candidates:
+    get:
+      operationId: getCandidates
+      summary: Get candidates
+      description: >-
+        Retrieve a list of candidates with optional filtering by date range,
+        status, group, location, source, and other criteria.
+      tags:
+        - Candidates
+      parameters:
+        - name: start_date
+          in: query
+          description: Filter candidates created after this date (ISO 8601)
+          schema:
+            type: string
+            format: date-time
+        - name: end_date
+          in: query
+          description: Filter candidates created before this date (ISO 8601)
+          schema:
+            type: string
+            format: date-time
+        - name: created_start_date
+          in: query
+          description: Filter by candidate creation start date
+          schema:
+            type: string
+            format: date-time
+        - name: start_keyword
+          in: query
+          description: Search keyword filter
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of results to return (max 50)
+          schema:
+            type: integer
+            maximum: 50
+            default: 50
+        - name: offset
+          in: query
+          description: Number of results to skip for pagination
+          schema:
+            type: integer
+            default: 0
+        - name: page
+          in: query
+          description: Page number for pagination
+          schema:
+            type: integer
+        - name: status
+          in: query
+          description: Filter by candidate status
+          schema:
+            type: string
+        - name: group_name
+          in: query
+          description: Filter by group name
+          schema:
+            type: string
+        - name: location_id
+          in: query
+          description: Filter by location identifier
+          schema:
+            type: string
+        - name: source
+          in: query
+          description: Filter by candidate source
+          schema:
+            type: string
+        - name: conversation
+          in: query
+          description: Include conversation data
+          schema:
+            type: boolean
+        - name: interviews
+          in: query
+          description: Include interview data
+          schema:
+            type: boolean
+        - name: note
+          in: query
+          description: Include candidate notes
+          schema:
+            type: boolean
+        - name: profile_id
+          in: query
+          description: Filter by profile identifier
+          schema:
+            type: string
+        - name: include_attributes
+          in: query
+          description: Include candidate attribute data in response
+          schema:
+            type: boolean
+        - name: candidate_journey_status
+          in: query
+          description: Filter by candidate journey status
+          schema:
+            type: string
+        - name: job_loc_code
+          in: query
+          description: Filter by job location code
+          schema:
+            type: string
+        - name: job_req_id
+          in: query
+          description: Filter by job requisition ID
+          schema:
+            type: string
+        - name: ex_id
+          in: query
+          description: Filter by external candidate identifier
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: Filter by candidate email
+          schema:
+            type: string
+            format: email
+      responses:
+        '200':
+          description: List of candidates returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  candidates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Candidate'
+                  limit:
+                    type: integer
+                  count:
+                    type: integer
+                  offset:
+                    type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      operationId: createCandidate
+      summary: Create candidate
+      description: >-
+        Create a new candidate in the Paradox platform. Requires at minimum
+        a name (or first_name and last_name), phone number, and email address.
+      tags:
+        - Candidates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CandidateCreate'
+          multipart/form-data:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CandidateCreate'
+                - type: object
+                  properties:
+                    resume:
+                      type: string
+                      format: binary
+                      description: Resume file (PDF, DOC, DOCX, PNG, JPG, TXT; max 10MB)
+                    offer_letter:
+                      type: string
+                      format: binary
+                      description: Offer letter file (DOC, DOCX, PDF, PNG, JPG, JPEG, TXT, Pages, HTML; max 10MB)
+                    candidatedata:
+                      type: string
+                      format: binary
+                      description: Bulk operation file for mass create/update
+      responses:
+        '200':
+          description: Candidate created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  candidate:
+                    $ref: '#/components/schemas/Candidate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /candidates/{id}:
+    get:
+      operationId: getCandidate
+      summary: Get single candidate
+      description: Retrieve details for a specific candidate by OID or external OID.
+      tags:
+        - Candidates
+      parameters:
+        - $ref: '#/components/parameters/CandidateId'
+        - name: conversation
+          in: query
+          description: Include conversation history
+          schema:
+            type: boolean
+        - name: note
+          in: query
+          description: Include candidate notes
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Candidate details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  candidate:
+                    $ref: '#/components/schemas/Candidate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateCandidate
+      summary: Update candidate
+      description: >-
+        Update an existing candidate by OID, external OID, or external ID.
+        Supports updating name, contact information, status, journey details,
+        attributes, and attached documents.
+      tags:
+        - Candidates
+      parameters:
+        - $ref: '#/components/parameters/CandidateId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CandidateUpdate'
+          multipart/form-data:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CandidateUpdate'
+                - type: object
+                  properties:
+                    resume:
+                      type: string
+                      format: binary
+                      description: Resume file (max 10MB)
+                    offer_letter:
+                      type: string
+                      format: binary
+                      description: Offer letter file (max 10MB)
+      responses:
+        '200':
+          description: Candidate updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  candidate:
+                    $ref: '#/components/schemas/Candidate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      operationId: deleteCandidate
+      summary: Delete candidate
+      description: Delete a candidate by OID or external OID.
+      tags:
+        - Candidates
+      parameters:
+        - $ref: '#/components/parameters/CandidateId'
+      responses:
+        '200':
+          description: Candidate deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /candidates/unsubscribe:
+    put:
+      operationId: unsubscribeCandidate
+      summary: Unsubscribe candidate
+      description: >-
+        Unsubscribe or resubscribe a candidate from communications.
+        Use action_id 1 to unsubscribe and 0 to resubscribe.
+      tags:
+        - Candidates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - OID
+                - action_id
+              properties:
+                OID:
+                  type: integer
+                  description: Candidate internal identifier
+                action_id:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  description: 1 to unsubscribe, 0 to resubscribe
+      responses:
+        '200':
+          description: Subscription status updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  OID:
+                    type: integer
+                  unsubscribed:
+                    type: boolean
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /candidates/send_message:
+    post:
+      operationId: sendCandidateMessage
+      summary: Send candidate message
+      description: Send a message to a candidate via their preferred contact method.
+      tags:
+        - Candidates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - OID
+                - message
+              properties:
+                OID:
+                  type: integer
+                  description: Candidate internal identifier
+                message:
+                  type: string
+                  description: Message content to send
+                send_as:
+                  type: string
+                  description: Send message as a specific user
+                contact_method:
+                  type: string
+                  description: Contact method to use for delivery
+                email_subject:
+                  type: string
+                  description: Email subject line (when sending via email)
+      responses:
+        '200':
+          description: Message sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /candidates/background_check/standard:
+    post:
+      operationId: sendBackgroundCheckStandard
+      summary: Send standard background check
+      description: Initiate a standard background check for a candidate.
+      tags:
+        - Candidates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                candidate_id:
+                  type: string
+                  description: Paradox candidate identifier
+                ex_application_id:
+                  type: string
+                  description: External application identifier
+                ex_candidate_id:
+                  type: string
+                  description: External candidate identifier
+                background_check_url:
+                  type: string
+                  format: uri
+                  description: URL for the background check
+                status:
+                  type: string
+                  description: Background check status
+      responses:
+        '200':
+          description: Background check initiated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /candidates/background_check/checkr:
+    post:
+      operationId: sendBackgroundCheckCheckr
+      summary: Send Checkr background check
+      description: Initiate a background check through Checkr integration.
+      tags:
+        - Candidates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                candidate_id:
+                  type: string
+                  description: Paradox candidate identifier
+                status:
+                  type: string
+                  description: Background check status
+      responses:
+        '200':
+          description: Checkr background check initiated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /candidates/background_check/firstadvance:
+    post:
+      operationId: sendBackgroundCheckFirstAdvantage
+      summary: Send First Advantage background check
+      description: Initiate a background check through First Advantage integration.
+      tags:
+        - Candidates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  description: First Advantage check URL
+                status:
+                  type: string
+                  description: Background check status
+                sf_applicant_id:
+                  type: string
+                  description: Salesforce applicant identifier
+      responses:
+        '200':
+          description: First Advantage background check initiated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # ── Candidate Attributes ────────────────────────────────────────────
+
+  /candidate/attributes/{oid}:
+    get:
+      operationId: getCandidateAttributes
+      summary: Get candidate attributes
+      description: Retrieve all current custom attributes for a specific candidate.
+      tags:
+        - Candidate Attributes
+      parameters:
+        - name: oid
+          in: path
+          required: true
+          description: Candidate OID or external OID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Candidate attributes returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  attributes:
+                    type: object
+                    additionalProperties:
+                      type: string
+                      maxLength: 255
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /candidate/attributes:
+    patch:
+      operationId: patchCandidateAttributes
+      summary: Patch candidate attributes
+      description: >-
+        Partially update candidate attributes. Only the specified attributes
+        will be modified; existing attributes not included will remain unchanged.
+      tags:
+        - Candidate Attributes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - oid
+                - attributes
+              properties:
+                oid:
+                  type: string
+                  description: Candidate OID or external OID
+                attributes:
+                  type: object
+                  additionalProperties:
+                    type: string
+                    maxLength: 255
+                  description: Key-value pairs of attributes to update
+      responses:
+        '200':
+          description: Candidate attributes patched successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    put:
+      operationId: updateCandidateAttributes
+      summary: Update candidate attributes
+      description: >-
+        Replace all candidate attributes with the provided set. Any attributes
+        not included in the request will be removed.
+      tags:
+        - Candidate Attributes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - oid
+                - attributes
+              properties:
+                oid:
+                  type: string
+                  description: Candidate OID or external OID
+                attributes:
+                  type: object
+                  additionalProperties:
+                    type: string
+                    maxLength: 255
+                  description: Complete set of key-value attribute pairs
+      responses:
+        '200':
+          description: Candidate attributes updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # ── Users ───────────────────────────────────────────────────────────
+
+  /users:
+    get:
+      operationId: getUsers
+      summary: Get users
+      description: Retrieve a paginated list of users in the Paradox platform.
+      tags:
+        - Users
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of results to return
+          schema:
+            type: integer
+        - name: page
+          in: query
+          description: Page number for pagination
+          schema:
+            type: integer
+        - name: include_campus_permission
+          in: query
+          description: Include campus permission data in response
+          schema:
+            type: boolean
+        - name: external_role_id
+          in: query
+          description: Filter by external role identifier
+          schema:
+            type: string
+        - name: location_id
+          in: query
+          description: Filter by location identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of users returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  limit:
+                    type: integer
+                  count:
+                    type: integer
+                  page:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      operationId: createUser
+      summary: Create user
+      description: Create a new user in the Paradox platform.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        '200':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /users/{oid}:
+    get:
+      operationId: getUser
+      summary: Get single user
+      description: Retrieve details for a specific user by OID or external identifier.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/UserOid'
+      responses:
+        '200':
+          description: User details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateUser
+      summary: Update user
+      description: Update an existing user by OID.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/UserOid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      operationId: deleteUser
+      summary: Delete user
+      description: Delete a user by OID.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/UserOid'
+      responses:
+        '200':
+          description: User deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /users/{oid}/deactivate:
+    post:
+      operationId: deactivateUser
+      summary: Deactivate user
+      description: Deactivate a user account, preventing login and API access.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/UserOid'
+      responses:
+        '200':
+          description: User deactivated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /users/{oid}/reactivate:
+    post:
+      operationId: reactivateUser
+      summary: Reactivate user
+      description: Reactivate a previously deactivated user account.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/UserOid'
+      responses:
+        '200':
+          description: User reactivated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /users/roles:
+    get:
+      operationId: getUserRoles
+      summary: Get user roles
+      description: Retrieve the list of available user roles.
+      tags:
+        - Users
+      responses:
+        '200':
+          description: User roles returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  roles:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Role'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /users/employees/{employee_id}:
+    get:
+      operationId: getUserByEmployeeId
+      summary: Get user by employee ID
+      description: Look up a user by their employee ID.
+      tags:
+        - Users
+      parameters:
+        - name: employee_id
+          in: path
+          required: true
+          description: Employee identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateUserByEmployeeId
+      summary: Update user by employee ID
+      description: Update a user identified by their employee ID.
+      tags:
+        - Users
+      parameters:
+        - name: employee_id
+          in: path
+          required: true
+          description: Employee identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      operationId: deleteUserByEmployeeId
+      summary: Delete user by employee ID
+      description: Delete a user identified by their employee ID.
+      tags:
+        - Users
+      parameters:
+        - name: employee_id
+          in: path
+          required: true
+          description: Employee identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ── User Permissions ────────────────────────────────────────────────
+
+  /users/{oid}/permissions/locations:
+    get:
+      operationId: getUserLocationPermissions
+      summary: Get user location permissions
+      description: Retrieve location-based access permissions for a user.
+      tags:
+        - User Permissions
+      parameters:
+        - $ref: '#/components/parameters/UserOid'
+      responses:
+        '200':
+          description: Location permissions returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  permissions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LocationPermission'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: addUserLocationPermission
+      summary: Add user location permission
+      description: Add a location-based access permission for a user.
+      tags:
+        - User Permissions
+      parameters:
+        - $ref: '#/components/parameters/UserOid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - location_id
+              properties:
+                location_id:
+                  type: string
+                  description: Location identifier to grant access to
+      responses:
+        '200':
+          description: Permission added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    delete:
+      operationId: deleteUserLocationPermission
+      summary: Delete user location permission
+      description: Remove a location-based access permission from a user.
+      tags:
+        - User Permissions
+      parameters:
+        - $ref: '#/components/parameters/UserOid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - location_id
+              properties:
+                location_id:
+                  type: string
+                  description: Location identifier to revoke access from
+      responses:
+        '200':
+          description: Permission removed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # ── Scheduling ──────────────────────────────────────────────────────
+
+  /scheduling/multiparty-interviewers:
+    get:
+      operationId: getMultipartyInterviewers
+      summary: Get multiparty interviewers
+      description: Retrieve the list of available multiparty interviewers for scheduling.
+      tags:
+        - Scheduling
+      responses:
+        '200':
+          description: Interviewers returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  interviewers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Interviewer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /scheduling/interview-settings:
+    get:
+      operationId: getInterviewSettings
+      summary: Get interview settings
+      description: Retrieve interview scheduling configuration settings.
+      tags:
+        - Scheduling
+      responses:
+        '200':
+          description: Interview settings returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  settings:
+                    $ref: '#/components/schemas/InterviewSettings'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /scheduling/job-location-rooms:
+    get:
+      operationId: getJobLocationRooms
+      summary: Get job location rooms
+      description: Retrieve available interview rooms for job locations.
+      tags:
+        - Scheduling
+      responses:
+        '200':
+          description: Job location rooms returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  rooms:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Room'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /scheduling/send-interview-alerts:
+    put:
+      operationId: sendInterviewAlerts
+      summary: Send interview alerts
+      description: >-
+        Send interview alert notifications to candidates and/or interviewers
+        about upcoming or changed interviews.
+      tags:
+        - Scheduling
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                candidate_id:
+                  type: string
+                  description: Candidate identifier
+                interview_id:
+                  type: string
+                  description: Interview identifier
+                alert_type:
+                  type: string
+                  description: Type of alert to send
+      responses:
+        '200':
+          description: Interview alerts sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /scheduling/interview-history:
+    get:
+      operationId: getInterviewHistory
+      summary: Get interview history
+      description: Retrieve interview history records.
+      tags:
+        - Scheduling
+      parameters:
+        - name: candidate_id
+          in: query
+          description: Filter by candidate identifier
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          description: Filter by start date
+          schema:
+            type: string
+            format: date-time
+        - name: end_date
+          in: query
+          description: Filter by end date
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Interview history returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  interviews:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Interview'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /scheduling/communication:
+    post:
+      operationId: sendSchedulingCommunication
+      summary: Schedule shortlist review
+      description: >-
+        Send an email to hiring manager(s) with a shortlist of candidates
+        for review and scheduling.
+      tags:
+        - Scheduling
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - to
+                - email_title
+                - email_text
+                - action_link
+              properties:
+                to:
+                  type: array
+                  items:
+                    type: string
+                  description: Hiring manager identifiers to receive the email
+                email_title:
+                  type: string
+                  description: Email subject line
+                email_text:
+                  type: string
+                  description: Email body content
+                action_link:
+                  type: string
+                  format: uri
+                  description: Link for the hiring manager to review candidates
+      responses:
+        '200':
+          description: Shortlist review email sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # ── Locations ───────────────────────────────────────────────────────
+
+  /company/locations:
+    get:
+      operationId: getLocations
+      summary: Get locations
+      description: Retrieve a list of all locations in the company.
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: Locations returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  locations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /location:
+    post:
+      operationId: createLocation
+      summary: Create location
+      description: Create a new location in the Paradox platform.
+      tags:
+        - Locations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationCreate'
+      responses:
+        '200':
+          description: Location created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  location:
+                    $ref: '#/components/schemas/Location'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /location/{id}:
+    get:
+      operationId: getLocation
+      summary: Get single location
+      description: Retrieve details for a specific location by identifier.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/LocationId'
+      responses:
+        '200':
+          description: Location details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  location:
+                    $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateLocation
+      summary: Update location
+      description: Update an existing location.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/LocationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationUpdate'
+      responses:
+        '200':
+          description: Location updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  location:
+                    $ref: '#/components/schemas/Location'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      operationId: deleteLocation
+      summary: Delete location
+      description: Delete a location by identifier.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/LocationId'
+      responses:
+        '200':
+          description: Location deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /location/code/{job_loc_code}:
+    get:
+      operationId: getLocationByCode
+      summary: Get location by job location code
+      description: Look up a location by its job location code.
+      tags:
+        - Locations
+      parameters:
+        - name: job_loc_code
+          in: path
+          required: true
+          description: Job location code
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Location details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  location:
+                    $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateLocationByCode
+      summary: Update location by job location code
+      description: Update a location identified by its job location code.
+      tags:
+        - Locations
+      parameters:
+        - name: job_loc_code
+          in: path
+          required: true
+          description: Job location code
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationUpdate'
+      responses:
+        '200':
+          description: Location updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  location:
+                    $ref: '#/components/schemas/Location'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ── Location Areas ──────────────────────────────────────────────────
+
+  /location/{location_id}/areas:
+    get:
+      operationId: getLocationAreas
+      summary: Get location areas
+      description: Retrieve all areas for a specific location.
+      tags:
+        - Location Areas
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          description: Location identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Areas returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  areas:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Area'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    post:
+      operationId: createLocationArea
+      summary: Create location area
+      description: Create a new area within a location.
+      tags:
+        - Location Areas
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          description: Location identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AreaCreate'
+      responses:
+        '200':
+          description: Area created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  area:
+                    $ref: '#/components/schemas/Area'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /location/{location_id}/areas/{area_id}:
+    get:
+      operationId: getLocationArea
+      summary: Get single location area
+      description: Retrieve details for a specific area within a location.
+      tags:
+        - Location Areas
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          description: Location identifier
+          schema:
+            type: string
+        - name: area_id
+          in: path
+          required: true
+          description: Area identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Area details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  area:
+                    $ref: '#/components/schemas/Area'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateLocationArea
+      summary: Update location area
+      description: Update an existing area within a location.
+      tags:
+        - Location Areas
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          description: Location identifier
+          schema:
+            type: string
+        - name: area_id
+          in: path
+          required: true
+          description: Area identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AreaCreate'
+      responses:
+        '200':
+          description: Area updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  area:
+                    $ref: '#/components/schemas/Area'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    delete:
+      operationId: deleteLocationArea
+      summary: Delete location area
+      description: Delete an area within a location.
+      tags:
+        - Location Areas
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          description: Location identifier
+          schema:
+            type: string
+        - name: area_id
+          in: path
+          required: true
+          description: Area identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Area deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ── Location Rooms ──────────────────────────────────────────────────
+
+  /location/{location_id}/rooms:
+    get:
+      operationId: getLocationRooms
+      summary: Get location rooms
+      description: Retrieve all rooms for a specific location.
+      tags:
+        - Location Rooms
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          description: Location identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Rooms returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  rooms:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Room'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    post:
+      operationId: createLocationRoom
+      summary: Create location room
+      description: Create a new room within a location.
+      tags:
+        - Location Rooms
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          description: Location identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomCreate'
+      responses:
+        '200':
+          description: Room created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  room:
+                    $ref: '#/components/schemas/Room'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /location/{location_id}/rooms/{room_id}:
+    get:
+      operationId: getLocationRoom
+      summary: Get single location room
+      description: Retrieve details for a specific room within a location.
+      tags:
+        - Location Rooms
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          description: Location identifier
+          schema:
+            type: string
+        - name: room_id
+          in: path
+          required: true
+          description: Room identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Room details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  room:
+                    $ref: '#/components/schemas/Room'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateLocationRoom
+      summary: Update location room
+      description: Update an existing room within a location.
+      tags:
+        - Location Rooms
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          description: Location identifier
+          schema:
+            type: string
+        - name: room_id
+          in: path
+          required: true
+          description: Room identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomCreate'
+      responses:
+        '200':
+          description: Room updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  room:
+                    $ref: '#/components/schemas/Room'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    delete:
+      operationId: deleteLocationRoom
+      summary: Delete location room
+      description: Delete a room within a location.
+      tags:
+        - Location Rooms
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          description: Location identifier
+          schema:
+            type: string
+        - name: room_id
+          in: path
+          required: true
+          description: Room identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Room deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ── Company ─────────────────────────────────────────────────────────
+
+  /company/conversations:
+    get:
+      operationId: getCompanyConversations
+      summary: Get company conversations
+      description: Retrieve all conversation configurations for the company.
+      tags:
+        - Company
+      responses:
+        '200':
+          description: Conversations returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  conversations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Conversation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /company/groups:
+    get:
+      operationId: getCompanyGroups
+      summary: Get company groups
+      description: Retrieve all groups configured for the company.
+      tags:
+        - Company
+      responses:
+        '200':
+          description: Groups returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Group'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /company/school_areas:
+    get:
+      operationId: getCompanySchoolAreas
+      summary: Get company schools and areas
+      description: Retrieve all schools and areas configured for the company.
+      tags:
+        - Company
+      responses:
+        '200':
+          description: Schools and areas returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  school_areas:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SchoolArea'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /company/ai:
+    get:
+      operationId: getCompanyAiAssistant
+      summary: Get AI assistant
+      description: Retrieve the AI assistant name and image configuration.
+      tags:
+        - Company
+      responses:
+        '200':
+          description: AI assistant details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AiAssistant'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # ── Reporting ───────────────────────────────────────────────────────
+
+  /reporting/reports:
+    get:
+      operationId: getReports
+      summary: Get report list
+      description: Retrieve a list of all available reports.
+      tags:
+        - Reporting
+      responses:
+        '200':
+          description: Report list returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  reports:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Report'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      operationId: createReport
+      summary: Create report
+      description: Create a new report.
+      tags:
+        - Reporting
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Report name
+                type:
+                  type: string
+                  description: Report type
+                filters:
+                  type: object
+                  description: Report filter criteria
+      responses:
+        '200':
+          description: Report created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  report:
+                    $ref: '#/components/schemas/Report'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /reporting/reports/{id}:
+    get:
+      operationId: getReport
+      summary: Get single report
+      description: Retrieve details for a specific report.
+      tags:
+        - Reporting
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Report identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Report details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  report:
+                    $ref: '#/components/schemas/Report'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials authentication
+      flows:
+        clientCredentials:
+          tokenUrl: /auth/token
+          scopes: {}
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token obtained from the OAuth 2.0 token endpoint
+
+  parameters:
+    CandidateId:
+      name: id
+      in: path
+      required: true
+      description: Candidate OID, external OID, or external ID
+      schema:
+        type: string
+
+    UserOid:
+      name: oid
+      in: path
+      required: true
+      description: User OID or external identifier
+      schema:
+        type: string
+
+    LocationId:
+      name: id
+      in: path
+      required: true
+      description: Location identifier
+      schema:
+        type: string
+
+  responses:
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+
+    Forbidden:
+      description: Permission denied or session expired
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+
+  schemas:
+
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+
+    # ── Candidate Schemas ─────────────────────────────────────────────
+
+    Candidate:
+      type: object
+      description: A candidate in the Paradox recruiting platform
+      properties:
+        OID:
+          type: integer
+          description: Unique internal candidate identifier
+        external_oid:
+          type: string
+          description: Encrypted external candidate identifier
+        name:
+          type: string
+          maxLength: 50
+          description: Full name of the candidate
+        first_name:
+          type: string
+          description: First name of the candidate
+        last_name:
+          type: string
+          description: Last name of the candidate
+        email:
+          type: string
+          format: email
+          maxLength: 50
+          description: Email address
+        phone:
+          type: string
+          maxLength: 20
+          description: Phone number with country code
+        ex_id:
+          type: string
+          maxLength: 255
+          description: External candidate identifier
+        ex_status:
+          type: string
+          description: External status designation
+        ex_step:
+          type: string
+          description: External step designation
+        ex_reason:
+          type: string
+          description: External reason designation
+        job_req_id:
+          type: string
+          maxLength: 255
+          description: Job requisition identifier
+        job_title:
+          type: string
+          maxLength: 255
+          description: Job position title
+        job_loc_code:
+          type: string
+          maxLength: 20
+          description: Job location code
+        primary_contact_method:
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+          description: >-
+            Contact preference: 1=Email, 2=SMS, 3=Email & SMS,
+            4=WhatsApp & Email, 5=WhatsApp
+        hired_date:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: Employment start date
+        hirevue_link:
+          type: string
+          maxLength: 255
+          description: HireVue virtual interview link
+        pymetrics_link:
+          type: string
+          maxLength: 255
+          description: Pymetrics assessment link
+        adp_link:
+          type: string
+          maxLength: 255
+          description: ADP system link
+        hirevue_instructions:
+          type: string
+          maxLength: 255
+          description: Interview guidance text
+        audience_type:
+          type: string
+          maxLength: 255
+          description: Candidate tier classification
+        hm_cid:
+          type: string
+          maxLength: 255
+          description: Hirescore candidate identifier
+        external_group_id:
+          type: string
+          description: Group classification identifier
+        referrer_email:
+          type: string
+          format: email
+          maxLength: 50
+          description: Referral source email address
+        referrer_name:
+          type: string
+          maxLength: 50
+          description: Referral source name
+        recruiter_email:
+          type: string
+          format: email
+          description: Assigned recruiter email
+        hiring_manager:
+          type: string
+          description: Assigned hiring manager contact
+        external_referrer:
+          type: string
+          maxLength: 1000
+          description: External referral source
+        language_preference:
+          type: string
+          default: en
+          description: Language code preference
+        candidate_journey:
+          type: string
+          description: Journey workflow name
+        candidate_journey_status:
+          type: string
+          description: Current journey stage designation
+        candidate_attribute_data:
+          type: object
+          additionalProperties:
+            type: string
+            maxLength: 255
+          description: Custom key-value attributes
+        job_application_id:
+          type: string
+          maxLength: 255
+          description: Application identifier
+        candidate_location_info:
+          type: string
+          maxLength: 100
+          description: Geographic location information
+        external_source_id:
+          type: string
+          maxLength: 255
+          description: Source system identifier
+        talent_community:
+          type: boolean
+          default: false
+          description: Whether candidate is in the talent pool
+        community_of_interest:
+          type: integer
+          description: Community identifier when in talent pool
+        consent_to_marketing:
+          type: string
+          description: Marketing consent status
+        note:
+          type: string
+          description: Internal candidate notes
+
+    CandidateCreate:
+      type: object
+      description: Request body for creating a new candidate
+      required:
+        - phone
+        - email
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          description: Full name (required if first_name/last_name not provided)
+        first_name:
+          type: string
+          description: First name (use with last_name instead of name)
+        last_name:
+          type: string
+          description: Last name (use with first_name instead of name)
+        phone:
+          type: string
+          maxLength: 20
+          description: Phone number with country code
+        email:
+          type: string
+          format: email
+          maxLength: 50
+          description: Email address
+        ex_id:
+          type: string
+          maxLength: 255
+          description: External candidate identifier
+        hirevue_link:
+          type: string
+          maxLength: 255
+        pymetrics_link:
+          type: string
+          maxLength: 255
+        ex_step:
+          type: string
+        ex_status:
+          type: string
+        ex_reason:
+          type: string
+        job_req_id:
+          type: string
+          maxLength: 255
+        job_title:
+          type: string
+          maxLength: 255
+        job_loc_code:
+          type: string
+          maxLength: 20
+        primary_contact_method:
+          type: string
+          description: "1=Email, 2=SMS, 3=Email & SMS, 4=WhatsApp & Email, 5=WhatsApp"
+        hired_date:
+          type: string
+          format: date-time
+        adp_link:
+          type: string
+          maxLength: 255
+        audience_type:
+          type: string
+          maxLength: 255
+        hm_cid:
+          type: string
+          maxLength: 255
+        external_group_id:
+          type: string
+        hirevue_instructions:
+          type: string
+          maxLength: 255
+        referrer_email:
+          type: string
+          format: email
+          maxLength: 50
+        referrer_name:
+          type: string
+          maxLength: 50
+        recruiter_email:
+          type: string
+          format: email
+        hiring_manager:
+          type: string
+        external_referrer:
+          type: string
+          maxLength: 1000
+        language_preference:
+          type: string
+          default: en
+        candidate_journey:
+          type: string
+        candidate_journey_status:
+          type: string
+        candidate_attribute_data:
+          type: object
+          additionalProperties:
+            type: string
+            maxLength: 255
+        note:
+          type: string
+        job_application_id:
+          type: string
+          maxLength: 255
+        use_application_id_for_identity:
+          type: boolean
+          default: false
+          description: Use application ID to identify returning candidates
+        candidate_location_info:
+          type: string
+          maxLength: 100
+        external_source_id:
+          type: string
+          maxLength: 255
+        offer_file_name:
+          type: string
+          maxLength: 150
+          description: Offer document filename
+        use_paradox_status_map:
+          type: boolean
+          default: false
+          description: Enable Paradox status mapping
+        status_map_name:
+          type: string
+          description: Paradox journey status name for mapping
+        status_map_ex_id:
+          type: string
+          description: External system status identifier for mapping
+        talent_community:
+          type: boolean
+          default: false
+        community_of_interest:
+          type: integer
+        skip_send_opt_in:
+          type: boolean
+          description: Bypass opt-in messaging
+        consent_to_marketing:
+          type: string
+
+    CandidateUpdate:
+      type: object
+      description: Request body for updating an existing candidate
+      properties:
+        name:
+          type: string
+          maxLength: 50
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone:
+          type: string
+          maxLength: 20
+        email:
+          type: string
+          format: email
+          maxLength: 50
+        ex_id:
+          type: string
+          maxLength: 255
+        hirevue_link:
+          type: string
+          maxLength: 255
+        pymetrics_link:
+          type: string
+          maxLength: 255
+        ex_step:
+          type: string
+        ex_status:
+          type: string
+        ex_reason:
+          type: string
+        job_req_id:
+          type: string
+          maxLength: 255
+        job_title:
+          type: string
+          maxLength: 255
+        job_loc_code:
+          type: string
+          maxLength: 20
+        primary_contact_method:
+          type: string
+        hired_date:
+          type: string
+          format: date-time
+        adp_link:
+          type: string
+          maxLength: 255
+        audience_type:
+          type: string
+          maxLength: 255
+        recruiter_email:
+          type: string
+          format: email
+        hiring_manager:
+          type: string
+        language_preference:
+          type: string
+        candidate_journey:
+          type: string
+        candidate_journey_status:
+          type: string
+        candidate_attribute_data:
+          type: object
+          additionalProperties:
+            type: string
+            maxLength: 255
+        note:
+          type: string
+        use_paradox_status_map:
+          type: boolean
+        status_map_name:
+          type: string
+        status_map_ex_id:
+          type: string
+
+    # ── User Schemas ──────────────────────────────────────────────────
+
+    User:
+      type: object
+      description: A user in the Paradox platform
+      properties:
+        OID:
+          type: string
+          description: Unique user identifier
+        name:
+          type: string
+          description: Full name
+        email:
+          type: string
+          format: email
+          description: Email address
+        phone_number:
+          type: string
+          description: Phone number
+        role_id:
+          type: string
+          description: Assigned role identifier
+        timezone:
+          type: string
+          description: User timezone
+        language_preference:
+          type: string
+          description: Preferred language code
+        employee_id:
+          type: string
+          description: Employee identifier
+        job_title:
+          type: string
+          description: Job title
+        location_ids:
+          type: array
+          items:
+            type: string
+          description: Associated location identifiers
+        campus_permissions:
+          type: array
+          items:
+            type: object
+          description: Campus-level permissions
+        active:
+          type: boolean
+          description: Whether the user account is active
+        created_at:
+          type: string
+          format: date-time
+          description: Account creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+
+    UserCreate:
+      type: object
+      description: Request body for creating a new user
+      required:
+        - name
+        - email
+        - phone_number
+      properties:
+        name:
+          type: string
+          description: Full name
+        email:
+          type: string
+          format: email
+          description: Email address
+        phone_number:
+          type: string
+          description: Phone number
+        role:
+          type: string
+          description: User role
+        timezone:
+          type: string
+          description: User timezone
+        language_preference:
+          type: string
+          description: Preferred language code
+        location_ids:
+          type: array
+          items:
+            type: string
+          description: Associated location identifiers
+        employee_id:
+          type: string
+          description: Employee identifier
+
+    UserUpdate:
+      type: object
+      description: Request body for updating an existing user
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone_number:
+          type: string
+        role:
+          type: string
+        timezone:
+          type: string
+        language_preference:
+          type: string
+        employee_id:
+          type: string
+        job_title:
+          type: string
+
+    Role:
+      type: object
+      description: A user role definition
+      properties:
+        id:
+          type: string
+          description: Role identifier
+        name:
+          type: string
+          description: Role name
+        description:
+          type: string
+          description: Role description
+
+    LocationPermission:
+      type: object
+      description: A location-based access permission
+      properties:
+        location_id:
+          type: string
+          description: Location identifier
+        location_name:
+          type: string
+          description: Location name
+        granted_at:
+          type: string
+          format: date-time
+          description: When the permission was granted
+
+    # ── Scheduling Schemas ────────────────────────────────────────────
+
+    Interviewer:
+      type: object
+      description: An interviewer available for multiparty scheduling
+      properties:
+        id:
+          type: string
+          description: Interviewer identifier
+        name:
+          type: string
+          description: Interviewer name
+        email:
+          type: string
+          format: email
+          description: Interviewer email address
+        timezone:
+          type: string
+          description: Interviewer timezone
+
+    InterviewSettings:
+      type: object
+      description: Interview scheduling configuration
+      properties:
+        duration:
+          type: integer
+          description: Default interview duration in minutes
+        buffer_time:
+          type: integer
+          description: Buffer time between interviews in minutes
+        scheduling_window:
+          type: integer
+          description: Number of days to look ahead for scheduling
+        confirmation_required:
+          type: boolean
+          description: Whether interview confirmation is required
+        reminder_enabled:
+          type: boolean
+          description: Whether interview reminders are enabled
+
+    Interview:
+      type: object
+      description: An interview scheduling record
+      properties:
+        id:
+          type: string
+          description: Interview identifier
+        candidate_id:
+          type: string
+          description: Associated candidate identifier
+        interviewer_id:
+          type: string
+          description: Assigned interviewer identifier
+        location_id:
+          type: string
+          description: Interview location identifier
+        room_id:
+          type: string
+          description: Interview room identifier
+        scheduled_at:
+          type: string
+          format: date-time
+          description: Scheduled interview date and time
+        duration:
+          type: integer
+          description: Interview duration in minutes
+        status:
+          type: string
+          description: Interview status
+        type:
+          type: string
+          description: Interview type
+        created_at:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+
+    # ── Location Schemas ──────────────────────────────────────────────
+
+    Location:
+      type: object
+      description: A physical location or job site in the Paradox platform
+      properties:
+        oid:
+          type: string
+          description: Location identifier
+        name:
+          type: string
+          description: Location name
+        job_loc_code:
+          type: string
+          description: Job location code
+        address:
+          type: string
+          description: Street address
+        city:
+          type: string
+          description: City
+        state:
+          type: string
+          description: State or province
+        zip_code:
+          type: string
+          description: Postal code
+        country:
+          type: string
+          description: Country
+        timezone:
+          type: string
+          description: Location timezone
+        active:
+          type: boolean
+          description: Whether the location is active
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+
+    LocationCreate:
+      type: object
+      description: Request body for creating a new location
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Location name
+        job_loc_code:
+          type: string
+          description: Job location code
+        address:
+          type: string
+          description: Street address
+        city:
+          type: string
+        state:
+          type: string
+        zip_code:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+
+    LocationUpdate:
+      type: object
+      description: Request body for updating an existing location
+      properties:
+        name:
+          type: string
+        job_loc_code:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip_code:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+        active:
+          type: boolean
+
+    Area:
+      type: object
+      description: An area within a location
+      properties:
+        oid:
+          type: string
+          description: Area identifier
+        name:
+          type: string
+          description: Area name
+        location_id:
+          type: string
+          description: Parent location identifier
+        type:
+          type: integer
+          description: "Area type: 1=area, 2=school"
+
+    AreaCreate:
+      type: object
+      description: Request body for creating a new area
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Area name
+        type:
+          type: integer
+          description: "Area type: 1=area, 2=school"
+
+    Room:
+      type: object
+      description: A room within a location used for interviews
+      properties:
+        oid:
+          type: string
+          description: Room identifier
+        name:
+          type: string
+          description: Room name
+        location_id:
+          type: string
+          description: Parent location identifier
+        capacity:
+          type: integer
+          description: Room capacity
+        active:
+          type: boolean
+          description: Whether the room is active
+
+    RoomCreate:
+      type: object
+      description: Request body for creating a new room
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Room name
+        capacity:
+          type: integer
+          description: Room capacity
+
+    # ── Company Schemas ───────────────────────────────────────────────
+
+    Conversation:
+      type: object
+      description: A conversation configuration
+      properties:
+        oid:
+          type: string
+          description: Conversation identifier
+        label:
+          type: string
+          description: Conversation name/label
+        is_remote:
+          type: integer
+          enum:
+            - 0
+            - 1
+          description: Whether the conversation is for remote positions
+        deactivated:
+          type: integer
+          enum:
+            - 0
+            - 1
+          description: Whether the conversation is deactivated
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+
+    Group:
+      type: object
+      description: A company group
+      properties:
+        oid:
+          type: string
+          description: Group identifier
+        name:
+          type: string
+          description: Group name
+
+    SchoolArea:
+      type: object
+      description: A school or area associated with the company
+      properties:
+        oid:
+          type: string
+          description: School/area identifier
+        name:
+          type: string
+          description: School/area name
+        type:
+          type: integer
+          enum:
+            - 1
+            - 2
+          description: "Type: 1=area, 2=school"
+
+    AiAssistant:
+      type: object
+      description: AI assistant configuration
+      properties:
+        id:
+          type: string
+          description: Assistant identifier
+        ai_name:
+          type: string
+          description: AI assistant display name
+        ai_logo_uri:
+          type: string
+          format: uri
+          description: AI assistant logo image URL
+
+    # ── Reporting Schemas ─────────────────────────────────────────────
+
+    Report:
+      type: object
+      description: A report record
+      properties:
+        id:
+          type: string
+          description: Report identifier
+        name:
+          type: string
+          description: Report name
+        type:
+          type: string
+          description: Report type
+        status:
+          type: string
+          description: Report generation status
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
