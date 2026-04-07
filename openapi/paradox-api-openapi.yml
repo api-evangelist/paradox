@@ -70,7 +70,7 @@ paths:
   /auth/token:
     post:
       operationId: getAuthToken
-      summary: Get OAuth 2.0 access token
+      summary: Paradox Get OAuth 2.0 access token
       description: >-
         Obtain an access token using OAuth 2.0 client credentials grant.
         The returned token should be included in the Authorization header
@@ -123,7 +123,7 @@ paths:
   /verify-jwt:
     post:
       operationId: verifyJwt
-      summary: Verify JWT token
+      summary: Paradox Verify JWT token
       description: Verify the validity of a JWT authentication token.
       tags:
         - Authentication
@@ -144,7 +144,7 @@ paths:
   /candidates:
     get:
       operationId: getCandidates
-      summary: Get candidates
+      summary: Paradox Get candidates
       description: >-
         Retrieve a list of candidates with optional filtering by date range,
         status, group, location, source, and other criteria.
@@ -290,7 +290,7 @@ paths:
 
     post:
       operationId: createCandidate
-      summary: Create candidate
+      summary: Paradox Create candidate
       description: >-
         Create a new candidate in the Paradox platform. Requires at minimum
         a name (or first_name and last_name), phone number, and email address.
@@ -340,7 +340,7 @@ paths:
   /candidates/{id}:
     get:
       operationId: getCandidate
-      summary: Get single candidate
+      summary: Paradox Get single candidate
       description: Retrieve details for a specific candidate by OID or external OID.
       tags:
         - Candidates
@@ -375,7 +375,7 @@ paths:
 
     put:
       operationId: updateCandidate
-      summary: Update candidate
+      summary: Paradox Update candidate
       description: >-
         Update an existing candidate by OID, external OID, or external ID.
         Supports updating name, contact information, status, journey details,
@@ -425,7 +425,7 @@ paths:
 
     delete:
       operationId: deleteCandidate
-      summary: Delete candidate
+      summary: Paradox Delete candidate
       description: Delete a candidate by OID or external OID.
       tags:
         - Candidates
@@ -446,7 +446,7 @@ paths:
   /candidates/unsubscribe:
     put:
       operationId: unsubscribeCandidate
-      summary: Unsubscribe candidate
+      summary: Paradox Unsubscribe candidate
       description: >-
         Unsubscribe or resubscribe a candidate from communications.
         Use action_id 1 to unsubscribe and 0 to resubscribe.
@@ -493,7 +493,7 @@ paths:
   /candidates/send_message:
     post:
       operationId: sendCandidateMessage
-      summary: Send candidate message
+      summary: Paradox Send candidate message
       description: Send a message to a candidate via their preferred contact method.
       tags:
         - Candidates
@@ -537,7 +537,7 @@ paths:
   /candidates/background_check/standard:
     post:
       operationId: sendBackgroundCheckStandard
-      summary: Send standard background check
+      summary: Paradox Send standard background check
       description: Initiate a standard background check for a candidate.
       tags:
         - Candidates
@@ -579,7 +579,7 @@ paths:
   /candidates/background_check/checkr:
     post:
       operationId: sendBackgroundCheckCheckr
-      summary: Send Checkr background check
+      summary: Paradox Send Checkr background check
       description: Initiate a background check through Checkr integration.
       tags:
         - Candidates
@@ -610,7 +610,7 @@ paths:
   /candidates/background_check/firstadvance:
     post:
       operationId: sendBackgroundCheckFirstAdvantage
-      summary: Send First Advantage background check
+      summary: Paradox Send First Advantage background check
       description: Initiate a background check through First Advantage integration.
       tags:
         - Candidates
@@ -647,7 +647,7 @@ paths:
   /candidate/attributes/{oid}:
     get:
       operationId: getCandidateAttributes
-      summary: Get candidate attributes
+      summary: Paradox Get candidate attributes
       description: Retrieve all current custom attributes for a specific candidate.
       tags:
         - Candidate Attributes
@@ -681,7 +681,7 @@ paths:
   /candidate/attributes:
     patch:
       operationId: patchCandidateAttributes
-      summary: Patch candidate attributes
+      summary: Paradox Patch candidate attributes
       description: >-
         Partially update candidate attributes. Only the specified attributes
         will be modified; existing attributes not included will remain unchanged.
@@ -720,7 +720,7 @@ paths:
 
     put:
       operationId: updateCandidateAttributes
-      summary: Update candidate attributes
+      summary: Paradox Update candidate attributes
       description: >-
         Replace all candidate attributes with the provided set. Any attributes
         not included in the request will be removed.
@@ -762,7 +762,7 @@ paths:
   /users:
     get:
       operationId: getUsers
-      summary: Get users
+      summary: Paradox Get users
       description: Retrieve a paginated list of users in the Paradox platform.
       tags:
         - Users
@@ -817,7 +817,7 @@ paths:
 
     post:
       operationId: createUser
-      summary: Create user
+      summary: Paradox Create user
       description: Create a new user in the Paradox platform.
       tags:
         - Users
@@ -847,7 +847,7 @@ paths:
   /users/{oid}:
     get:
       operationId: getUser
-      summary: Get single user
+      summary: Paradox Get single user
       description: Retrieve details for a specific user by OID or external identifier.
       tags:
         - Users
@@ -872,7 +872,7 @@ paths:
 
     put:
       operationId: updateUser
-      summary: Update user
+      summary: Paradox Update user
       description: Update an existing user by OID.
       tags:
         - Users
@@ -905,7 +905,7 @@ paths:
 
     delete:
       operationId: deleteUser
-      summary: Delete user
+      summary: Paradox Delete user
       description: Delete a user by OID.
       tags:
         - Users
@@ -926,7 +926,7 @@ paths:
   /users/{oid}/deactivate:
     post:
       operationId: deactivateUser
-      summary: Deactivate user
+      summary: Paradox Deactivate user
       description: Deactivate a user account, preventing login and API access.
       tags:
         - Users
@@ -947,7 +947,7 @@ paths:
   /users/{oid}/reactivate:
     post:
       operationId: reactivateUser
-      summary: Reactivate user
+      summary: Paradox Reactivate user
       description: Reactivate a previously deactivated user account.
       tags:
         - Users
@@ -968,7 +968,7 @@ paths:
   /users/roles:
     get:
       operationId: getUserRoles
-      summary: Get user roles
+      summary: Paradox Get user roles
       description: Retrieve the list of available user roles.
       tags:
         - Users
@@ -992,7 +992,7 @@ paths:
   /users/employees/{employee_id}:
     get:
       operationId: getUserByEmployeeId
-      summary: Get user by employee ID
+      summary: Paradox Get user by employee ID
       description: Look up a user by their employee ID.
       tags:
         - Users
@@ -1022,7 +1022,7 @@ paths:
 
     put:
       operationId: updateUserByEmployeeId
-      summary: Update user by employee ID
+      summary: Paradox Update user by employee ID
       description: Update a user identified by their employee ID.
       tags:
         - Users
@@ -1060,7 +1060,7 @@ paths:
 
     delete:
       operationId: deleteUserByEmployeeId
-      summary: Delete user by employee ID
+      summary: Paradox Delete user by employee ID
       description: Delete a user identified by their employee ID.
       tags:
         - Users
@@ -1088,7 +1088,7 @@ paths:
   /users/{oid}/permissions/locations:
     get:
       operationId: getUserLocationPermissions
-      summary: Get user location permissions
+      summary: Paradox Get user location permissions
       description: Retrieve location-based access permissions for a user.
       tags:
         - User Permissions
@@ -1115,7 +1115,7 @@ paths:
 
     put:
       operationId: addUserLocationPermission
-      summary: Add user location permission
+      summary: Paradox Add user location permission
       description: Add a location-based access permission for a user.
       tags:
         - User Permissions
@@ -1147,7 +1147,7 @@ paths:
 
     delete:
       operationId: deleteUserLocationPermission
-      summary: Delete user location permission
+      summary: Paradox Delete user location permission
       description: Remove a location-based access permission from a user.
       tags:
         - User Permissions
@@ -1179,7 +1179,7 @@ paths:
   /scheduling/multiparty-interviewers:
     get:
       operationId: getMultipartyInterviewers
-      summary: Get multiparty interviewers
+      summary: Paradox Get multiparty interviewers
       description: Retrieve the list of available multiparty interviewers for scheduling.
       tags:
         - Scheduling
@@ -1203,7 +1203,7 @@ paths:
   /scheduling/interview-settings:
     get:
       operationId: getInterviewSettings
-      summary: Get interview settings
+      summary: Paradox Get interview settings
       description: Retrieve interview scheduling configuration settings.
       tags:
         - Scheduling
@@ -1225,7 +1225,7 @@ paths:
   /scheduling/job-location-rooms:
     get:
       operationId: getJobLocationRooms
-      summary: Get job location rooms
+      summary: Paradox Get job location rooms
       description: Retrieve available interview rooms for job locations.
       tags:
         - Scheduling
@@ -1249,7 +1249,7 @@ paths:
   /scheduling/send-interview-alerts:
     put:
       operationId: sendInterviewAlerts
-      summary: Send interview alerts
+      summary: Paradox Send interview alerts
       description: >-
         Send interview alert notifications to candidates and/or interviewers
         about upcoming or changed interviews.
@@ -1286,7 +1286,7 @@ paths:
   /scheduling/interview-history:
     get:
       operationId: getInterviewHistory
-      summary: Get interview history
+      summary: Paradox Get interview history
       description: Retrieve interview history records.
       tags:
         - Scheduling
@@ -1328,7 +1328,7 @@ paths:
   /scheduling/communication:
     post:
       operationId: sendSchedulingCommunication
-      summary: Schedule shortlist review
+      summary: Paradox Schedule shortlist review
       description: >-
         Send an email to hiring manager(s) with a shortlist of candidates
         for review and scheduling.
@@ -1378,7 +1378,7 @@ paths:
   /company/locations:
     get:
       operationId: getLocations
-      summary: Get locations
+      summary: Paradox Get locations
       description: Retrieve a list of all locations in the company.
       tags:
         - Locations
@@ -1402,7 +1402,7 @@ paths:
   /location:
     post:
       operationId: createLocation
-      summary: Create location
+      summary: Paradox Create location
       description: Create a new location in the Paradox platform.
       tags:
         - Locations
@@ -1432,7 +1432,7 @@ paths:
   /location/{id}:
     get:
       operationId: getLocation
-      summary: Get single location
+      summary: Paradox Get single location
       description: Retrieve details for a specific location by identifier.
       tags:
         - Locations
@@ -1457,7 +1457,7 @@ paths:
 
     put:
       operationId: updateLocation
-      summary: Update location
+      summary: Paradox Update location
       description: Update an existing location.
       tags:
         - Locations
@@ -1490,7 +1490,7 @@ paths:
 
     delete:
       operationId: deleteLocation
-      summary: Delete location
+      summary: Paradox Delete location
       description: Delete a location by identifier.
       tags:
         - Locations
@@ -1511,7 +1511,7 @@ paths:
   /location/code/{job_loc_code}:
     get:
       operationId: getLocationByCode
-      summary: Get location by job location code
+      summary: Paradox Get location by job location code
       description: Look up a location by its job location code.
       tags:
         - Locations
@@ -1541,7 +1541,7 @@ paths:
 
     put:
       operationId: updateLocationByCode
-      summary: Update location by job location code
+      summary: Paradox Update location by job location code
       description: Update a location identified by its job location code.
       tags:
         - Locations
@@ -1582,7 +1582,7 @@ paths:
   /location/{location_id}/areas:
     get:
       operationId: getLocationAreas
-      summary: Get location areas
+      summary: Paradox Get location areas
       description: Retrieve all areas for a specific location.
       tags:
         - Location Areas
@@ -1614,7 +1614,7 @@ paths:
 
     post:
       operationId: createLocationArea
-      summary: Create location area
+      summary: Paradox Create location area
       description: Create a new area within a location.
       tags:
         - Location Areas
@@ -1651,7 +1651,7 @@ paths:
   /location/{location_id}/areas/{area_id}:
     get:
       operationId: getLocationArea
-      summary: Get single location area
+      summary: Paradox Get single location area
       description: Retrieve details for a specific area within a location.
       tags:
         - Location Areas
@@ -1687,7 +1687,7 @@ paths:
 
     put:
       operationId: updateLocationArea
-      summary: Update location area
+      summary: Paradox Update location area
       description: Update an existing area within a location.
       tags:
         - Location Areas
@@ -1729,7 +1729,7 @@ paths:
 
     delete:
       operationId: deleteLocationArea
-      summary: Delete location area
+      summary: Paradox Delete location area
       description: Delete an area within a location.
       tags:
         - Location Areas
@@ -1763,7 +1763,7 @@ paths:
   /location/{location_id}/rooms:
     get:
       operationId: getLocationRooms
-      summary: Get location rooms
+      summary: Paradox Get location rooms
       description: Retrieve all rooms for a specific location.
       tags:
         - Location Rooms
@@ -1795,7 +1795,7 @@ paths:
 
     post:
       operationId: createLocationRoom
-      summary: Create location room
+      summary: Paradox Create location room
       description: Create a new room within a location.
       tags:
         - Location Rooms
@@ -1832,7 +1832,7 @@ paths:
   /location/{location_id}/rooms/{room_id}:
     get:
       operationId: getLocationRoom
-      summary: Get single location room
+      summary: Paradox Get single location room
       description: Retrieve details for a specific room within a location.
       tags:
         - Location Rooms
@@ -1868,7 +1868,7 @@ paths:
 
     put:
       operationId: updateLocationRoom
-      summary: Update location room
+      summary: Paradox Update location room
       description: Update an existing room within a location.
       tags:
         - Location Rooms
@@ -1910,7 +1910,7 @@ paths:
 
     delete:
       operationId: deleteLocationRoom
-      summary: Delete location room
+      summary: Paradox Delete location room
       description: Delete a room within a location.
       tags:
         - Location Rooms
@@ -1944,7 +1944,7 @@ paths:
   /company/conversations:
     get:
       operationId: getCompanyConversations
-      summary: Get company conversations
+      summary: Paradox Get company conversations
       description: Retrieve all conversation configurations for the company.
       tags:
         - Company
@@ -1968,7 +1968,7 @@ paths:
   /company/groups:
     get:
       operationId: getCompanyGroups
-      summary: Get company groups
+      summary: Paradox Get company groups
       description: Retrieve all groups configured for the company.
       tags:
         - Company
@@ -1992,7 +1992,7 @@ paths:
   /company/school_areas:
     get:
       operationId: getCompanySchoolAreas
-      summary: Get company schools and areas
+      summary: Paradox Get company schools and areas
       description: Retrieve all schools and areas configured for the company.
       tags:
         - Company
@@ -2016,7 +2016,7 @@ paths:
   /company/ai:
     get:
       operationId: getCompanyAiAssistant
-      summary: Get AI assistant
+      summary: Paradox Get AI assistant
       description: Retrieve the AI assistant name and image configuration.
       tags:
         - Company
@@ -2035,7 +2035,7 @@ paths:
   /reporting/reports:
     get:
       operationId: getReports
-      summary: Get report list
+      summary: Paradox Get report list
       description: Retrieve a list of all available reports.
       tags:
         - Reporting
@@ -2058,7 +2058,7 @@ paths:
 
     post:
       operationId: createReport
-      summary: Create report
+      summary: Paradox Create report
       description: Create a new report.
       tags:
         - Reporting
@@ -2098,7 +2098,7 @@ paths:
   /reporting/reports/{id}:
     get:
       operationId: getReport
-      summary: Get single report
+      summary: Paradox Get single report
       description: Retrieve details for a specific report.
       tags:
         - Reporting
