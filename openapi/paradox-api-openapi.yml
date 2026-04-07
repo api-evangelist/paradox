@@ -42,27 +42,27 @@ security:
 tags:
   - name: Authentication
     description: OAuth 2.0 token and JWT verification endpoints
-  - name: Candidates
-    description: Manage candidates including creating, retrieving, updating, deleting, messaging, and unsubscribing
   - name: Candidate Attributes
     description: Manage custom candidate attribute data
-  - name: Users
-    description: Manage users including creating, retrieving, updating, deleting, deactivating, and reactivating
-  - name: User Permissions
-    description: Manage user location permissions
-  - name: Scheduling
-    description: Manage interview scheduling, interviewers, settings, rooms, alerts, and history
-  - name: Locations
-    description: Manage locations including creating, retrieving, updating, deleting, and lookup by job location code
+  - name: Candidates
+    description: Manage candidates including creating, retrieving, updating, deleting, messaging, and unsubscribing
+  - name: Company
+    description: Access company-level data including conversations, groups, schools, areas, and AI assistant
   - name: Location Areas
     description: Manage location areas
   - name: Location Rooms
     description: Manage location rooms
-  - name: Company
-    description: Access company-level data including conversations, groups, schools, areas, and AI assistant
+  - name: Locations
+    description: Manage locations including creating, retrieving, updating, deleting, and lookup by job location code
   - name: Reporting
     description: Access and generate reports
 
+  - name: Scheduling
+    description: Manage interview scheduling, interviewers, settings, rooms, alerts, and history
+  - name: User Permissions
+    description: Manage user location permissions
+  - name: Users
+    description: Manage users including creating, retrieving, updating, deleting, deactivating, and reactivating
 paths:
 
   # ── Authentication ──────────────────────────────────────────────────

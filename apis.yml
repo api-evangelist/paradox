@@ -9,16 +9,16 @@ url: https://www.paradox.ai
 created: '2025'
 modified: '2026-03-03'
 tags:
-  - Recruiting
-  - HR Technology
   - Artificial Intelligence
-  - Chatbot
-  - Talent Acquisition
   - Candidate Screening
-  - Interview Scheduling
+  - Chatbot
   - Conversational AI
-  - SMS
   - Hiring Automation
+  - HR Technology
+  - Interview Scheduling
+  - Recruiting
+  - SMS
+  - Talent Acquisition
 common:
   - type: Portal
     url: https://readme.paradox.ai/
@@ -65,12 +65,12 @@ apis:
     humanURL: https://www.paradox.ai
     baseURL: https://api.paradox.ai
     tags:
-      - Recruiting
       - AI
+      - Candidate Experience
+      - Chatbot
       - Conversational AI
       - HR Technology
-      - Chatbot
-      - Candidate Experience
+      - Recruiting
     properties:
       - type: Documentation
         url: https://developers.paradox.ai/docs
@@ -93,10 +93,10 @@ apis:
     humanURL: https://readme.paradox.ai/reference/get-company-conversations
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
+      - AI Assistant
+      - Company
       - Conversations
       - Groups
-      - Company
-      - AI Assistant
     properties:
       - type: Documentation
         url: https://readme.paradox.ai/reference/get-company-conversations
@@ -114,9 +114,9 @@ apis:
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
       - Candidates
+      - Messaging
       - Recruiting
       - Screening
-      - Messaging
     properties:
       - type: Documentation
         url: https://readme.paradox.ai/reference/get-candidates
@@ -135,9 +135,9 @@ apis:
     humanURL: https://readme.paradox.ai/reference/get-users
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-      - Users
-      - Roles
       - Administration
+      - Roles
+      - Users
     properties:
       - type: Documentation
         url: https://readme.paradox.ai/reference/get-users
@@ -153,9 +153,9 @@ apis:
     humanURL: https://readme.paradox.ai/reference/send-interview-alerts
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-      - Scheduling
-      - Interviews
       - Calendars
+      - Interviews
+      - Scheduling
     properties:
       - type: Documentation
         url: https://readme.paradox.ai/reference/send-interview-alerts
@@ -169,17 +169,15 @@ apis:
       creating, retrieving, updating, and deleting locations, as well as
       looking up locations by job location code and managing location rooms.
     image: https://www.paradox.ai/images/paradox-logo.png
-    humanURL: 
-      https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+    humanURL: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
+      - Job Sites
       - Locations
       - Rooms
-      - Job Sites
     properties:
       - type: Documentation
-        url: 
-          https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+        url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
       - type: API Reference
         url: https://readme.paradox.ai/reference/update-a-location
       - type: OpenAPI
@@ -193,9 +191,9 @@ apis:
     humanURL: https://readme.paradox.ai/reference/get-report-list
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-      - Reporting
       - Analytics
       - Data
+      - Reporting
     properties:
       - type: Documentation
         url: https://readme.paradox.ai/reference/get-report-list
@@ -209,8 +207,8 @@ apis:
     humanURL: https://readme.paradox.ai/reference/get-candidate-attributes
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-      - Candidates
       - Attributes
+      - Candidates
       - Custom Fields
     properties:
       - type: Documentation
@@ -226,8 +224,8 @@ apis:
     humanURL: https://readme.paradox.ai/reference/authentication
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-      - Permissions
       - Access Control
+      - Permissions
       - Users
     properties:
       - type: Documentation
