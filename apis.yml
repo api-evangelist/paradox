@@ -1,13 +1,17 @@
+aid: paradox
 name: Paradox
 description: >-
   APIs and resources for Paradox, a conversational AI recruiting assistant
   platform powered by Olivia, an AI assistant that automates candidate
   screening, interview scheduling, and hiring workflows through chat, SMS,
   and mobile-driven experiences.
+type: Index
 image: https://www.paradox.ai/images/paradox-logo.png
-url: https://www.paradox.ai
-created: '2025'
-modified: '2026-03-03'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/paradox/refs/heads/main/apis.yml
+created: '2025-01-01'
+modified: '2026-04-28'
+specificationVersion: '0.19'
 tags:
   - Artificial Intelligence
   - Candidate Screening
