@@ -4,181 +4,46 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Paradox
 providerId: paradox
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+notes: No public pricing — Paradox uses a sales-driven model with categories for Global Enterprise,
+  Mid-Sized Businesses, and Franchise. The website routes all pricing inquiries to "Request
+  a demo" and the developer portal at readme.paradox.ai is gated.
 tags:
-  - Artificial Intelligence
-  - Candidate Screening
-  - Chatbot
-  - Conversational AI
-  - Hiring Automation
   - HR Technology
-  - Interview Scheduling
+  - Conversational AI
   - Recruiting
-  - SMS
   - Talent Acquisition
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Hiring Automation
+description: Paradox does not publish public pricing. Plans are quoted per customer based
+  on segment (Global Enterprise / Mid-Sized / Franchise) with custom proposals after a sales
+  demo.
+sources:
+  - https://www.paradox.ai/pricing
+  - https://readme.paradox.ai/
 plans:
-  - id: paradox-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Paradox API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.paradox.ai
-          - https://api.paradox.ai/api/v1/public
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.paradox.ai
-          - https://api.paradox.ai/api/v1/public
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Paradox Conversational AI API
-      - name: Paradox Company API
-      - name: Paradox Candidates API
-      - name: Paradox Users API
-      - name: Paradox Scheduling API
-      - name: Paradox Locations API
-      - name: Paradox Reporting API
-      - name: Paradox Candidate Attributes API
-  - id: paradox-pro
-    name: Professional
-    type: paid
-    description: Production tier for Paradox. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.paradox.ai
-          - https://api.paradox.ai/api/v1/public
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.paradox.ai
-          - https://api.paradox.ai/api/v1/public
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.paradox.ai
-          - https://api.paradox.ai/api/v1/public
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Paradox Conversational AI API
-      - name: Paradox Company API
-      - name: Paradox Candidates API
-      - name: Paradox Users API
-      - name: Paradox Scheduling API
-      - name: Paradox Locations API
-      - name: Paradox Reporting API
-      - name: Paradox Candidate Attributes API
-      - name: Paradox User Permissions API
   - id: paradox-enterprise
-    name: Enterprise
+    name: Enterprise / Mid-Market / Franchise
     type: enterprise
-    description: Custom-negotiated tier for Paradox. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
+    description: Sales-quoted Paradox subscription; price varies by segment, hiring volume,
+      languages, and required messaging channels.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Annual Subscription
+        name: annual_subscription
+        type: subscription
+        metric: contract
         limit: -1
-        timeFrame: month
+        timeFrame: year
         geo: configurable
-        domains:
-          - https://api.paradox.ai
-          - https://api.paradox.ai/api/v1/public
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.paradox.ai
-          - https://api.paradox.ai/api/v1/public
-        unit: 1
-        price: custom
+        price: contact sales
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Paradox Conversational AI API
-      - name: Paradox Company API
-      - name: Paradox Candidates API
-      - name: Paradox Users API
-      - name: Paradox Scheduling API
-      - name: Paradox Locations API
-      - name: Paradox Reporting API
-      - name: Paradox Candidate Attributes API
-      - name: Paradox User Permissions API
+      - name: Olivia Conversational Assistant
+      - name: Candidate Screening
+      - name: Interview Scheduling
+      - name: SMS / Chat / Mobile Channels
+      - name: Multi-Language Support
 maintainers:
-  - name: Kin Lane
+  - FN: Kin Lane
     email: kin@apievangelist.com
-    url: https://apievangelist.com

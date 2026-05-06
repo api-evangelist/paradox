@@ -4,132 +4,29 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Paradox
 providerId: paradox
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+notes: No public rate-limit documentation — readme.paradox.ai is gated to authenticated developers.
 tags:
-  - Artificial Intelligence
-  - Candidate Screening
-  - Chatbot
-  - Conversational AI
-  - Hiring Automation
-  - HR Technology
-  - Interview Scheduling
-  - Recruiting
-  - SMS
-  - Talent Acquisition
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Paradox API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - Conversational AI
+  - HR Technology
+description: Paradox does not publish API rate limits publicly. Limits are likely tenant-specific
+  and disclosed in the developer documentation behind login.
+sources:
+  - https://readme.paradox.ai/
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Paradox Conversational AI API
-      - Paradox Company API
-      - Paradox Candidates API
-      - Paradox Users API
-      - Paradox Scheduling API
-      - Paradox Locations API
-      - Paradox Reporting API
-      - Paradox Candidate Attributes API
-      - Paradox User Permissions API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Paradox Conversational AI API
-      - Paradox Company API
-      - Paradox Candidates API
-      - Paradox Users API
-      - Paradox Scheduling API
-      - Paradox Locations API
-      - Paradox Reporting API
-      - Paradox Candidate Attributes API
-      - Paradox User Permissions API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Paradox Conversational AI API
-      - Paradox Company API
-      - Paradox Candidates API
-      - Paradox Users API
-      - Paradox Scheduling API
-      - Paradox Locations API
-      - Paradox Reporting API
-      - Paradox Candidate Attributes API
-      - Paradox User Permissions API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Paradox Conversational AI API
-      - Paradox Company API
-      - Paradox Candidates API
-      - Paradox Users API
-      - Paradox Scheduling API
-      - Paradox Locations API
-      - Paradox Reporting API
-      - Paradox Candidate Attributes API
-      - Paradox User Permissions API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Paradox Conversational AI API
-      - Paradox Company API
-      - Paradox Candidates API
-      - Paradox Users API
-      - Paradox Scheduling API
-      - Paradox Locations API
-      - Paradox Reporting API
-      - Paradox Candidate Attributes API
-      - Paradox User Permissions API
+  - name: Tenant API
+    scope: tenant
+    metric: varies
+    limit: see authenticated developer docs at readme.paradox.ai
+    notes: Limits not disclosed publicly.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Backoff
+    description: Standard exponential backoff with jitter is recommended on any throttling
+      response.
 maintainers:
-  - name: Kin Lane
+  - FN: Kin Lane
     email: kin@apievangelist.com
-    url: https://apievangelist.com
