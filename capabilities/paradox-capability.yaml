@@ -1,0 +1,2384 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Paradox API
+  description: API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing
+    candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates
+    candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
+  tags:
+  - Paradox
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: paradox
+    baseUri: https://api.paradox.ai/api/v1/public
+    description: Paradox API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{PARADOX_TOKEN}}'
+    resources:
+    - name: auth-token
+      path: /auth/token
+      operations:
+      - name: getauthtoken
+        method: POST
+        description: Paradox Get OAuth 2.0 access token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: verify-jwt
+      path: /verify-jwt
+      operations:
+      - name: verifyjwt
+        method: POST
+        description: Paradox Verify JWT token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: candidates
+      path: /candidates
+      operations:
+      - name: getcandidates
+        method: GET
+        description: Paradox Get candidates
+        inputParameters:
+        - name: start_date
+          in: query
+          type: string
+          description: Filter candidates created after this date (ISO 8601)
+        - name: end_date
+          in: query
+          type: string
+          description: Filter candidates created before this date (ISO 8601)
+        - name: created_start_date
+          in: query
+          type: string
+          description: Filter by candidate creation start date
+        - name: start_keyword
+          in: query
+          type: string
+          description: Search keyword filter
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of results to return (max 50)
+        - name: offset
+          in: query
+          type: integer
+          description: Number of results to skip for pagination
+        - name: page
+          in: query
+          type: integer
+          description: Page number for pagination
+        - name: status
+          in: query
+          type: string
+          description: Filter by candidate status
+        - name: group_name
+          in: query
+          type: string
+          description: Filter by group name
+        - name: location_id
+          in: query
+          type: string
+          description: Filter by location identifier
+        - name: source
+          in: query
+          type: string
+          description: Filter by candidate source
+        - name: conversation
+          in: query
+          type: boolean
+          description: Include conversation data
+        - name: interviews
+          in: query
+          type: boolean
+          description: Include interview data
+        - name: note
+          in: query
+          type: boolean
+          description: Include candidate notes
+        - name: profile_id
+          in: query
+          type: string
+          description: Filter by profile identifier
+        - name: include_attributes
+          in: query
+          type: boolean
+          description: Include candidate attribute data in response
+        - name: candidate_journey_status
+          in: query
+          type: string
+          description: Filter by candidate journey status
+        - name: job_loc_code
+          in: query
+          type: string
+          description: Filter by job location code
+        - name: job_req_id
+          in: query
+          type: string
+          description: Filter by job requisition ID
+        - name: ex_id
+          in: query
+          type: string
+          description: Filter by external candidate identifier
+        - name: email
+          in: query
+          type: string
+          description: Filter by candidate email
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcandidate
+        method: POST
+        description: Paradox Create candidate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: candidates-id
+      path: /candidates/{id}
+      operations:
+      - name: getcandidate
+        method: GET
+        description: Paradox Get single candidate
+        inputParameters:
+        - name: conversation
+          in: query
+          type: boolean
+          description: Include conversation history
+        - name: note
+          in: query
+          type: boolean
+          description: Include candidate notes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecandidate
+        method: PUT
+        description: Paradox Update candidate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecandidate
+        method: DELETE
+        description: Paradox Delete candidate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: candidates-unsubscribe
+      path: /candidates/unsubscribe
+      operations:
+      - name: unsubscribecandidate
+        method: PUT
+        description: Paradox Unsubscribe candidate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: candidates-send-message
+      path: /candidates/send_message
+      operations:
+      - name: sendcandidatemessage
+        method: POST
+        description: Paradox Send candidate message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: candidates-background-check-standard
+      path: /candidates/background_check/standard
+      operations:
+      - name: sendbackgroundcheckstandard
+        method: POST
+        description: Paradox Send standard background check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: candidates-background-check-checkr
+      path: /candidates/background_check/checkr
+      operations:
+      - name: sendbackgroundcheckcheckr
+        method: POST
+        description: Paradox Send Checkr background check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: candidates-background-check-firstadvance
+      path: /candidates/background_check/firstadvance
+      operations:
+      - name: sendbackgroundcheckfirstadvantage
+        method: POST
+        description: Paradox Send First Advantage background check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: candidate-attributes-oid
+      path: /candidate/attributes/{oid}
+      operations:
+      - name: getcandidateattributes
+        method: GET
+        description: Paradox Get candidate attributes
+        inputParameters:
+        - name: oid
+          in: path
+          type: string
+          required: true
+          description: Candidate OID or external OID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: candidate-attributes
+      path: /candidate/attributes
+      operations:
+      - name: patchcandidateattributes
+        method: PATCH
+        description: Paradox Patch candidate attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecandidateattributes
+        method: PUT
+        description: Paradox Update candidate attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users
+      path: /users
+      operations:
+      - name: getusers
+        method: GET
+        description: Paradox Get users
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of results to return
+        - name: page
+          in: query
+          type: integer
+          description: Page number for pagination
+        - name: include_campus_permission
+          in: query
+          type: boolean
+          description: Include campus permission data in response
+        - name: external_role_id
+          in: query
+          type: string
+          description: Filter by external role identifier
+        - name: location_id
+          in: query
+          type: string
+          description: Filter by location identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createuser
+        method: POST
+        description: Paradox Create user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-oid
+      path: /users/{oid}
+      operations:
+      - name: getuser
+        method: GET
+        description: Paradox Get single user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateuser
+        method: PUT
+        description: Paradox Update user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteuser
+        method: DELETE
+        description: Paradox Delete user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-oid-deactivate
+      path: /users/{oid}/deactivate
+      operations:
+      - name: deactivateuser
+        method: POST
+        description: Paradox Deactivate user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-oid-reactivate
+      path: /users/{oid}/reactivate
+      operations:
+      - name: reactivateuser
+        method: POST
+        description: Paradox Reactivate user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-roles
+      path: /users/roles
+      operations:
+      - name: getuserroles
+        method: GET
+        description: Paradox Get user roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-employees-employee-id
+      path: /users/employees/{employee_id}
+      operations:
+      - name: getuserbyemployeeid
+        method: GET
+        description: Paradox Get user by employee ID
+        inputParameters:
+        - name: employee_id
+          in: path
+          type: string
+          required: true
+          description: Employee identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateuserbyemployeeid
+        method: PUT
+        description: Paradox Update user by employee ID
+        inputParameters:
+        - name: employee_id
+          in: path
+          type: string
+          required: true
+          description: Employee identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteuserbyemployeeid
+        method: DELETE
+        description: Paradox Delete user by employee ID
+        inputParameters:
+        - name: employee_id
+          in: path
+          type: string
+          required: true
+          description: Employee identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-oid-permissions-locations
+      path: /users/{oid}/permissions/locations
+      operations:
+      - name: getuserlocationpermissions
+        method: GET
+        description: Paradox Get user location permissions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: adduserlocationpermission
+        method: PUT
+        description: Paradox Add user location permission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteuserlocationpermission
+        method: DELETE
+        description: Paradox Delete user location permission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scheduling-multiparty-interviewers
+      path: /scheduling/multiparty-interviewers
+      operations:
+      - name: getmultipartyinterviewers
+        method: GET
+        description: Paradox Get multiparty interviewers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scheduling-interview-settings
+      path: /scheduling/interview-settings
+      operations:
+      - name: getinterviewsettings
+        method: GET
+        description: Paradox Get interview settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scheduling-job-location-rooms
+      path: /scheduling/job-location-rooms
+      operations:
+      - name: getjoblocationrooms
+        method: GET
+        description: Paradox Get job location rooms
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scheduling-send-interview-alerts
+      path: /scheduling/send-interview-alerts
+      operations:
+      - name: sendinterviewalerts
+        method: PUT
+        description: Paradox Send interview alerts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scheduling-interview-history
+      path: /scheduling/interview-history
+      operations:
+      - name: getinterviewhistory
+        method: GET
+        description: Paradox Get interview history
+        inputParameters:
+        - name: candidate_id
+          in: query
+          type: string
+          description: Filter by candidate identifier
+        - name: start_date
+          in: query
+          type: string
+          description: Filter by start date
+        - name: end_date
+          in: query
+          type: string
+          description: Filter by end date
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scheduling-communication
+      path: /scheduling/communication
+      operations:
+      - name: sendschedulingcommunication
+        method: POST
+        description: Paradox Schedule shortlist review
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: company-locations
+      path: /company/locations
+      operations:
+      - name: getlocations
+        method: GET
+        description: Paradox Get locations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: location
+      path: /location
+      operations:
+      - name: createlocation
+        method: POST
+        description: Paradox Create location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: location-id
+      path: /location/{id}
+      operations:
+      - name: getlocation
+        method: GET
+        description: Paradox Get single location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatelocation
+        method: PUT
+        description: Paradox Update location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletelocation
+        method: DELETE
+        description: Paradox Delete location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: location-code-job-loc-code
+      path: /location/code/{job_loc_code}
+      operations:
+      - name: getlocationbycode
+        method: GET
+        description: Paradox Get location by job location code
+        inputParameters:
+        - name: job_loc_code
+          in: path
+          type: string
+          required: true
+          description: Job location code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatelocationbycode
+        method: PUT
+        description: Paradox Update location by job location code
+        inputParameters:
+        - name: job_loc_code
+          in: path
+          type: string
+          required: true
+          description: Job location code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: location-location-id-areas
+      path: /location/{location_id}/areas
+      operations:
+      - name: getlocationareas
+        method: GET
+        description: Paradox Get location areas
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Location identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createlocationarea
+        method: POST
+        description: Paradox Create location area
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Location identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: location-location-id-areas-area-id
+      path: /location/{location_id}/areas/{area_id}
+      operations:
+      - name: getlocationarea
+        method: GET
+        description: Paradox Get single location area
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Location identifier
+        - name: area_id
+          in: path
+          type: string
+          required: true
+          description: Area identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatelocationarea
+        method: PUT
+        description: Paradox Update location area
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Location identifier
+        - name: area_id
+          in: path
+          type: string
+          required: true
+          description: Area identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletelocationarea
+        method: DELETE
+        description: Paradox Delete location area
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Location identifier
+        - name: area_id
+          in: path
+          type: string
+          required: true
+          description: Area identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: location-location-id-rooms
+      path: /location/{location_id}/rooms
+      operations:
+      - name: getlocationrooms
+        method: GET
+        description: Paradox Get location rooms
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Location identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createlocationroom
+        method: POST
+        description: Paradox Create location room
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Location identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: location-location-id-rooms-room-id
+      path: /location/{location_id}/rooms/{room_id}
+      operations:
+      - name: getlocationroom
+        method: GET
+        description: Paradox Get single location room
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Location identifier
+        - name: room_id
+          in: path
+          type: string
+          required: true
+          description: Room identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatelocationroom
+        method: PUT
+        description: Paradox Update location room
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Location identifier
+        - name: room_id
+          in: path
+          type: string
+          required: true
+          description: Room identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletelocationroom
+        method: DELETE
+        description: Paradox Delete location room
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Location identifier
+        - name: room_id
+          in: path
+          type: string
+          required: true
+          description: Room identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: company-conversations
+      path: /company/conversations
+      operations:
+      - name: getcompanyconversations
+        method: GET
+        description: Paradox Get company conversations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: company-groups
+      path: /company/groups
+      operations:
+      - name: getcompanygroups
+        method: GET
+        description: Paradox Get company groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: company-school-areas
+      path: /company/school_areas
+      operations:
+      - name: getcompanyschoolareas
+        method: GET
+        description: Paradox Get company schools and areas
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: company-ai
+      path: /company/ai
+      operations:
+      - name: getcompanyaiassistant
+        method: GET
+        description: Paradox Get AI assistant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reporting-reports
+      path: /reporting/reports
+      operations:
+      - name: getreports
+        method: GET
+        description: Paradox Get report list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createreport
+        method: POST
+        description: Paradox Create report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reporting-reports-id
+      path: /reporting/reports/{id}
+      operations:
+      - name: getreport
+        method: GET
+        description: Paradox Get single report
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Report identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: paradox-rest
+    description: REST adapter for Paradox API.
+    resources:
+    - path: /auth/token
+      name: getauthtoken
+      operations:
+      - method: POST
+        name: getauthtoken
+        description: Paradox Get OAuth 2.0 access token
+        call: paradox.getauthtoken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /verify-jwt
+      name: verifyjwt
+      operations:
+      - method: POST
+        name: verifyjwt
+        description: Paradox Verify JWT token
+        call: paradox.verifyjwt
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidates
+      name: getcandidates
+      operations:
+      - method: GET
+        name: getcandidates
+        description: Paradox Get candidates
+        call: paradox.getcandidates
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidates
+      name: createcandidate
+      operations:
+      - method: POST
+        name: createcandidate
+        description: Paradox Create candidate
+        call: paradox.createcandidate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidates/{id}
+      name: getcandidate
+      operations:
+      - method: GET
+        name: getcandidate
+        description: Paradox Get single candidate
+        call: paradox.getcandidate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidates/{id}
+      name: updatecandidate
+      operations:
+      - method: PUT
+        name: updatecandidate
+        description: Paradox Update candidate
+        call: paradox.updatecandidate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidates/{id}
+      name: deletecandidate
+      operations:
+      - method: DELETE
+        name: deletecandidate
+        description: Paradox Delete candidate
+        call: paradox.deletecandidate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidates/unsubscribe
+      name: unsubscribecandidate
+      operations:
+      - method: PUT
+        name: unsubscribecandidate
+        description: Paradox Unsubscribe candidate
+        call: paradox.unsubscribecandidate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidates/send_message
+      name: sendcandidatemessage
+      operations:
+      - method: POST
+        name: sendcandidatemessage
+        description: Paradox Send candidate message
+        call: paradox.sendcandidatemessage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidates/background_check/standard
+      name: sendbackgroundcheckstandard
+      operations:
+      - method: POST
+        name: sendbackgroundcheckstandard
+        description: Paradox Send standard background check
+        call: paradox.sendbackgroundcheckstandard
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidates/background_check/checkr
+      name: sendbackgroundcheckcheckr
+      operations:
+      - method: POST
+        name: sendbackgroundcheckcheckr
+        description: Paradox Send Checkr background check
+        call: paradox.sendbackgroundcheckcheckr
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidates/background_check/firstadvance
+      name: sendbackgroundcheckfirstadvantage
+      operations:
+      - method: POST
+        name: sendbackgroundcheckfirstadvantage
+        description: Paradox Send First Advantage background check
+        call: paradox.sendbackgroundcheckfirstadvantage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidate/attributes/{oid}
+      name: getcandidateattributes
+      operations:
+      - method: GET
+        name: getcandidateattributes
+        description: Paradox Get candidate attributes
+        call: paradox.getcandidateattributes
+        with:
+          oid: rest.oid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidate/attributes
+      name: patchcandidateattributes
+      operations:
+      - method: PATCH
+        name: patchcandidateattributes
+        description: Paradox Patch candidate attributes
+        call: paradox.patchcandidateattributes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /candidate/attributes
+      name: updatecandidateattributes
+      operations:
+      - method: PUT
+        name: updatecandidateattributes
+        description: Paradox Update candidate attributes
+        call: paradox.updatecandidateattributes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users
+      name: getusers
+      operations:
+      - method: GET
+        name: getusers
+        description: Paradox Get users
+        call: paradox.getusers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users
+      name: createuser
+      operations:
+      - method: POST
+        name: createuser
+        description: Paradox Create user
+        call: paradox.createuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{oid}
+      name: getuser
+      operations:
+      - method: GET
+        name: getuser
+        description: Paradox Get single user
+        call: paradox.getuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{oid}
+      name: updateuser
+      operations:
+      - method: PUT
+        name: updateuser
+        description: Paradox Update user
+        call: paradox.updateuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{oid}
+      name: deleteuser
+      operations:
+      - method: DELETE
+        name: deleteuser
+        description: Paradox Delete user
+        call: paradox.deleteuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{oid}/deactivate
+      name: deactivateuser
+      operations:
+      - method: POST
+        name: deactivateuser
+        description: Paradox Deactivate user
+        call: paradox.deactivateuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{oid}/reactivate
+      name: reactivateuser
+      operations:
+      - method: POST
+        name: reactivateuser
+        description: Paradox Reactivate user
+        call: paradox.reactivateuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/roles
+      name: getuserroles
+      operations:
+      - method: GET
+        name: getuserroles
+        description: Paradox Get user roles
+        call: paradox.getuserroles
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/employees/{employee_id}
+      name: getuserbyemployeeid
+      operations:
+      - method: GET
+        name: getuserbyemployeeid
+        description: Paradox Get user by employee ID
+        call: paradox.getuserbyemployeeid
+        with:
+          employee_id: rest.employee_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/employees/{employee_id}
+      name: updateuserbyemployeeid
+      operations:
+      - method: PUT
+        name: updateuserbyemployeeid
+        description: Paradox Update user by employee ID
+        call: paradox.updateuserbyemployeeid
+        with:
+          employee_id: rest.employee_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/employees/{employee_id}
+      name: deleteuserbyemployeeid
+      operations:
+      - method: DELETE
+        name: deleteuserbyemployeeid
+        description: Paradox Delete user by employee ID
+        call: paradox.deleteuserbyemployeeid
+        with:
+          employee_id: rest.employee_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{oid}/permissions/locations
+      name: getuserlocationpermissions
+      operations:
+      - method: GET
+        name: getuserlocationpermissions
+        description: Paradox Get user location permissions
+        call: paradox.getuserlocationpermissions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{oid}/permissions/locations
+      name: adduserlocationpermission
+      operations:
+      - method: PUT
+        name: adduserlocationpermission
+        description: Paradox Add user location permission
+        call: paradox.adduserlocationpermission
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{oid}/permissions/locations
+      name: deleteuserlocationpermission
+      operations:
+      - method: DELETE
+        name: deleteuserlocationpermission
+        description: Paradox Delete user location permission
+        call: paradox.deleteuserlocationpermission
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scheduling/multiparty-interviewers
+      name: getmultipartyinterviewers
+      operations:
+      - method: GET
+        name: getmultipartyinterviewers
+        description: Paradox Get multiparty interviewers
+        call: paradox.getmultipartyinterviewers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scheduling/interview-settings
+      name: getinterviewsettings
+      operations:
+      - method: GET
+        name: getinterviewsettings
+        description: Paradox Get interview settings
+        call: paradox.getinterviewsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scheduling/job-location-rooms
+      name: getjoblocationrooms
+      operations:
+      - method: GET
+        name: getjoblocationrooms
+        description: Paradox Get job location rooms
+        call: paradox.getjoblocationrooms
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scheduling/send-interview-alerts
+      name: sendinterviewalerts
+      operations:
+      - method: PUT
+        name: sendinterviewalerts
+        description: Paradox Send interview alerts
+        call: paradox.sendinterviewalerts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scheduling/interview-history
+      name: getinterviewhistory
+      operations:
+      - method: GET
+        name: getinterviewhistory
+        description: Paradox Get interview history
+        call: paradox.getinterviewhistory
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scheduling/communication
+      name: sendschedulingcommunication
+      operations:
+      - method: POST
+        name: sendschedulingcommunication
+        description: Paradox Schedule shortlist review
+        call: paradox.sendschedulingcommunication
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /company/locations
+      name: getlocations
+      operations:
+      - method: GET
+        name: getlocations
+        description: Paradox Get locations
+        call: paradox.getlocations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location
+      name: createlocation
+      operations:
+      - method: POST
+        name: createlocation
+        description: Paradox Create location
+        call: paradox.createlocation
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{id}
+      name: getlocation
+      operations:
+      - method: GET
+        name: getlocation
+        description: Paradox Get single location
+        call: paradox.getlocation
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{id}
+      name: updatelocation
+      operations:
+      - method: PUT
+        name: updatelocation
+        description: Paradox Update location
+        call: paradox.updatelocation
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{id}
+      name: deletelocation
+      operations:
+      - method: DELETE
+        name: deletelocation
+        description: Paradox Delete location
+        call: paradox.deletelocation
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/code/{job_loc_code}
+      name: getlocationbycode
+      operations:
+      - method: GET
+        name: getlocationbycode
+        description: Paradox Get location by job location code
+        call: paradox.getlocationbycode
+        with:
+          job_loc_code: rest.job_loc_code
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/code/{job_loc_code}
+      name: updatelocationbycode
+      operations:
+      - method: PUT
+        name: updatelocationbycode
+        description: Paradox Update location by job location code
+        call: paradox.updatelocationbycode
+        with:
+          job_loc_code: rest.job_loc_code
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{location_id}/areas
+      name: getlocationareas
+      operations:
+      - method: GET
+        name: getlocationareas
+        description: Paradox Get location areas
+        call: paradox.getlocationareas
+        with:
+          location_id: rest.location_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{location_id}/areas
+      name: createlocationarea
+      operations:
+      - method: POST
+        name: createlocationarea
+        description: Paradox Create location area
+        call: paradox.createlocationarea
+        with:
+          location_id: rest.location_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{location_id}/areas/{area_id}
+      name: getlocationarea
+      operations:
+      - method: GET
+        name: getlocationarea
+        description: Paradox Get single location area
+        call: paradox.getlocationarea
+        with:
+          location_id: rest.location_id
+          area_id: rest.area_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{location_id}/areas/{area_id}
+      name: updatelocationarea
+      operations:
+      - method: PUT
+        name: updatelocationarea
+        description: Paradox Update location area
+        call: paradox.updatelocationarea
+        with:
+          location_id: rest.location_id
+          area_id: rest.area_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{location_id}/areas/{area_id}
+      name: deletelocationarea
+      operations:
+      - method: DELETE
+        name: deletelocationarea
+        description: Paradox Delete location area
+        call: paradox.deletelocationarea
+        with:
+          location_id: rest.location_id
+          area_id: rest.area_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{location_id}/rooms
+      name: getlocationrooms
+      operations:
+      - method: GET
+        name: getlocationrooms
+        description: Paradox Get location rooms
+        call: paradox.getlocationrooms
+        with:
+          location_id: rest.location_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{location_id}/rooms
+      name: createlocationroom
+      operations:
+      - method: POST
+        name: createlocationroom
+        description: Paradox Create location room
+        call: paradox.createlocationroom
+        with:
+          location_id: rest.location_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{location_id}/rooms/{room_id}
+      name: getlocationroom
+      operations:
+      - method: GET
+        name: getlocationroom
+        description: Paradox Get single location room
+        call: paradox.getlocationroom
+        with:
+          location_id: rest.location_id
+          room_id: rest.room_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{location_id}/rooms/{room_id}
+      name: updatelocationroom
+      operations:
+      - method: PUT
+        name: updatelocationroom
+        description: Paradox Update location room
+        call: paradox.updatelocationroom
+        with:
+          location_id: rest.location_id
+          room_id: rest.room_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /location/{location_id}/rooms/{room_id}
+      name: deletelocationroom
+      operations:
+      - method: DELETE
+        name: deletelocationroom
+        description: Paradox Delete location room
+        call: paradox.deletelocationroom
+        with:
+          location_id: rest.location_id
+          room_id: rest.room_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /company/conversations
+      name: getcompanyconversations
+      operations:
+      - method: GET
+        name: getcompanyconversations
+        description: Paradox Get company conversations
+        call: paradox.getcompanyconversations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /company/groups
+      name: getcompanygroups
+      operations:
+      - method: GET
+        name: getcompanygroups
+        description: Paradox Get company groups
+        call: paradox.getcompanygroups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /company/school_areas
+      name: getcompanyschoolareas
+      operations:
+      - method: GET
+        name: getcompanyschoolareas
+        description: Paradox Get company schools and areas
+        call: paradox.getcompanyschoolareas
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /company/ai
+      name: getcompanyaiassistant
+      operations:
+      - method: GET
+        name: getcompanyaiassistant
+        description: Paradox Get AI assistant
+        call: paradox.getcompanyaiassistant
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reporting/reports
+      name: getreports
+      operations:
+      - method: GET
+        name: getreports
+        description: Paradox Get report list
+        call: paradox.getreports
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reporting/reports
+      name: createreport
+      operations:
+      - method: POST
+        name: createreport
+        description: Paradox Create report
+        call: paradox.createreport
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reporting/reports/{id}
+      name: getreport
+      operations:
+      - method: GET
+        name: getreport
+        description: Paradox Get single report
+        call: paradox.getreport
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: paradox-mcp
+    transport: http
+    description: MCP adapter for Paradox API for AI agent use.
+    tools:
+    - name: getauthtoken
+      description: Paradox Get OAuth 2.0 access token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.getauthtoken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: verifyjwt
+      description: Paradox Verify JWT token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.verifyjwt
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcandidates
+      description: Paradox Get candidates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getcandidates
+      with:
+        start_date: tools.start_date
+        end_date: tools.end_date
+        created_start_date: tools.created_start_date
+        start_keyword: tools.start_keyword
+        limit: tools.limit
+        offset: tools.offset
+        page: tools.page
+        status: tools.status
+        group_name: tools.group_name
+        location_id: tools.location_id
+        source: tools.source
+        conversation: tools.conversation
+        interviews: tools.interviews
+        note: tools.note
+        profile_id: tools.profile_id
+        include_attributes: tools.include_attributes
+        candidate_journey_status: tools.candidate_journey_status
+        job_loc_code: tools.job_loc_code
+        job_req_id: tools.job_req_id
+        ex_id: tools.ex_id
+        email: tools.email
+      inputParameters:
+      - name: start_date
+        type: string
+        description: Filter candidates created after this date (ISO 8601)
+      - name: end_date
+        type: string
+        description: Filter candidates created before this date (ISO 8601)
+      - name: created_start_date
+        type: string
+        description: Filter by candidate creation start date
+      - name: start_keyword
+        type: string
+        description: Search keyword filter
+      - name: limit
+        type: integer
+        description: Maximum number of results to return (max 50)
+      - name: offset
+        type: integer
+        description: Number of results to skip for pagination
+      - name: page
+        type: integer
+        description: Page number for pagination
+      - name: status
+        type: string
+        description: Filter by candidate status
+      - name: group_name
+        type: string
+        description: Filter by group name
+      - name: location_id
+        type: string
+        description: Filter by location identifier
+      - name: source
+        type: string
+        description: Filter by candidate source
+      - name: conversation
+        type: boolean
+        description: Include conversation data
+      - name: interviews
+        type: boolean
+        description: Include interview data
+      - name: note
+        type: boolean
+        description: Include candidate notes
+      - name: profile_id
+        type: string
+        description: Filter by profile identifier
+      - name: include_attributes
+        type: boolean
+        description: Include candidate attribute data in response
+      - name: candidate_journey_status
+        type: string
+        description: Filter by candidate journey status
+      - name: job_loc_code
+        type: string
+        description: Filter by job location code
+      - name: job_req_id
+        type: string
+        description: Filter by job requisition ID
+      - name: ex_id
+        type: string
+        description: Filter by external candidate identifier
+      - name: email
+        type: string
+        description: Filter by candidate email
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createcandidate
+      description: Paradox Create candidate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.createcandidate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcandidate
+      description: Paradox Get single candidate
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getcandidate
+      with:
+        conversation: tools.conversation
+        note: tools.note
+      inputParameters:
+      - name: conversation
+        type: boolean
+        description: Include conversation history
+      - name: note
+        type: boolean
+        description: Include candidate notes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatecandidate
+      description: Paradox Update candidate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.updatecandidate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletecandidate
+      description: Paradox Delete candidate
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: paradox.deletecandidate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unsubscribecandidate
+      description: Paradox Unsubscribe candidate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.unsubscribecandidate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sendcandidatemessage
+      description: Paradox Send candidate message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.sendcandidatemessage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sendbackgroundcheckstandard
+      description: Paradox Send standard background check
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.sendbackgroundcheckstandard
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sendbackgroundcheckcheckr
+      description: Paradox Send Checkr background check
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.sendbackgroundcheckcheckr
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sendbackgroundcheckfirstadvantage
+      description: Paradox Send First Advantage background check
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.sendbackgroundcheckfirstadvantage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcandidateattributes
+      description: Paradox Get candidate attributes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getcandidateattributes
+      with:
+        oid: tools.oid
+      inputParameters:
+      - name: oid
+        type: string
+        description: Candidate OID or external OID
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patchcandidateattributes
+      description: Paradox Patch candidate attributes
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.patchcandidateattributes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatecandidateattributes
+      description: Paradox Update candidate attributes
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.updatecandidateattributes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getusers
+      description: Paradox Get users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getusers
+      with:
+        limit: tools.limit
+        page: tools.page
+        include_campus_permission: tools.include_campus_permission
+        external_role_id: tools.external_role_id
+        location_id: tools.location_id
+      inputParameters:
+      - name: limit
+        type: integer
+        description: Maximum number of results to return
+      - name: page
+        type: integer
+        description: Page number for pagination
+      - name: include_campus_permission
+        type: boolean
+        description: Include campus permission data in response
+      - name: external_role_id
+        type: string
+        description: Filter by external role identifier
+      - name: location_id
+        type: string
+        description: Filter by location identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createuser
+      description: Paradox Create user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.createuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getuser
+      description: Paradox Get single user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateuser
+      description: Paradox Update user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.updateuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteuser
+      description: Paradox Delete user
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: paradox.deleteuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivateuser
+      description: Paradox Deactivate user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.deactivateuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reactivateuser
+      description: Paradox Reactivate user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.reactivateuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getuserroles
+      description: Paradox Get user roles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getuserroles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getuserbyemployeeid
+      description: Paradox Get user by employee ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getuserbyemployeeid
+      with:
+        employee_id: tools.employee_id
+      inputParameters:
+      - name: employee_id
+        type: string
+        description: Employee identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateuserbyemployeeid
+      description: Paradox Update user by employee ID
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.updateuserbyemployeeid
+      with:
+        employee_id: tools.employee_id
+      inputParameters:
+      - name: employee_id
+        type: string
+        description: Employee identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteuserbyemployeeid
+      description: Paradox Delete user by employee ID
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: paradox.deleteuserbyemployeeid
+      with:
+        employee_id: tools.employee_id
+      inputParameters:
+      - name: employee_id
+        type: string
+        description: Employee identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getuserlocationpermissions
+      description: Paradox Get user location permissions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getuserlocationpermissions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: adduserlocationpermission
+      description: Paradox Add user location permission
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.adduserlocationpermission
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteuserlocationpermission
+      description: Paradox Delete user location permission
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: paradox.deleteuserlocationpermission
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmultipartyinterviewers
+      description: Paradox Get multiparty interviewers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getmultipartyinterviewers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getinterviewsettings
+      description: Paradox Get interview settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getinterviewsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjoblocationrooms
+      description: Paradox Get job location rooms
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getjoblocationrooms
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sendinterviewalerts
+      description: Paradox Send interview alerts
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.sendinterviewalerts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getinterviewhistory
+      description: Paradox Get interview history
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getinterviewhistory
+      with:
+        candidate_id: tools.candidate_id
+        start_date: tools.start_date
+        end_date: tools.end_date
+      inputParameters:
+      - name: candidate_id
+        type: string
+        description: Filter by candidate identifier
+      - name: start_date
+        type: string
+        description: Filter by start date
+      - name: end_date
+        type: string
+        description: Filter by end date
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sendschedulingcommunication
+      description: Paradox Schedule shortlist review
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.sendschedulingcommunication
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getlocations
+      description: Paradox Get locations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getlocations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createlocation
+      description: Paradox Create location
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.createlocation
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getlocation
+      description: Paradox Get single location
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getlocation
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatelocation
+      description: Paradox Update location
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.updatelocation
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletelocation
+      description: Paradox Delete location
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: paradox.deletelocation
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getlocationbycode
+      description: Paradox Get location by job location code
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getlocationbycode
+      with:
+        job_loc_code: tools.job_loc_code
+      inputParameters:
+      - name: job_loc_code
+        type: string
+        description: Job location code
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatelocationbycode
+      description: Paradox Update location by job location code
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.updatelocationbycode
+      with:
+        job_loc_code: tools.job_loc_code
+      inputParameters:
+      - name: job_loc_code
+        type: string
+        description: Job location code
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getlocationareas
+      description: Paradox Get location areas
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getlocationareas
+      with:
+        location_id: tools.location_id
+      inputParameters:
+      - name: location_id
+        type: string
+        description: Location identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createlocationarea
+      description: Paradox Create location area
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.createlocationarea
+      with:
+        location_id: tools.location_id
+      inputParameters:
+      - name: location_id
+        type: string
+        description: Location identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getlocationarea
+      description: Paradox Get single location area
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getlocationarea
+      with:
+        location_id: tools.location_id
+        area_id: tools.area_id
+      inputParameters:
+      - name: location_id
+        type: string
+        description: Location identifier
+        required: true
+      - name: area_id
+        type: string
+        description: Area identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatelocationarea
+      description: Paradox Update location area
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.updatelocationarea
+      with:
+        location_id: tools.location_id
+        area_id: tools.area_id
+      inputParameters:
+      - name: location_id
+        type: string
+        description: Location identifier
+        required: true
+      - name: area_id
+        type: string
+        description: Area identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletelocationarea
+      description: Paradox Delete location area
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: paradox.deletelocationarea
+      with:
+        location_id: tools.location_id
+        area_id: tools.area_id
+      inputParameters:
+      - name: location_id
+        type: string
+        description: Location identifier
+        required: true
+      - name: area_id
+        type: string
+        description: Area identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getlocationrooms
+      description: Paradox Get location rooms
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getlocationrooms
+      with:
+        location_id: tools.location_id
+      inputParameters:
+      - name: location_id
+        type: string
+        description: Location identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createlocationroom
+      description: Paradox Create location room
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.createlocationroom
+      with:
+        location_id: tools.location_id
+      inputParameters:
+      - name: location_id
+        type: string
+        description: Location identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getlocationroom
+      description: Paradox Get single location room
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getlocationroom
+      with:
+        location_id: tools.location_id
+        room_id: tools.room_id
+      inputParameters:
+      - name: location_id
+        type: string
+        description: Location identifier
+        required: true
+      - name: room_id
+        type: string
+        description: Room identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatelocationroom
+      description: Paradox Update location room
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox.updatelocationroom
+      with:
+        location_id: tools.location_id
+        room_id: tools.room_id
+      inputParameters:
+      - name: location_id
+        type: string
+        description: Location identifier
+        required: true
+      - name: room_id
+        type: string
+        description: Room identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletelocationroom
+      description: Paradox Delete location room
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: paradox.deletelocationroom
+      with:
+        location_id: tools.location_id
+        room_id: tools.room_id
+      inputParameters:
+      - name: location_id
+        type: string
+        description: Location identifier
+        required: true
+      - name: room_id
+        type: string
+        description: Room identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcompanyconversations
+      description: Paradox Get company conversations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getcompanyconversations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcompanygroups
+      description: Paradox Get company groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getcompanygroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcompanyschoolareas
+      description: Paradox Get company schools and areas
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getcompanyschoolareas
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcompanyaiassistant
+      description: Paradox Get AI assistant
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getcompanyaiassistant
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getreports
+      description: Paradox Get report list
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getreports
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createreport
+      description: Paradox Create report
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox.createreport
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getreport
+      description: Paradox Get single report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox.getreport
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: Report identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    PARADOX_TOKEN: PARADOX_TOKEN
