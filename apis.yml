@@ -30,15 +30,15 @@ common:
     url: https://readme.paradox.ai/docs
   - type: Authentication
     url: https://readme.paradox.ai/reference/authentication
-  - type: Changelog
+  - type: ChangeLog
     url: https://readme.paradox.ai/changelog
-  - type: Status
+  - type: StatusPage
     url: https://status.paradox.ai/
   - type: Login
     url: https://olivia.paradox.ai/login
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.paradox.ai/legal/privacy-policy
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.paradox.ai/legal/service-terms
   - type: Security
     url: https://www.paradox.ai/legal/security
@@ -82,7 +82,7 @@ apis:
         url: openapi/paradox-api-openapi.yml
       - type: Authentication
         url: https://developers.paradox.ai/docs/authentication
-      - type: Rate Limits
+      - type: RateLimits
         url: https://developers.paradox.ai/docs/rate-limits
     contact:
       - type: Support
@@ -104,7 +104,7 @@ apis:
     properties:
       - type: Documentation
         url: https://readme.paradox.ai/reference/get-company-conversations
-      - type: API Reference
+      - type: APIReference
         url: https://readme.paradox.ai/reference/overview
       - type: OpenAPI
         url: openapi/paradox-api-openapi.yml
@@ -124,7 +124,7 @@ apis:
     properties:
       - type: Documentation
         url: https://readme.paradox.ai/reference/get-candidates
-      - type: API Reference
+      - type: APIReference
         url: https://readme.paradox.ai/reference/create-candidate
       - type: OpenAPI
         url: openapi/paradox-api-openapi.yml
@@ -163,7 +163,7 @@ apis:
     properties:
       - type: Documentation
         url: https://readme.paradox.ai/reference/send-interview-alerts
-      - type: API Reference
+      - type: APIReference
         url: https://readme.paradox.ai/reference/get-job-location-rooms
       - type: OpenAPI
         url: openapi/paradox-api-openapi.yml
@@ -182,7 +182,7 @@ apis:
     properties:
       - type: Documentation
         url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
-      - type: API Reference
+      - type: APIReference
         url: https://readme.paradox.ai/reference/update-a-location
       - type: OpenAPI
         url: openapi/paradox-api-openapi.yml
