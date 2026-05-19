@@ -1,0 +1,271 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Paradox API — Scheduling
+  description: 'Paradox API — Scheduling. 6 operations. Lead operation: Paradox Schedule shortlist review. Self-contained
+    Naftiko capability covering one Paradox business surface.'
+  tags:
+  - Paradox
+  - Scheduling
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PARADOX_API_KEY: PARADOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: paradox-scheduling
+    baseUri: https://api.paradox.ai/api/v1/public
+    description: Paradox API — Scheduling business capability. Self-contained, no shared references.
+    resources:
+    - name: scheduling-communication
+      path: /scheduling/communication
+      operations:
+      - name: sendschedulingcommunication
+        method: POST
+        description: Paradox Schedule shortlist review
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: scheduling-interview-history
+      path: /scheduling/interview-history
+      operations:
+      - name: getinterviewhistory
+        method: GET
+        description: Paradox Get interview history
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: candidate_id
+          in: query
+          type: string
+          description: Filter by candidate identifier
+        - name: start_date
+          in: query
+          type: string
+          description: Filter by start date
+        - name: end_date
+          in: query
+          type: string
+          description: Filter by end date
+    - name: scheduling-interview-settings
+      path: /scheduling/interview-settings
+      operations:
+      - name: getinterviewsettings
+        method: GET
+        description: Paradox Get interview settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scheduling-job-location-rooms
+      path: /scheduling/job-location-rooms
+      operations:
+      - name: getjoblocationrooms
+        method: GET
+        description: Paradox Get job location rooms
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scheduling-multiparty-interviewers
+      path: /scheduling/multiparty-interviewers
+      operations:
+      - name: getmultipartyinterviewers
+        method: GET
+        description: Paradox Get multiparty interviewers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scheduling-send-interview-alerts
+      path: /scheduling/send-interview-alerts
+      operations:
+      - name: sendinterviewalerts
+        method: PUT
+        description: Paradox Send interview alerts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PARADOX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: paradox-scheduling-rest
+    port: 8080
+    description: REST adapter for Paradox API — Scheduling. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/scheduling/communication
+      name: scheduling-communication
+      description: REST surface for scheduling-communication.
+      operations:
+      - method: POST
+        name: sendschedulingcommunication
+        description: Paradox Schedule shortlist review
+        call: paradox-scheduling.sendschedulingcommunication
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/scheduling/interview-history
+      name: scheduling-interview-history
+      description: REST surface for scheduling-interview-history.
+      operations:
+      - method: GET
+        name: getinterviewhistory
+        description: Paradox Get interview history
+        call: paradox-scheduling.getinterviewhistory
+        with:
+          candidate_id: rest.candidate_id
+          start_date: rest.start_date
+          end_date: rest.end_date
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/scheduling/interview-settings
+      name: scheduling-interview-settings
+      description: REST surface for scheduling-interview-settings.
+      operations:
+      - method: GET
+        name: getinterviewsettings
+        description: Paradox Get interview settings
+        call: paradox-scheduling.getinterviewsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/scheduling/job-location-rooms
+      name: scheduling-job-location-rooms
+      description: REST surface for scheduling-job-location-rooms.
+      operations:
+      - method: GET
+        name: getjoblocationrooms
+        description: Paradox Get job location rooms
+        call: paradox-scheduling.getjoblocationrooms
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/scheduling/multiparty-interviewers
+      name: scheduling-multiparty-interviewers
+      description: REST surface for scheduling-multiparty-interviewers.
+      operations:
+      - method: GET
+        name: getmultipartyinterviewers
+        description: Paradox Get multiparty interviewers
+        call: paradox-scheduling.getmultipartyinterviewers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/scheduling/send-interview-alerts
+      name: scheduling-send-interview-alerts
+      description: REST surface for scheduling-send-interview-alerts.
+      operations:
+      - method: PUT
+        name: sendinterviewalerts
+        description: Paradox Send interview alerts
+        call: paradox-scheduling.sendinterviewalerts
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: paradox-scheduling-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Paradox API — Scheduling. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: paradox-schedule-shortlist-review
+      description: Paradox Schedule shortlist review
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: paradox-scheduling.sendschedulingcommunication
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-get-interview-history
+      description: Paradox Get interview history
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-scheduling.getinterviewhistory
+      with:
+        candidate_id: tools.candidate_id
+        start_date: tools.start_date
+        end_date: tools.end_date
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-get-interview-settings
+      description: Paradox Get interview settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-scheduling.getinterviewsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-get-job-location-rooms
+      description: Paradox Get job location rooms
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-scheduling.getjoblocationrooms
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-get-multiparty-interviewers
+      description: Paradox Get multiparty interviewers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-scheduling.getmultipartyinterviewers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-send-interview-alerts
+      description: Paradox Send interview alerts
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox-scheduling.sendinterviewalerts
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

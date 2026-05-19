@@ -1,0 +1,551 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Paradox API — Candidates
+  description: 'Paradox API — Candidates. 10 operations. Lead operation: Paradox Get candidates. Self-contained Naftiko capability
+    covering one Paradox business surface.'
+  tags:
+  - Paradox
+  - Candidates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PARADOX_API_KEY: PARADOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: paradox-candidates
+    baseUri: https://api.paradox.ai/api/v1/public
+    description: Paradox API — Candidates business capability. Self-contained, no shared references.
+    resources:
+    - name: candidates
+      path: /candidates
+      operations:
+      - name: getcandidates
+        method: GET
+        description: Paradox Get candidates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: start_date
+          in: query
+          type: string
+          description: Filter candidates created after this date (ISO 8601)
+        - name: end_date
+          in: query
+          type: string
+          description: Filter candidates created before this date (ISO 8601)
+        - name: created_start_date
+          in: query
+          type: string
+          description: Filter by candidate creation start date
+        - name: start_keyword
+          in: query
+          type: string
+          description: Search keyword filter
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of results to return (max 50)
+        - name: offset
+          in: query
+          type: integer
+          description: Number of results to skip for pagination
+        - name: page
+          in: query
+          type: integer
+          description: Page number for pagination
+        - name: status
+          in: query
+          type: string
+          description: Filter by candidate status
+        - name: group_name
+          in: query
+          type: string
+          description: Filter by group name
+        - name: location_id
+          in: query
+          type: string
+          description: Filter by location identifier
+        - name: source
+          in: query
+          type: string
+          description: Filter by candidate source
+        - name: conversation
+          in: query
+          type: boolean
+          description: Include conversation data
+        - name: interviews
+          in: query
+          type: boolean
+          description: Include interview data
+        - name: note
+          in: query
+          type: boolean
+          description: Include candidate notes
+        - name: profile_id
+          in: query
+          type: string
+          description: Filter by profile identifier
+        - name: include_attributes
+          in: query
+          type: boolean
+          description: Include candidate attribute data in response
+        - name: candidate_journey_status
+          in: query
+          type: string
+          description: Filter by candidate journey status
+        - name: job_loc_code
+          in: query
+          type: string
+          description: Filter by job location code
+        - name: job_req_id
+          in: query
+          type: string
+          description: Filter by job requisition ID
+        - name: ex_id
+          in: query
+          type: string
+          description: Filter by external candidate identifier
+        - name: email
+          in: query
+          type: string
+          description: Filter by candidate email
+      - name: createcandidate
+        method: POST
+        description: Paradox Create candidate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: candidates-background_check-checkr
+      path: /candidates/background_check/checkr
+      operations:
+      - name: sendbackgroundcheckcheckr
+        method: POST
+        description: Paradox Send Checkr background check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: candidates-background_check-firstadvance
+      path: /candidates/background_check/firstadvance
+      operations:
+      - name: sendbackgroundcheckfirstadvantage
+        method: POST
+        description: Paradox Send First Advantage background check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: candidates-background_check-standard
+      path: /candidates/background_check/standard
+      operations:
+      - name: sendbackgroundcheckstandard
+        method: POST
+        description: Paradox Send standard background check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: candidates-send_message
+      path: /candidates/send_message
+      operations:
+      - name: sendcandidatemessage
+        method: POST
+        description: Paradox Send candidate message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: candidates-unsubscribe
+      path: /candidates/unsubscribe
+      operations:
+      - name: unsubscribecandidate
+        method: PUT
+        description: Paradox Unsubscribe candidate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: candidates-id
+      path: /candidates/{id}
+      operations:
+      - name: getcandidate
+        method: GET
+        description: Paradox Get single candidate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: conversation
+          in: query
+          type: boolean
+          description: Include conversation history
+        - name: note
+          in: query
+          type: boolean
+          description: Include candidate notes
+      - name: updatecandidate
+        method: PUT
+        description: Paradox Update candidate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecandidate
+        method: DELETE
+        description: Paradox Delete candidate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.PARADOX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: paradox-candidates-rest
+    port: 8080
+    description: REST adapter for Paradox API — Candidates. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/candidates
+      name: candidates
+      description: REST surface for candidates.
+      operations:
+      - method: GET
+        name: getcandidates
+        description: Paradox Get candidates
+        call: paradox-candidates.getcandidates
+        with:
+          start_date: rest.start_date
+          end_date: rest.end_date
+          created_start_date: rest.created_start_date
+          start_keyword: rest.start_keyword
+          limit: rest.limit
+          offset: rest.offset
+          page: rest.page
+          status: rest.status
+          group_name: rest.group_name
+          location_id: rest.location_id
+          source: rest.source
+          conversation: rest.conversation
+          interviews: rest.interviews
+          note: rest.note
+          profile_id: rest.profile_id
+          include_attributes: rest.include_attributes
+          candidate_journey_status: rest.candidate_journey_status
+          job_loc_code: rest.job_loc_code
+          job_req_id: rest.job_req_id
+          ex_id: rest.ex_id
+          email: rest.email
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcandidate
+        description: Paradox Create candidate
+        call: paradox-candidates.createcandidate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/candidates/background-check/checkr
+      name: candidates-background-check-checkr
+      description: REST surface for candidates-background_check-checkr.
+      operations:
+      - method: POST
+        name: sendbackgroundcheckcheckr
+        description: Paradox Send Checkr background check
+        call: paradox-candidates.sendbackgroundcheckcheckr
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/candidates/background-check/firstadvance
+      name: candidates-background-check-firstadvance
+      description: REST surface for candidates-background_check-firstadvance.
+      operations:
+      - method: POST
+        name: sendbackgroundcheckfirstadvantage
+        description: Paradox Send First Advantage background check
+        call: paradox-candidates.sendbackgroundcheckfirstadvantage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/candidates/background-check/standard
+      name: candidates-background-check-standard
+      description: REST surface for candidates-background_check-standard.
+      operations:
+      - method: POST
+        name: sendbackgroundcheckstandard
+        description: Paradox Send standard background check
+        call: paradox-candidates.sendbackgroundcheckstandard
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/candidates/send-message
+      name: candidates-send-message
+      description: REST surface for candidates-send_message.
+      operations:
+      - method: POST
+        name: sendcandidatemessage
+        description: Paradox Send candidate message
+        call: paradox-candidates.sendcandidatemessage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/candidates/unsubscribe
+      name: candidates-unsubscribe
+      description: REST surface for candidates-unsubscribe.
+      operations:
+      - method: PUT
+        name: unsubscribecandidate
+        description: Paradox Unsubscribe candidate
+        call: paradox-candidates.unsubscribecandidate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/candidates/{id}
+      name: candidates-id
+      description: REST surface for candidates-id.
+      operations:
+      - method: GET
+        name: getcandidate
+        description: Paradox Get single candidate
+        call: paradox-candidates.getcandidate
+        with:
+          conversation: rest.conversation
+          note: rest.note
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecandidate
+        description: Paradox Update candidate
+        call: paradox-candidates.updatecandidate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecandidate
+        description: Paradox Delete candidate
+        call: paradox-candidates.deletecandidate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: paradox-candidates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Paradox API — Candidates. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: paradox-get-candidates
+      description: Paradox Get candidates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-candidates.getcandidates
+      with:
+        start_date: tools.start_date
+        end_date: tools.end_date
+        created_start_date: tools.created_start_date
+        start_keyword: tools.start_keyword
+        limit: tools.limit
+        offset: tools.offset
+        page: tools.page
+        status: tools.status
+        group_name: tools.group_name
+        location_id: tools.location_id
+        source: tools.source
+        conversation: tools.conversation
+        interviews: tools.interviews
+        note: tools.note
+        profile_id: tools.profile_id
+        include_attributes: tools.include_attributes
+        candidate_journey_status: tools.candidate_journey_status
+        job_loc_code: tools.job_loc_code
+        job_req_id: tools.job_req_id
+        ex_id: tools.ex_id
+        email: tools.email
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-create-candidate
+      description: Paradox Create candidate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox-candidates.createcandidate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-send-checkr-background-check
+      description: Paradox Send Checkr background check
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox-candidates.sendbackgroundcheckcheckr
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-send-first-advantage-background
+      description: Paradox Send First Advantage background check
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox-candidates.sendbackgroundcheckfirstadvantage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-send-standard-background-check
+      description: Paradox Send standard background check
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox-candidates.sendbackgroundcheckstandard
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-send-candidate-message
+      description: Paradox Send candidate message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox-candidates.sendcandidatemessage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-unsubscribe-candidate
+      description: Paradox Unsubscribe candidate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox-candidates.unsubscribecandidate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-get-single-candidate
+      description: Paradox Get single candidate
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-candidates.getcandidate
+      with:
+        conversation: tools.conversation
+        note: tools.note
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-update-candidate
+      description: Paradox Update candidate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox-candidates.updatecandidate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-delete-candidate
+      description: Paradox Delete candidate
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: paradox-candidates.deletecandidate
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,262 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Paradox API — Location Areas
+  description: 'Paradox API — Location Areas. 5 operations. Lead operation: Paradox Get location areas. Self-contained Naftiko
+    capability covering one Paradox business surface.'
+  tags:
+  - Paradox
+  - Location Areas
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PARADOX_API_KEY: PARADOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: paradox-location-areas
+    baseUri: https://api.paradox.ai/api/v1/public
+    description: Paradox API — Location Areas business capability. Self-contained, no shared references.
+    resources:
+    - name: location-location_id-areas
+      path: /location/{location_id}/areas
+      operations:
+      - name: getlocationareas
+        method: GET
+        description: Paradox Get location areas
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          description: Location identifier
+          required: true
+      - name: createlocationarea
+        method: POST
+        description: Paradox Create location area
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          description: Location identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: location-location_id-areas-area_id
+      path: /location/{location_id}/areas/{area_id}
+      operations:
+      - name: getlocationarea
+        method: GET
+        description: Paradox Get single location area
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          description: Location identifier
+          required: true
+        - name: area_id
+          in: path
+          type: string
+          description: Area identifier
+          required: true
+      - name: updatelocationarea
+        method: PUT
+        description: Paradox Update location area
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          description: Location identifier
+          required: true
+        - name: area_id
+          in: path
+          type: string
+          description: Area identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletelocationarea
+        method: DELETE
+        description: Paradox Delete location area
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          description: Location identifier
+          required: true
+        - name: area_id
+          in: path
+          type: string
+          description: Area identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PARADOX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: paradox-location-areas-rest
+    port: 8080
+    description: REST adapter for Paradox API — Location Areas. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/location/{location-id}/areas
+      name: location-location-id-areas
+      description: REST surface for location-location_id-areas.
+      operations:
+      - method: GET
+        name: getlocationareas
+        description: Paradox Get location areas
+        call: paradox-location-areas.getlocationareas
+        with:
+          location_id: rest.location_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createlocationarea
+        description: Paradox Create location area
+        call: paradox-location-areas.createlocationarea
+        with:
+          location_id: rest.location_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/location/{location-id}/areas/{area-id}
+      name: location-location-id-areas-area-id
+      description: REST surface for location-location_id-areas-area_id.
+      operations:
+      - method: GET
+        name: getlocationarea
+        description: Paradox Get single location area
+        call: paradox-location-areas.getlocationarea
+        with:
+          location_id: rest.location_id
+          area_id: rest.area_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatelocationarea
+        description: Paradox Update location area
+        call: paradox-location-areas.updatelocationarea
+        with:
+          location_id: rest.location_id
+          area_id: rest.area_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletelocationarea
+        description: Paradox Delete location area
+        call: paradox-location-areas.deletelocationarea
+        with:
+          location_id: rest.location_id
+          area_id: rest.area_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: paradox-location-areas-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Paradox API — Location Areas. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: paradox-get-location-areas
+      description: Paradox Get location areas
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-location-areas.getlocationareas
+      with:
+        location_id: tools.location_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-create-location-area
+      description: Paradox Create location area
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox-location-areas.createlocationarea
+      with:
+        location_id: tools.location_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-get-single-location-area
+      description: Paradox Get single location area
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-location-areas.getlocationarea
+      with:
+        location_id: tools.location_id
+        area_id: tools.area_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-update-location-area
+      description: Paradox Update location area
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox-location-areas.updatelocationarea
+      with:
+        location_id: tools.location_id
+        area_id: tools.area_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-delete-location-area
+      description: Paradox Delete location area
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: paradox-location-areas.deletelocationarea
+      with:
+        location_id: tools.location_id
+        area_id: tools.area_id
+      outputParameters:
+      - type: object
+        mapping: $.

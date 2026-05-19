@@ -1,0 +1,288 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Paradox API — Locations
+  description: 'Paradox API — Locations. 7 operations. Lead operation: Paradox Get locations. Self-contained Naftiko capability
+    covering one Paradox business surface.'
+  tags:
+  - Paradox
+  - Locations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PARADOX_API_KEY: PARADOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: paradox-locations
+    baseUri: https://api.paradox.ai/api/v1/public
+    description: Paradox API — Locations business capability. Self-contained, no shared references.
+    resources:
+    - name: company-locations
+      path: /company/locations
+      operations:
+      - name: getlocations
+        method: GET
+        description: Paradox Get locations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: location
+      path: /location
+      operations:
+      - name: createlocation
+        method: POST
+        description: Paradox Create location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: location-code-job_loc_code
+      path: /location/code/{job_loc_code}
+      operations:
+      - name: getlocationbycode
+        method: GET
+        description: Paradox Get location by job location code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: job_loc_code
+          in: path
+          type: string
+          description: Job location code
+          required: true
+      - name: updatelocationbycode
+        method: PUT
+        description: Paradox Update location by job location code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: job_loc_code
+          in: path
+          type: string
+          description: Job location code
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: location-id
+      path: /location/{id}
+      operations:
+      - name: getlocation
+        method: GET
+        description: Paradox Get single location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatelocation
+        method: PUT
+        description: Paradox Update location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletelocation
+        method: DELETE
+        description: Paradox Delete location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.PARADOX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: paradox-locations-rest
+    port: 8080
+    description: REST adapter for Paradox API — Locations. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/company/locations
+      name: company-locations
+      description: REST surface for company-locations.
+      operations:
+      - method: GET
+        name: getlocations
+        description: Paradox Get locations
+        call: paradox-locations.getlocations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/location
+      name: location
+      description: REST surface for location.
+      operations:
+      - method: POST
+        name: createlocation
+        description: Paradox Create location
+        call: paradox-locations.createlocation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/location/code/{job-loc-code}
+      name: location-code-job-loc-code
+      description: REST surface for location-code-job_loc_code.
+      operations:
+      - method: GET
+        name: getlocationbycode
+        description: Paradox Get location by job location code
+        call: paradox-locations.getlocationbycode
+        with:
+          job_loc_code: rest.job_loc_code
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatelocationbycode
+        description: Paradox Update location by job location code
+        call: paradox-locations.updatelocationbycode
+        with:
+          job_loc_code: rest.job_loc_code
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/location/{id}
+      name: location-id
+      description: REST surface for location-id.
+      operations:
+      - method: GET
+        name: getlocation
+        description: Paradox Get single location
+        call: paradox-locations.getlocation
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatelocation
+        description: Paradox Update location
+        call: paradox-locations.updatelocation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletelocation
+        description: Paradox Delete location
+        call: paradox-locations.deletelocation
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: paradox-locations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Paradox API — Locations. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: paradox-get-locations
+      description: Paradox Get locations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-locations.getlocations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-create-location
+      description: Paradox Create location
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: paradox-locations.createlocation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-get-location-job-location
+      description: Paradox Get location by job location code
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-locations.getlocationbycode
+      with:
+        job_loc_code: tools.job_loc_code
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-update-location-job-location
+      description: Paradox Update location by job location code
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox-locations.updatelocationbycode
+      with:
+        job_loc_code: tools.job_loc_code
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-get-single-location
+      description: Paradox Get single location
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: paradox-locations.getlocation
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-update-location
+      description: Paradox Update location
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: paradox-locations.updatelocation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paradox-delete-location
+      description: Paradox Delete location
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: paradox-locations.deletelocation
+      outputParameters:
+      - type: object
+        mapping: $.
