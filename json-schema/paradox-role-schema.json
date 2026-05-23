@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Role",
+  "title": "Role",
+  "type": "object",
+  "description": "A user role definition",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Role identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Role name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Role description"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Report",
+  "title": "Report",
+  "type": "object",
+  "description": "A report record",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Report identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Report name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Report type"
+    },
+    "status": {
+      "type": "string",
+      "description": "Report generation status"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

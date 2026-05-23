@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/User",
+  "title": "User",
+  "type": "object",
+  "description": "A user in the Paradox platform",
+  "properties": {
+    "OID": {
+      "type": "string",
+      "description": "Unique user identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address"
+    },
+    "phone_number": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "role_id": {
+      "type": "string",
+      "description": "Assigned role identifier"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "User timezone"
+    },
+    "language_preference": {
+      "type": "string",
+      "description": "Preferred language code"
+    },
+    "employee_id": {
+      "type": "string",
+      "description": "Employee identifier"
+    },
+    "job_title": {
+      "type": "string",
+      "description": "Job title"
+    },
+    "location_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Associated location identifiers"
+    },
+    "campus_permissions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Campus-level permissions"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the user account is active"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Account creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

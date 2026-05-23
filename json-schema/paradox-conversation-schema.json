@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Conversation",
+  "title": "Conversation",
+  "type": "object",
+  "description": "A conversation configuration",
+  "properties": {
+    "oid": {
+      "type": "string",
+      "description": "Conversation identifier"
+    },
+    "label": {
+      "type": "string",
+      "description": "Conversation name/label"
+    },
+    "is_remote": {
+      "type": "integer",
+      "enum": [
+        0,
+        1
+      ],
+      "description": "Whether the conversation is for remote positions"
+    },
+    "deactivated": {
+      "type": "integer",
+      "enum": [
+        0,
+        1
+      ],
+      "description": "Whether the conversation is deactivated"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

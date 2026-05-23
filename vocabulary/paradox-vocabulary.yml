@@ -1,0 +1,27 @@
+name: Paradox Domain Vocabulary
+provider: Paradox
+providerId: paradox
+description: Tag-derived vocabulary for the Paradox API surface; sourced from openapi/ tags.
+terms:
+- term: Authentication
+  description: OAuth 2.0 token and JWT verification endpoints
+- term: Candidate Attributes
+  description: Manage custom candidate attribute data
+- term: Candidates
+  description: Manage candidates including creating, retrieving, updating, deleting, messaging, and unsubscribing
+- term: Company
+  description: Access company-level data including conversations, groups, schools, areas, and AI assistant
+- term: Location Areas
+  description: Manage location areas
+- term: Location Rooms
+  description: Manage location rooms
+- term: Locations
+  description: Manage locations including creating, retrieving, updating, deleting, and lookup by job location code
+- term: Reporting
+  description: Access and generate reports
+- term: Scheduling
+  description: Manage interview scheduling, interviewers, settings, rooms, alerts, and history
+- term: User Permissions
+  description: Manage user location permissions
+- term: Users
+  description: Manage users including creating, retrieving, updating, deleting, deactivating, and reactivating

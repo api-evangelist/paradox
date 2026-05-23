@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Interview",
+  "title": "Interview",
+  "type": "object",
+  "description": "An interview scheduling record",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Interview identifier"
+    },
+    "candidate_id": {
+      "type": "string",
+      "description": "Associated candidate identifier"
+    },
+    "interviewer_id": {
+      "type": "string",
+      "description": "Assigned interviewer identifier"
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Interview location identifier"
+    },
+    "room_id": {
+      "type": "string",
+      "description": "Interview room identifier"
+    },
+    "scheduled_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Scheduled interview date and time"
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Interview duration in minutes"
+    },
+    "status": {
+      "type": "string",
+      "description": "Interview status"
+    },
+    "type": {
+      "type": "string",
+      "description": "Interview type"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SchoolArea",
+  "title": "SchoolArea",
+  "type": "object",
+  "description": "A school or area associated with the company",
+  "properties": {
+    "oid": {
+      "type": "string",
+      "description": "School/area identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "School/area name"
+    },
+    "type": {
+      "type": "integer",
+      "enum": [
+        1,
+        2
+      ],
+      "description": "Type: 1=area, 2=school"
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CandidateCreate",
+  "title": "CandidateCreate",
+  "type": "object",
+  "description": "Request body for creating a new candidate",
+  "required": [
+    "phone",
+    "email"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Full name (required if first_name/last_name not provided)"
+    },
+    "first_name": {
+      "type": "string",
+      "description": "First name (use with last_name instead of name)"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Last name (use with first_name instead of name)"
+    },
+    "phone": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Phone number with country code"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 50,
+      "description": "Email address"
+    },
+    "ex_id": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "External candidate identifier"
+    },
+    "hirevue_link": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "pymetrics_link": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "ex_step": {
+      "type": "string"
+    },
+    "ex_status": {
+      "type": "string"
+    },
+    "ex_reason": {
+      "type": "string"
+    },
+    "job_req_id": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "job_title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "job_loc_code": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "primary_contact_method": {
+      "type": "string",
+      "description": "1=Email, 2=SMS, 3=Email & SMS, 4=WhatsApp & Email, 5=WhatsApp"
+    },
+    "hired_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "adp_link": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "audience_type": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "hm_cid": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "external_group_id": {
+      "type": "string"
+    },
+    "hirevue_instructions": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "referrer_email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 50
+    },
+    "referrer_name": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "recruiter_email": {
+      "type": "string",
+      "format": "email"
+    },
+    "hiring_manager": {
+      "type": "string"
+    },
+    "external_referrer": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "language_preference": {
+      "type": "string",
+      "default": "en"
+    },
+    "candidate_journey": {
+      "type": "string"
+    },
+    "candidate_journey_status": {
+      "type": "string"
+    },
+    "candidate_attribute_data": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "maxLength": 255
+      }
+    },
+    "note": {
+      "type": "string"
+    },
+    "job_application_id": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "use_application_id_for_identity": {
+      "type": "boolean",
+      "default": false,
+      "description": "Use application ID to identify returning candidates"
+    },
+    "candidate_location_info": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "external_source_id": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "offer_file_name": {
+      "type": "string",
+      "maxLength": 150,
+      "description": "Offer document filename"
+    },
+    "use_paradox_status_map": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable Paradox status mapping"
+    },
+    "status_map_name": {
+      "type": "string",
+      "description": "Paradox journey status name for mapping"
+    },
+    "status_map_ex_id": {
+      "type": "string",
+      "description": "External system status identifier for mapping"
+    },
+    "talent_community": {
+      "type": "boolean",
+      "default": false
+    },
+    "community_of_interest": {
+      "type": "integer"
+    },
+    "skip_send_opt_in": {
+      "type": "boolean",
+      "description": "Bypass opt-in messaging"
+    },
+    "consent_to_marketing": {
+      "type": "string"
+    }
+  }
+}

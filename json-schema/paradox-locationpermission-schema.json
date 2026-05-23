@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LocationPermission",
+  "title": "LocationPermission",
+  "type": "object",
+  "description": "A location-based access permission",
+  "properties": {
+    "location_id": {
+      "type": "string",
+      "description": "Location identifier"
+    },
+    "location_name": {
+      "type": "string",
+      "description": "Location name"
+    },
+    "granted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the permission was granted"
+    }
+  }
+}

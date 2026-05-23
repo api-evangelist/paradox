@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InterviewSettings",
+  "title": "InterviewSettings",
+  "type": "object",
+  "description": "Interview scheduling configuration",
+  "properties": {
+    "duration": {
+      "type": "integer",
+      "description": "Default interview duration in minutes"
+    },
+    "buffer_time": {
+      "type": "integer",
+      "description": "Buffer time between interviews in minutes"
+    },
+    "scheduling_window": {
+      "type": "integer",
+      "description": "Number of days to look ahead for scheduling"
+    },
+    "confirmation_required": {
+      "type": "boolean",
+      "description": "Whether interview confirmation is required"
+    },
+    "reminder_enabled": {
+      "type": "boolean",
+      "description": "Whether interview reminders are enabled"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Room",
+  "title": "Room",
+  "type": "object",
+  "description": "A room within a location used for interviews",
+  "properties": {
+    "oid": {
+      "type": "string",
+      "description": "Room identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Room name"
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Parent location identifier"
+    },
+    "capacity": {
+      "type": "integer",
+      "description": "Room capacity"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the room is active"
+    }
+  }
+}

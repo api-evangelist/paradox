@@ -1,0 +1,700 @@
+{
+  "provider": "Paradox",
+  "providerId": "paradox",
+  "kind": "json-structure",
+  "description": "Structural overview of the Paradox API surface; extracted from openapi/.",
+  "schemaCount": 24,
+  "operationCount": 59,
+  "schemas": [
+    {
+      "name": "SuccessResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Candidate",
+      "type": "object",
+      "propertyCount": 39,
+      "required": []
+    },
+    {
+      "name": "CandidateCreate",
+      "type": "object",
+      "propertyCount": 43,
+      "required": [
+        "phone",
+        "email"
+      ]
+    },
+    {
+      "name": "CandidateUpdate",
+      "type": "object",
+      "propertyCount": 28,
+      "required": []
+    },
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "UserCreate",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "name",
+        "email",
+        "phone_number"
+      ]
+    },
+    {
+      "name": "UserUpdate",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Role",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "LocationPermission",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Interviewer",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "InterviewSettings",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Interview",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "Location",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "LocationCreate",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "LocationUpdate",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "Area",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "AreaCreate",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "Room",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "RoomCreate",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "Conversation",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Group",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "SchoolArea",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "AiAssistant",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Report",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/auth/token",
+      "operationId": "getAuthToken",
+      "summary": "Paradox Get OAuth 2.0 access token",
+      "tags": [
+        "Authentication"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/verify-jwt",
+      "operationId": "verifyJwt",
+      "summary": "Paradox Verify JWT token",
+      "tags": [
+        "Authentication"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/candidates",
+      "operationId": "getCandidates",
+      "summary": "Paradox Get candidates",
+      "tags": [
+        "Candidates"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/candidates",
+      "operationId": "createCandidate",
+      "summary": "Paradox Create candidate",
+      "tags": [
+        "Candidates"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/candidates/{id}",
+      "operationId": "getCandidate",
+      "summary": "Paradox Get single candidate",
+      "tags": [
+        "Candidates"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/candidates/{id}",
+      "operationId": "updateCandidate",
+      "summary": "Paradox Update candidate",
+      "tags": [
+        "Candidates"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/candidates/{id}",
+      "operationId": "deleteCandidate",
+      "summary": "Paradox Delete candidate",
+      "tags": [
+        "Candidates"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/candidates/unsubscribe",
+      "operationId": "unsubscribeCandidate",
+      "summary": "Paradox Unsubscribe candidate",
+      "tags": [
+        "Candidates"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/candidates/send_message",
+      "operationId": "sendCandidateMessage",
+      "summary": "Paradox Send candidate message",
+      "tags": [
+        "Candidates"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/candidates/background_check/standard",
+      "operationId": "sendBackgroundCheckStandard",
+      "summary": "Paradox Send standard background check",
+      "tags": [
+        "Candidates"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/candidates/background_check/checkr",
+      "operationId": "sendBackgroundCheckCheckr",
+      "summary": "Paradox Send Checkr background check",
+      "tags": [
+        "Candidates"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/candidates/background_check/firstadvance",
+      "operationId": "sendBackgroundCheckFirstAdvantage",
+      "summary": "Paradox Send First Advantage background check",
+      "tags": [
+        "Candidates"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/candidate/attributes/{oid}",
+      "operationId": "getCandidateAttributes",
+      "summary": "Paradox Get candidate attributes",
+      "tags": [
+        "Candidate Attributes"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/candidate/attributes",
+      "operationId": "updateCandidateAttributes",
+      "summary": "Paradox Update candidate attributes",
+      "tags": [
+        "Candidate Attributes"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/candidate/attributes",
+      "operationId": "patchCandidateAttributes",
+      "summary": "Paradox Patch candidate attributes",
+      "tags": [
+        "Candidate Attributes"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users",
+      "operationId": "getUsers",
+      "summary": "Paradox Get users",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users",
+      "operationId": "createUser",
+      "summary": "Paradox Create user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{oid}",
+      "operationId": "getUser",
+      "summary": "Paradox Get single user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/users/{oid}",
+      "operationId": "updateUser",
+      "summary": "Paradox Update user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{oid}",
+      "operationId": "deleteUser",
+      "summary": "Paradox Delete user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users/{oid}/deactivate",
+      "operationId": "deactivateUser",
+      "summary": "Paradox Deactivate user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users/{oid}/reactivate",
+      "operationId": "reactivateUser",
+      "summary": "Paradox Reactivate user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/roles",
+      "operationId": "getUserRoles",
+      "summary": "Paradox Get user roles",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/employees/{employee_id}",
+      "operationId": "getUserByEmployeeId",
+      "summary": "Paradox Get user by employee ID",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/users/employees/{employee_id}",
+      "operationId": "updateUserByEmployeeId",
+      "summary": "Paradox Update user by employee ID",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/employees/{employee_id}",
+      "operationId": "deleteUserByEmployeeId",
+      "summary": "Paradox Delete user by employee ID",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{oid}/permissions/locations",
+      "operationId": "getUserLocationPermissions",
+      "summary": "Paradox Get user location permissions",
+      "tags": [
+        "User Permissions"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/users/{oid}/permissions/locations",
+      "operationId": "addUserLocationPermission",
+      "summary": "Paradox Add user location permission",
+      "tags": [
+        "User Permissions"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{oid}/permissions/locations",
+      "operationId": "deleteUserLocationPermission",
+      "summary": "Paradox Delete user location permission",
+      "tags": [
+        "User Permissions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/scheduling/multiparty-interviewers",
+      "operationId": "getMultipartyInterviewers",
+      "summary": "Paradox Get multiparty interviewers",
+      "tags": [
+        "Scheduling"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/scheduling/interview-settings",
+      "operationId": "getInterviewSettings",
+      "summary": "Paradox Get interview settings",
+      "tags": [
+        "Scheduling"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/scheduling/job-location-rooms",
+      "operationId": "getJobLocationRooms",
+      "summary": "Paradox Get job location rooms",
+      "tags": [
+        "Scheduling"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/scheduling/send-interview-alerts",
+      "operationId": "sendInterviewAlerts",
+      "summary": "Paradox Send interview alerts",
+      "tags": [
+        "Scheduling"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/scheduling/interview-history",
+      "operationId": "getInterviewHistory",
+      "summary": "Paradox Get interview history",
+      "tags": [
+        "Scheduling"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/scheduling/communication",
+      "operationId": "sendSchedulingCommunication",
+      "summary": "Paradox Schedule shortlist review",
+      "tags": [
+        "Scheduling"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/company/locations",
+      "operationId": "getLocations",
+      "summary": "Paradox Get locations",
+      "tags": [
+        "Locations"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/location",
+      "operationId": "createLocation",
+      "summary": "Paradox Create location",
+      "tags": [
+        "Locations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/location/{id}",
+      "operationId": "getLocation",
+      "summary": "Paradox Get single location",
+      "tags": [
+        "Locations"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/location/{id}",
+      "operationId": "updateLocation",
+      "summary": "Paradox Update location",
+      "tags": [
+        "Locations"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/location/{id}",
+      "operationId": "deleteLocation",
+      "summary": "Paradox Delete location",
+      "tags": [
+        "Locations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/location/code/{job_loc_code}",
+      "operationId": "getLocationByCode",
+      "summary": "Paradox Get location by job location code",
+      "tags": [
+        "Locations"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/location/code/{job_loc_code}",
+      "operationId": "updateLocationByCode",
+      "summary": "Paradox Update location by job location code",
+      "tags": [
+        "Locations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/location/{location_id}/areas",
+      "operationId": "getLocationAreas",
+      "summary": "Paradox Get location areas",
+      "tags": [
+        "Location Areas"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/location/{location_id}/areas",
+      "operationId": "createLocationArea",
+      "summary": "Paradox Create location area",
+      "tags": [
+        "Location Areas"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/location/{location_id}/areas/{area_id}",
+      "operationId": "getLocationArea",
+      "summary": "Paradox Get single location area",
+      "tags": [
+        "Location Areas"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/location/{location_id}/areas/{area_id}",
+      "operationId": "updateLocationArea",
+      "summary": "Paradox Update location area",
+      "tags": [
+        "Location Areas"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/location/{location_id}/areas/{area_id}",
+      "operationId": "deleteLocationArea",
+      "summary": "Paradox Delete location area",
+      "tags": [
+        "Location Areas"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/location/{location_id}/rooms",
+      "operationId": "getLocationRooms",
+      "summary": "Paradox Get location rooms",
+      "tags": [
+        "Location Rooms"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/location/{location_id}/rooms",
+      "operationId": "createLocationRoom",
+      "summary": "Paradox Create location room",
+      "tags": [
+        "Location Rooms"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/location/{location_id}/rooms/{room_id}",
+      "operationId": "getLocationRoom",
+      "summary": "Paradox Get single location room",
+      "tags": [
+        "Location Rooms"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/location/{location_id}/rooms/{room_id}",
+      "operationId": "updateLocationRoom",
+      "summary": "Paradox Update location room",
+      "tags": [
+        "Location Rooms"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/location/{location_id}/rooms/{room_id}",
+      "operationId": "deleteLocationRoom",
+      "summary": "Paradox Delete location room",
+      "tags": [
+        "Location Rooms"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/company/conversations",
+      "operationId": "getCompanyConversations",
+      "summary": "Paradox Get company conversations",
+      "tags": [
+        "Company"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/company/groups",
+      "operationId": "getCompanyGroups",
+      "summary": "Paradox Get company groups",
+      "tags": [
+        "Company"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/company/school_areas",
+      "operationId": "getCompanySchoolAreas",
+      "summary": "Paradox Get company schools and areas",
+      "tags": [
+        "Company"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/company/ai",
+      "operationId": "getCompanyAiAssistant",
+      "summary": "Paradox Get AI assistant",
+      "tags": [
+        "Company"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/reporting/reports",
+      "operationId": "getReports",
+      "summary": "Paradox Get report list",
+      "tags": [
+        "Reporting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/reporting/reports",
+      "operationId": "createReport",
+      "summary": "Paradox Create report",
+      "tags": [
+        "Reporting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/reporting/reports/{id}",
+      "operationId": "getReport",
+      "summary": "Paradox Get single report",
+      "tags": [
+        "Reporting"
+      ]
+    }
+  ]
+}

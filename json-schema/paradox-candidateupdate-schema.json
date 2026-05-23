@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CandidateUpdate",
+  "title": "CandidateUpdate",
+  "type": "object",
+  "description": "Request body for updating an existing candidate",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 50
+    },
+    "ex_id": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "hirevue_link": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "pymetrics_link": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "ex_step": {
+      "type": "string"
+    },
+    "ex_status": {
+      "type": "string"
+    },
+    "ex_reason": {
+      "type": "string"
+    },
+    "job_req_id": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "job_title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "job_loc_code": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "primary_contact_method": {
+      "type": "string"
+    },
+    "hired_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "adp_link": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "audience_type": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "recruiter_email": {
+      "type": "string",
+      "format": "email"
+    },
+    "hiring_manager": {
+      "type": "string"
+    },
+    "language_preference": {
+      "type": "string"
+    },
+    "candidate_journey": {
+      "type": "string"
+    },
+    "candidate_journey_status": {
+      "type": "string"
+    },
+    "candidate_attribute_data": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "maxLength": 255
+      }
+    },
+    "note": {
+      "type": "string"
+    },
+    "use_paradox_status_map": {
+      "type": "boolean"
+    },
+    "status_map_name": {
+      "type": "string"
+    },
+    "status_map_ex_id": {
+      "type": "string"
+    }
+  }
+}

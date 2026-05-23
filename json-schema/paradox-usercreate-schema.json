@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserCreate",
+  "title": "UserCreate",
+  "type": "object",
+  "description": "Request body for creating a new user",
+  "required": [
+    "name",
+    "email",
+    "phone_number"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Full name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address"
+    },
+    "phone_number": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "role": {
+      "type": "string",
+      "description": "User role"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "User timezone"
+    },
+    "language_preference": {
+      "type": "string",
+      "description": "Preferred language code"
+    },
+    "location_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Associated location identifiers"
+    },
+    "employee_id": {
+      "type": "string",
+      "description": "Employee identifier"
+    }
+  }
+}

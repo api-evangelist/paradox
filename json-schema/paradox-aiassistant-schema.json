@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AiAssistant",
+  "title": "AiAssistant",
+  "type": "object",
+  "description": "AI assistant configuration",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Assistant identifier"
+    },
+    "ai_name": {
+      "type": "string",
+      "description": "AI assistant display name"
+    },
+    "ai_logo_uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "AI assistant logo image URL"
+    }
+  }
+}

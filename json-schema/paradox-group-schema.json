@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Group",
+  "title": "Group",
+  "type": "object",
+  "description": "A company group",
+  "properties": {
+    "oid": {
+      "type": "string",
+      "description": "Group identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Group name"
+    }
+  }
+}

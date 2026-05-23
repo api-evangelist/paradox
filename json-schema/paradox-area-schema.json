@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Area",
+  "title": "Area",
+  "type": "object",
+  "description": "An area within a location",
+  "properties": {
+    "oid": {
+      "type": "string",
+      "description": "Area identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Area name"
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Parent location identifier"
+    },
+    "type": {
+      "type": "integer",
+      "description": "Area type: 1=area, 2=school"
+    }
+  }
+}
