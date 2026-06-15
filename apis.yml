@@ -1,7 +1,9 @@
 aid: paradox
 name: Paradox
-description: APIs and resources for Paradox, a conversational AI recruiting assistant platform powered by Olivia, an AI assistant
-  that automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
+description: >-
+  APIs and resources for Paradox, a conversational AI recruiting assistant platform powered by Olivia, an AI assistant
+  that automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven
+  experiences.
 type: Index
 image: https://www.paradox.ai/images/paradox-logo.png
 url: https://raw.githubusercontent.com/api-evangelist/paradox/refs/heads/main/apis.yml
@@ -65,180 +67,166 @@ apis:
     humanURL: https://www.paradox.ai
     baseURL: https://api.paradox.ai
     tags:
-    - AI
-    - Candidate Experience
-    - Chatbot
-    - Conversational AI
-    - HR Technology
-    - Recruiting
+      - AI
+      - Candidate Experience
+      - Chatbot
+      - Conversational AI
+      - HR Technology
+      - Recruiting
     properties:
-    - type: Documentation
-      url: https://developers.paradox.ai/docs
-    - type: OpenAPI
-      url: openapi/paradox-api-openapi.yml
-    - type: Authentication
-      url: https://developers.paradox.ai/docs/authentication
-    - type: RateLimits
-      url: https://developers.paradox.ai/docs/rate-limits
-    - type: NaftikoCapability
-      url: capabilities/paradox-authentication.yaml
-    - type: NaftikoCapability
-      url: capabilities/paradox-candidate-attributes.yaml
-    - type: NaftikoCapability
-      url: capabilities/paradox-candidates.yaml
-    - type: NaftikoCapability
-      url: capabilities/paradox-company.yaml
-    - type: NaftikoCapability
-      url: capabilities/paradox-location-areas.yaml
-    - type: NaftikoCapability
-      url: capabilities/paradox-location-rooms.yaml
-    - type: NaftikoCapability
-      url: capabilities/paradox-locations.yaml
-    - type: NaftikoCapability
-      url: capabilities/paradox-reporting.yaml
-    - type: NaftikoCapability
-      url: capabilities/paradox-scheduling.yaml
-    - type: NaftikoCapability
-      url: capabilities/paradox-user-permissions.yaml
-    - type: NaftikoCapability
-      url: capabilities/paradox-users.yaml
+      - type: Documentation
+        url: https://developers.paradox.ai/docs
+      - type: OpenAPI
+        url: openapi/paradox-api-openapi.yml
+      - type: Authentication
+        url: https://developers.paradox.ai/docs/authentication
+      - type: RateLimits
+        url: https://developers.paradox.ai/docs/rate-limits
     contact:
-    - type: Support
-      url: https://www.paradox.ai/support
-    - type: Email
-      url: mailto:support@paradox.ai
+      - type: Support
+        url: https://www.paradox.ai/support
+      - type: Email
+        url: mailto:support@paradox.ai
   - name: Paradox Company API
-    description: API for accessing company-level data in Paradox including conversations, groups, schools, areas, and AI assistant
+    description: >-
+      API for accessing company-level data in Paradox including conversations, groups, schools, areas, and AI assistant
       configuration.
     image: https://www.paradox.ai/images/paradox-logo.png
     humanURL: https://readme.paradox.ai/reference/get-company-conversations
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-    - AI Assistant
-    - Company
-    - Conversations
-    - Groups
+      - AI Assistant
+      - Company
+      - Conversations
+      - Groups
     properties:
-    - type: Documentation
-      url: https://readme.paradox.ai/reference/get-company-conversations
-    - type: APIReference
-      url: https://readme.paradox.ai/reference/overview
-    - type: OpenAPI
-      url: openapi/paradox-api-openapi.yml
+      - type: Documentation
+        url: https://readme.paradox.ai/reference/get-company-conversations
+      - type: APIReference
+        url: https://readme.paradox.ai/reference/overview
+      - type: OpenAPI
+        url: openapi/paradox-api-openapi.yml
   - name: Paradox Candidates API
-    description: API for managing candidates within the Paradox platform including creating, retrieving, updating, deleting,
-      and unsubscribing candidates, as well as sending candidate messages and scheduling shortlist reviews.
+    description: >-
+      API for managing candidates within the Paradox platform including creating, retrieving, updating, deleting, and
+      unsubscribing candidates, as well as sending candidate messages and scheduling shortlist reviews.
     image: https://www.paradox.ai/images/paradox-logo.png
     humanURL: https://readme.paradox.ai/reference/get-candidates
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-    - Candidates
-    - Messaging
-    - Recruiting
-    - Screening
+      - Candidates
+      - Messaging
+      - Recruiting
+      - Screening
     properties:
-    - type: Documentation
-      url: https://readme.paradox.ai/reference/get-candidates
-    - type: APIReference
-      url: https://readme.paradox.ai/reference/create-candidate
-    - type: OpenAPI
-      url: openapi/paradox-api-openapi.yml
-    - type: JSON Schema
-      url: json-schema/paradox-candidate-schema.json
+      - type: Documentation
+        url: https://readme.paradox.ai/reference/get-candidates
+      - type: APIReference
+        url: https://readme.paradox.ai/reference/create-candidate
+      - type: OpenAPI
+        url: openapi/paradox-api-openapi.yml
+      - type: JSON Schema
+        url: json-schema/paradox-candidate-schema.json
   - name: Paradox Users API
-    description: API for managing users within the Paradox platform including creating, retrieving, updating, deleting, deactivating,
-      and reactivating users, as well as managing user roles and looking up users by employee ID.
+    description: >-
+      API for managing users within the Paradox platform including creating, retrieving, updating, deleting,
+      deactivating, and reactivating users, as well as managing user roles and looking up users by employee ID.
     image: https://www.paradox.ai/images/paradox-logo.png
     humanURL: https://readme.paradox.ai/reference/get-users
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-    - Administration
-    - Roles
-    - Users
+      - Administration
+      - Roles
+      - Users
     properties:
-    - type: Documentation
-      url: https://readme.paradox.ai/reference/get-users
-    - type: OpenAPI
-      url: openapi/paradox-api-openapi.yml
+      - type: Documentation
+        url: https://readme.paradox.ai/reference/get-users
+      - type: OpenAPI
+        url: openapi/paradox-api-openapi.yml
   - name: Paradox Scheduling API
-    description: API for managing interview scheduling within the Paradox platform including retrieving multiparty interviewers,
+    description: >-
+      API for managing interview scheduling within the Paradox platform including retrieving multiparty interviewers,
       interview settings, job location rooms, sending interview alerts, and accessing interview history.
     image: https://www.paradox.ai/images/paradox-logo.png
     humanURL: https://readme.paradox.ai/reference/send-interview-alerts
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-    - Calendars
-    - Interviews
-    - Scheduling
+      - Calendars
+      - Interviews
+      - Scheduling
     properties:
-    - type: Documentation
-      url: https://readme.paradox.ai/reference/send-interview-alerts
-    - type: APIReference
-      url: https://readme.paradox.ai/reference/get-job-location-rooms
-    - type: OpenAPI
-      url: openapi/paradox-api-openapi.yml
+      - type: Documentation
+        url: https://readme.paradox.ai/reference/send-interview-alerts
+      - type: APIReference
+        url: https://readme.paradox.ai/reference/get-job-location-rooms
+      - type: OpenAPI
+        url: openapi/paradox-api-openapi.yml
   - name: Paradox Locations API
-    description: API for managing locations within the Paradox platform including creating, retrieving, updating, and deleting
+    description: >-
+      API for managing locations within the Paradox platform including creating, retrieving, updating, and deleting
       locations, as well as looking up locations by job location code and managing location rooms.
     image: https://www.paradox.ai/images/paradox-logo.png
     humanURL: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-    - Job Sites
-    - Locations
-    - Rooms
+      - Job Sites
+      - Locations
+      - Rooms
     properties:
-    - type: Documentation
-      url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
-    - type: APIReference
-      url: https://readme.paradox.ai/reference/update-a-location
-    - type: OpenAPI
-      url: openapi/paradox-api-openapi.yml
+      - type: Documentation
+        url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+      - type: APIReference
+        url: https://readme.paradox.ai/reference/update-a-location
+      - type: OpenAPI
+        url: openapi/paradox-api-openapi.yml
   - name: Paradox Reporting API
-    description: API for accessing and generating reports within the Paradox platform including retrieving report lists, creating
+    description: >-
+      API for accessing and generating reports within the Paradox platform including retrieving report lists, creating
       new reports, and accessing individual report details.
     image: https://www.paradox.ai/images/paradox-logo.png
     humanURL: https://readme.paradox.ai/reference/get-report-list
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-    - Analytics
-    - Data
-    - Reporting
+      - Analytics
+      - Data
+      - Reporting
     properties:
-    - type: Documentation
-      url: https://readme.paradox.ai/reference/get-report-list
-    - type: OpenAPI
-      url: openapi/paradox-api-openapi.yml
+      - type: Documentation
+        url: https://readme.paradox.ai/reference/get-report-list
+      - type: OpenAPI
+        url: openapi/paradox-api-openapi.yml
   - name: Paradox Candidate Attributes API
-    description: API for managing candidate attributes within the Paradox platform including retrieving, patching, and updating
+    description: >-
+      API for managing candidate attributes within the Paradox platform including retrieving, patching, and updating
       candidate attribute data.
     image: https://www.paradox.ai/images/paradox-logo.png
     humanURL: https://readme.paradox.ai/reference/get-candidate-attributes
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-    - Attributes
-    - Candidates
-    - Custom Fields
+      - Attributes
+      - Candidates
+      - Custom Fields
     properties:
-    - type: Documentation
-      url: https://readme.paradox.ai/reference/get-candidate-attributes
-    - type: OpenAPI
-      url: openapi/paradox-api-openapi.yml
+      - type: Documentation
+        url: https://readme.paradox.ai/reference/get-candidate-attributes
+      - type: OpenAPI
+        url: openapi/paradox-api-openapi.yml
   - name: Paradox User Permissions API
-    description: API for managing user location permissions within the Paradox platform including adding, retrieving, and deleting
+    description: >-
+      API for managing user location permissions within the Paradox platform including adding, retrieving, and deleting
       location-based access permissions for users.
     image: https://www.paradox.ai/images/paradox-logo.png
     humanURL: https://readme.paradox.ai/reference/authentication
     baseURL: https://api.paradox.ai/api/v1/public
     tags:
-    - Access Control
-    - Permissions
-    - Users
+      - Access Control
+      - Permissions
+      - Users
     properties:
-    - type: Documentation
-      url: https://readme.paradox.ai/reference/authentication
-    - type: OpenAPI
-      url: openapi/paradox-api-openapi.yml
+      - type: Documentation
+        url: https://readme.paradox.ai/reference/authentication
+      - type: OpenAPI
+        url: openapi/paradox-api-openapi.yml
 maintainers:
   - name: Kin Lane
     email: kin@apievangelist.com

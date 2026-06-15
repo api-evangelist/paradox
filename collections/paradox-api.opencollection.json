@@ -1,0 +1,1347 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paradox API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "/auth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get OAuth 2.0 access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/auth/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                },
+                {
+                  "name": "grant_type",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Obtain an access token using OAuth 2.0 client credentials grant. The returned token should be included in the Authorization header as a Bearer token for subsequent API requests."
+        },
+        {
+          "info": {
+            "name": "Paradox Verify JWT token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/verify-jwt"
+          },
+          "docs": "Verify the validity of a JWT authentication token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Candidates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get candidates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/candidates",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter candidates created after this date (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter candidates created before this date (ISO 8601)"
+              },
+              {
+                "name": "created_start_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate creation start date"
+              },
+              {
+                "name": "start_keyword",
+                "value": "",
+                "type": "query",
+                "description": "Search keyword filter"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return (max 50)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip for pagination"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate status"
+              },
+              {
+                "name": "group_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group name"
+              },
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by location identifier"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate source"
+              },
+              {
+                "name": "conversation",
+                "value": "",
+                "type": "query",
+                "description": "Include conversation data"
+              },
+              {
+                "name": "interviews",
+                "value": "",
+                "type": "query",
+                "description": "Include interview data"
+              },
+              {
+                "name": "note",
+                "value": "",
+                "type": "query",
+                "description": "Include candidate notes"
+              },
+              {
+                "name": "profile_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by profile identifier"
+              },
+              {
+                "name": "include_attributes",
+                "value": "",
+                "type": "query",
+                "description": "Include candidate attribute data in response"
+              },
+              {
+                "name": "candidate_journey_status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate journey status"
+              },
+              {
+                "name": "job_loc_code",
+                "value": "",
+                "type": "query",
+                "description": "Filter by job location code"
+              },
+              {
+                "name": "job_req_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by job requisition ID"
+              },
+              {
+                "name": "ex_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by external candidate identifier"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate email"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of candidates with optional filtering by date range, status, group, location, source, and other criteria."
+        },
+        {
+          "info": {
+            "name": "Paradox Create candidate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/candidates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new candidate in the Paradox platform. Requires at minimum a name (or first_name and last_name), phone number, and email address."
+        },
+        {
+          "info": {
+            "name": "Paradox Get single candidate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Candidate OID, external OID, or external ID"
+              },
+              {
+                "name": "conversation",
+                "value": "",
+                "type": "query",
+                "description": "Include conversation history"
+              },
+              {
+                "name": "note",
+                "value": "",
+                "type": "query",
+                "description": "Include candidate notes"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific candidate by OID or external OID."
+        },
+        {
+          "info": {
+            "name": "Paradox Update candidate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Candidate OID, external OID, or external ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing candidate by OID, external OID, or external ID. Supports updating name, contact information, status, journey details, attributes, and attached documents."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete candidate",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Candidate OID, external OID, or external ID"
+              }
+            ]
+          },
+          "docs": "Delete a candidate by OID or external OID."
+        },
+        {
+          "info": {
+            "name": "Paradox Unsubscribe candidate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/unsubscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unsubscribe or resubscribe a candidate from communications. Use action_id 1 to unsubscribe and 0 to resubscribe."
+        },
+        {
+          "info": {
+            "name": "Paradox Send candidate message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/send_message",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a message to a candidate via their preferred contact method."
+        },
+        {
+          "info": {
+            "name": "Paradox Send standard background check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/background_check/standard",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a standard background check for a candidate."
+        },
+        {
+          "info": {
+            "name": "Paradox Send Checkr background check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/background_check/checkr",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a background check through Checkr integration."
+        },
+        {
+          "info": {
+            "name": "Paradox Send First Advantage background check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/background_check/firstadvance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a background check through First Advantage integration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Candidate Attributes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get candidate attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/candidate/attributes/:oid",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "Candidate OID or external OID"
+              }
+            ]
+          },
+          "docs": "Retrieve all current custom attributes for a specific candidate."
+        },
+        {
+          "info": {
+            "name": "Paradox Update candidate attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/candidate/attributes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace all candidate attributes with the provided set. Any attributes not included in the request will be removed."
+        },
+        {
+          "info": {
+            "name": "Paradox Patch candidate attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.paradox.ai/api/v1/public/candidate/attributes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially update candidate attributes. Only the specified attributes will be modified; existing attributes not included will remain unchanged."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/users",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "include_campus_permission",
+                "value": "",
+                "type": "query",
+                "description": "Include campus permission data in response"
+              },
+              {
+                "name": "external_role_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by external role identifier"
+              },
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by location identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of users in the Paradox platform."
+        },
+        {
+          "info": {
+            "name": "Paradox Create user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new user in the Paradox platform."
+        },
+        {
+          "info": {
+            "name": "Paradox Get single user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific user by OID or external identifier."
+        },
+        {
+          "info": {
+            "name": "Paradox Update user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing user by OID."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ]
+          },
+          "docs": "Delete a user by OID."
+        },
+        {
+          "info": {
+            "name": "Paradox Deactivate user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid/deactivate",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ]
+          },
+          "docs": "Deactivate a user account, preventing login and API access."
+        },
+        {
+          "info": {
+            "name": "Paradox Reactivate user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid/reactivate",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ]
+          },
+          "docs": "Reactivate a previously deactivated user account."
+        },
+        {
+          "info": {
+            "name": "Paradox Get user roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/users/roles"
+          },
+          "docs": "Retrieve the list of available user roles."
+        },
+        {
+          "info": {
+            "name": "Paradox Get user by employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/users/employees/:employee_id",
+            "params": [
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "path",
+                "description": "Employee identifier"
+              }
+            ]
+          },
+          "docs": "Look up a user by their employee ID."
+        },
+        {
+          "info": {
+            "name": "Paradox Update user by employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/users/employees/:employee_id",
+            "params": [
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "path",
+                "description": "Employee identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a user identified by their employee ID."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete user by employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/users/employees/:employee_id",
+            "params": [
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "path",
+                "description": "Employee identifier"
+              }
+            ]
+          },
+          "docs": "Delete a user identified by their employee ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get user location permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid/permissions/locations",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve location-based access permissions for a user."
+        },
+        {
+          "info": {
+            "name": "Paradox Add user location permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid/permissions/locations",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a location-based access permission for a user."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete user location permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid/permissions/locations",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a location-based access permission from a user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scheduling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get multiparty interviewers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/multiparty-interviewers"
+          },
+          "docs": "Retrieve the list of available multiparty interviewers for scheduling."
+        },
+        {
+          "info": {
+            "name": "Paradox Get interview settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/interview-settings"
+          },
+          "docs": "Retrieve interview scheduling configuration settings."
+        },
+        {
+          "info": {
+            "name": "Paradox Get job location rooms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/job-location-rooms"
+          },
+          "docs": "Retrieve available interview rooms for job locations."
+        },
+        {
+          "info": {
+            "name": "Paradox Send interview alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/send-interview-alerts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send interview alert notifications to candidates and/or interviewers about upcoming or changed interviews."
+        },
+        {
+          "info": {
+            "name": "Paradox Get interview history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/interview-history",
+            "params": [
+              {
+                "name": "candidate_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate identifier"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter by start date"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter by end date"
+              }
+            ]
+          },
+          "docs": "Retrieve interview history records."
+        },
+        {
+          "info": {
+            "name": "Paradox Schedule shortlist review",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/communication",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an email to hiring manager(s) with a shortlist of candidates for review and scheduling."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/company/locations"
+          },
+          "docs": "Retrieve a list of all locations in the company."
+        },
+        {
+          "info": {
+            "name": "Paradox Create location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/location",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new location in the Paradox platform."
+        },
+        {
+          "info": {
+            "name": "Paradox Get single location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/location/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific location by identifier."
+        },
+        {
+          "info": {
+            "name": "Paradox Update location",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/location/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing location."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/location/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              }
+            ]
+          },
+          "docs": "Delete a location by identifier."
+        },
+        {
+          "info": {
+            "name": "Paradox Get location by job location code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/location/code/:job_loc_code",
+            "params": [
+              {
+                "name": "job_loc_code",
+                "value": "",
+                "type": "path",
+                "description": "Job location code"
+              }
+            ]
+          },
+          "docs": "Look up a location by its job location code."
+        },
+        {
+          "info": {
+            "name": "Paradox Update location by job location code",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/location/code/:job_loc_code",
+            "params": [
+              {
+                "name": "job_loc_code",
+                "value": "",
+                "type": "path",
+                "description": "Job location code"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a location identified by its job location code."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Location Areas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get location areas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/location/:location_id/areas",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve all areas for a specific location."
+        },
+        {
+          "info": {
+            "name": "Paradox Create location area",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/location/:location_id/areas",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new area within a location."
+        },
+        {
+          "info": {
+            "name": "Paradox Get single location area",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/location/:location_id/areas/:area_id",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              },
+              {
+                "name": "area_id",
+                "value": "",
+                "type": "path",
+                "description": "Area identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific area within a location."
+        },
+        {
+          "info": {
+            "name": "Paradox Update location area",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/location/:location_id/areas/:area_id",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              },
+              {
+                "name": "area_id",
+                "value": "",
+                "type": "path",
+                "description": "Area identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing area within a location."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete location area",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/location/:location_id/areas/:area_id",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              },
+              {
+                "name": "area_id",
+                "value": "",
+                "type": "path",
+                "description": "Area identifier"
+              }
+            ]
+          },
+          "docs": "Delete an area within a location."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Location Rooms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get location rooms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/location/:location_id/rooms",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve all rooms for a specific location."
+        },
+        {
+          "info": {
+            "name": "Paradox Create location room",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/location/:location_id/rooms",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new room within a location."
+        },
+        {
+          "info": {
+            "name": "Paradox Get single location room",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/location/:location_id/rooms/:room_id",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              },
+              {
+                "name": "room_id",
+                "value": "",
+                "type": "path",
+                "description": "Room identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific room within a location."
+        },
+        {
+          "info": {
+            "name": "Paradox Update location room",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/location/:location_id/rooms/:room_id",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              },
+              {
+                "name": "room_id",
+                "value": "",
+                "type": "path",
+                "description": "Room identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing room within a location."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete location room",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/location/:location_id/rooms/:room_id",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              },
+              {
+                "name": "room_id",
+                "value": "",
+                "type": "path",
+                "description": "Room identifier"
+              }
+            ]
+          },
+          "docs": "Delete a room within a location."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Company",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get company conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/company/conversations"
+          },
+          "docs": "Retrieve all conversation configurations for the company."
+        },
+        {
+          "info": {
+            "name": "Paradox Get company groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/company/groups"
+          },
+          "docs": "Retrieve all groups configured for the company."
+        },
+        {
+          "info": {
+            "name": "Paradox Get company schools and areas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/company/school_areas"
+          },
+          "docs": "Retrieve all schools and areas configured for the company."
+        },
+        {
+          "info": {
+            "name": "Paradox Get AI assistant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/company/ai"
+          },
+          "docs": "Retrieve the AI assistant name and image configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reporting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get report list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/reporting/reports"
+          },
+          "docs": "Retrieve a list of all available reports."
+        },
+        {
+          "info": {
+            "name": "Paradox Create report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/reporting/reports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new report."
+        },
+        {
+          "info": {
+            "name": "Paradox Get single report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/reporting/reports/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Report identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific report."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
