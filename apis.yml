@@ -56,9 +56,9 @@ common:
     url: https://www.paradox.ai/about
   - type: OpenAPI
     url: openapi/paradox-api-openapi.yml
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/paradox-candidate-schema.json
-  - type: JSON-LD Context
+  - type: JSONLDContext
     url: json-ld/paradox-context.jsonld
 apis:
   - name: Paradox Conversational AI API
@@ -125,7 +125,7 @@ apis:
         url: https://readme.paradox.ai/reference/create-candidate
       - type: OpenAPI
         url: openapi/paradox-api-openapi.yml
-      - type: JSON Schema
+      - type: JSONSchema
         url: json-schema/paradox-candidate-schema.json
   - name: Paradox Users API
     description: >-
