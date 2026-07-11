@@ -22,6 +22,10 @@ tags:
   - SMS
   - Talent Acquisition
 common:
+  - type: DomainSecurity
+    url: security/paradox-domain-security.yml
+  - type: Authentication
+    url: authentication/paradox-authentication.yml
   - type: OAuthScopes
     url: scopes/paradox-scopes.yml
   - type: GitHubOrganization
