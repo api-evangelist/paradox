@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/paradox-api-openapi.yml
+docs: https://readme.paradox.ai/reference/authentication
+note: >-
+  Paradox does not publish OAuth scopes; the API uses an OAuth 2.0 client
+  credentials flow (or Basic auth) with an account ID and secret key issued by
+  the Paradox Integrations Team, with no scope parameter documented
+  (https://readme.paradox.ai/reference/authentication).
+schemes:
+- name: oauth2
+  source: openapi/paradox-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+scopes: []
