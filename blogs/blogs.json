@@ -2,13 +2,14 @@
   "repo": "paradox",
   "feeds": [
     {
-      "source": "https://www.paradox.ai/blog",
-      "feed_url": "",
-      "saved": 1,
-      "method": "agent-scrape"
+      "source": "https://www.paradox.ai/contact",
+      "feed_url": "https://www.paradox.ai/contact",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 1,
-  "fetched": "2026-06-27T13:00:21Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "agent_pulled": "2026-06-27"
 }
