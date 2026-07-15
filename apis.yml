@@ -22,6 +22,8 @@ tags:
   - SMS
   - Talent Acquisition
 common:
+  - type: AgenticAccess
+    url: agentic-access/paradox-agentic-access.yml
   - type: DomainSecurity
     url: security/paradox-domain-security.yml
   - type: Authentication
