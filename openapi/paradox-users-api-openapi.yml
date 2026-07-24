@@ -1,0 +1,536 @@
+openapi: 3.1.0
+info:
+  title: Paradox Authentication Users API
+  description: API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
+  version: 1.0.0
+  contact:
+    name: Paradox Support
+    url: https://www.paradox.ai/contact
+    email: support@paradox.ai
+  license:
+    name: Proprietary
+    url: https://www.paradox.ai/legal/service-terms
+  termsOfService: https://www.paradox.ai/legal/service-terms
+servers:
+- url: https://api.paradox.ai/api/v1/public
+  description: Production (US)
+- url: https://api.eu1.paradox.ai/api/v1/public
+  description: Production (EU)
+- url: https://stgapi.paradox.ai/api/v1/public
+  description: Staging (US)
+- url: https://api.stg.eu1.paradox.ai/api/v1/public
+  description: Staging (EU)
+- url: https://testapi.paradox.ai/api/v1/public
+  description: Test
+- url: https://dev2api.paradox.ai/api/v1/public
+  description: Development
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Users
+  description: Manage users including creating, retrieving, updating, deleting, deactivating, and reactivating
+paths:
+  /users:
+    get:
+      operationId: getUsers
+      summary: Paradox Get users
+      description: Retrieve a paginated list of users in the Paradox platform.
+      tags:
+      - Users
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of results to return
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: Page number for pagination
+        schema:
+          type: integer
+      - name: include_campus_permission
+        in: query
+        description: Include campus permission data in response
+        schema:
+          type: boolean
+      - name: external_role_id
+        in: query
+        description: Filter by external role identifier
+        schema:
+          type: string
+      - name: location_id
+        in: query
+        description: Filter by location identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of users returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  limit:
+                    type: integer
+                  count:
+                    type: integer
+                  page:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createUser
+      summary: Paradox Create user
+      description: Create a new user in the Paradox platform.
+      tags:
+      - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        '200':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /users/{oid}:
+    get:
+      operationId: getUser
+      summary: Paradox Get single user
+      description: Retrieve details for a specific user by OID or external identifier.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/UserOid'
+      responses:
+        '200':
+          description: User details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateUser
+      summary: Paradox Update user
+      description: Update an existing user by OID.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/UserOid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteUser
+      summary: Paradox Delete user
+      description: Delete a user by OID.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/UserOid'
+      responses:
+        '200':
+          description: User deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /users/{oid}/deactivate:
+    post:
+      operationId: deactivateUser
+      summary: Paradox Deactivate user
+      description: Deactivate a user account, preventing login and API access.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/UserOid'
+      responses:
+        '200':
+          description: User deactivated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /users/{oid}/reactivate:
+    post:
+      operationId: reactivateUser
+      summary: Paradox Reactivate user
+      description: Reactivate a previously deactivated user account.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/UserOid'
+      responses:
+        '200':
+          description: User reactivated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /users/roles:
+    get:
+      operationId: getUserRoles
+      summary: Paradox Get user roles
+      description: Retrieve the list of available user roles.
+      tags:
+      - Users
+      responses:
+        '200':
+          description: User roles returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  roles:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Role'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /users/employees/{employee_id}:
+    get:
+      operationId: getUserByEmployeeId
+      summary: Paradox Get user by employee ID
+      description: Look up a user by their employee ID.
+      tags:
+      - Users
+      parameters:
+      - name: employee_id
+        in: path
+        required: true
+        description: Employee identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateUserByEmployeeId
+      summary: Paradox Update user by employee ID
+      description: Update a user identified by their employee ID.
+      tags:
+      - Users
+      parameters:
+      - name: employee_id
+        in: path
+        required: true
+        description: Employee identifier
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteUserByEmployeeId
+      summary: Paradox Delete user by employee ID
+      description: Delete a user identified by their employee ID.
+      tags:
+      - Users
+      parameters:
+      - name: employee_id
+        in: path
+        required: true
+        description: Employee identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    UserOid:
+      name: oid
+      in: path
+      required: true
+      description: User OID or external identifier
+      schema:
+        type: string
+  schemas:
+    Role:
+      type: object
+      description: A user role definition
+      properties:
+        id:
+          type: string
+          description: Role identifier
+        name:
+          type: string
+          description: Role name
+        description:
+          type: string
+          description: Role description
+    UserCreate:
+      type: object
+      description: Request body for creating a new user
+      required:
+      - name
+      - email
+      - phone_number
+      properties:
+        name:
+          type: string
+          description: Full name
+        email:
+          type: string
+          format: email
+          description: Email address
+        phone_number:
+          type: string
+          description: Phone number
+        role:
+          type: string
+          description: User role
+        timezone:
+          type: string
+          description: User timezone
+        language_preference:
+          type: string
+          description: Preferred language code
+        location_ids:
+          type: array
+          items:
+            type: string
+          description: Associated location identifiers
+        employee_id:
+          type: string
+          description: Employee identifier
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    User:
+      type: object
+      description: A user in the Paradox platform
+      properties:
+        OID:
+          type: string
+          description: Unique user identifier
+        name:
+          type: string
+          description: Full name
+        email:
+          type: string
+          format: email
+          description: Email address
+        phone_number:
+          type: string
+          description: Phone number
+        role_id:
+          type: string
+          description: Assigned role identifier
+        timezone:
+          type: string
+          description: User timezone
+        language_preference:
+          type: string
+          description: Preferred language code
+        employee_id:
+          type: string
+          description: Employee identifier
+        job_title:
+          type: string
+          description: Job title
+        location_ids:
+          type: array
+          items:
+            type: string
+          description: Associated location identifiers
+        campus_permissions:
+          type: array
+          items:
+            type: object
+          description: Campus-level permissions
+        active:
+          type: boolean
+          description: Whether the user account is active
+        created_at:
+          type: string
+          format: date-time
+          description: Account creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+    UserUpdate:
+      type: object
+      description: Request body for updating an existing user
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone_number:
+          type: string
+        role:
+          type: string
+        timezone:
+          type: string
+        language_preference:
+          type: string
+        employee_id:
+          type: string
+        job_title:
+          type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials authentication
+      flows:
+        clientCredentials:
+          tokenUrl: /auth/token
+          scopes: {}
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token obtained from the OAuth 2.0 token endpoint
+externalDocs:
+  description: Paradox API Documentation
+  url: https://readme.paradox.ai/docs

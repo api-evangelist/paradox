@@ -1,0 +1,201 @@
+openapi: 3.1.0
+info:
+  title: Paradox Authentication User Permissions API
+  description: API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
+  version: 1.0.0
+  contact:
+    name: Paradox Support
+    url: https://www.paradox.ai/contact
+    email: support@paradox.ai
+  license:
+    name: Proprietary
+    url: https://www.paradox.ai/legal/service-terms
+  termsOfService: https://www.paradox.ai/legal/service-terms
+servers:
+- url: https://api.paradox.ai/api/v1/public
+  description: Production (US)
+- url: https://api.eu1.paradox.ai/api/v1/public
+  description: Production (EU)
+- url: https://stgapi.paradox.ai/api/v1/public
+  description: Staging (US)
+- url: https://api.stg.eu1.paradox.ai/api/v1/public
+  description: Staging (EU)
+- url: https://testapi.paradox.ai/api/v1/public
+  description: Test
+- url: https://dev2api.paradox.ai/api/v1/public
+  description: Development
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: User Permissions
+  description: Manage user location permissions
+paths:
+  /users/{oid}/permissions/locations:
+    get:
+      operationId: getUserLocationPermissions
+      summary: Paradox Get user location permissions
+      description: Retrieve location-based access permissions for a user.
+      tags:
+      - User Permissions
+      parameters:
+      - $ref: '#/components/parameters/UserOid'
+      responses:
+        '200':
+          description: Location permissions returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  permissions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LocationPermission'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: addUserLocationPermission
+      summary: Paradox Add user location permission
+      description: Add a location-based access permission for a user.
+      tags:
+      - User Permissions
+      parameters:
+      - $ref: '#/components/parameters/UserOid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - location_id
+              properties:
+                location_id:
+                  type: string
+                  description: Location identifier to grant access to
+      responses:
+        '200':
+          description: Permission added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteUserLocationPermission
+      summary: Paradox Delete user location permission
+      description: Remove a location-based access permission from a user.
+      tags:
+      - User Permissions
+      parameters:
+      - $ref: '#/components/parameters/UserOid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - location_id
+              properties:
+                location_id:
+                  type: string
+                  description: Location identifier to revoke access from
+      responses:
+        '200':
+          description: Permission removed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    UserOid:
+      name: oid
+      in: path
+      required: true
+      description: User OID or external identifier
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    LocationPermission:
+      type: object
+      description: A location-based access permission
+      properties:
+        location_id:
+          type: string
+          description: Location identifier
+        location_name:
+          type: string
+          description: Location name
+        granted_at:
+          type: string
+          format: date-time
+          description: When the permission was granted
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials authentication
+      flows:
+        clientCredentials:
+          tokenUrl: /auth/token
+          scopes: {}
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token obtained from the OAuth 2.0 token endpoint
+externalDocs:
+  description: Paradox API Documentation
+  url: https://readme.paradox.ai/docs

@@ -1,0 +1,203 @@
+openapi: 3.1.0
+info:
+  title: Paradox Authentication Reporting API
+  description: API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
+  version: 1.0.0
+  contact:
+    name: Paradox Support
+    url: https://www.paradox.ai/contact
+    email: support@paradox.ai
+  license:
+    name: Proprietary
+    url: https://www.paradox.ai/legal/service-terms
+  termsOfService: https://www.paradox.ai/legal/service-terms
+servers:
+- url: https://api.paradox.ai/api/v1/public
+  description: Production (US)
+- url: https://api.eu1.paradox.ai/api/v1/public
+  description: Production (EU)
+- url: https://stgapi.paradox.ai/api/v1/public
+  description: Staging (US)
+- url: https://api.stg.eu1.paradox.ai/api/v1/public
+  description: Staging (EU)
+- url: https://testapi.paradox.ai/api/v1/public
+  description: Test
+- url: https://dev2api.paradox.ai/api/v1/public
+  description: Development
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Reporting
+  description: Access and generate reports
+paths:
+  /reporting/reports:
+    get:
+      operationId: getReports
+      summary: Paradox Get report list
+      description: Retrieve a list of all available reports.
+      tags:
+      - Reporting
+      responses:
+        '200':
+          description: Report list returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  reports:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Report'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createReport
+      summary: Paradox Create report
+      description: Create a new report.
+      tags:
+      - Reporting
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Report name
+                type:
+                  type: string
+                  description: Report type
+                filters:
+                  type: object
+                  description: Report filter criteria
+      responses:
+        '200':
+          description: Report created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  report:
+                    $ref: '#/components/schemas/Report'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reporting/reports/{id}:
+    get:
+      operationId: getReport
+      summary: Paradox Get single report
+      description: Retrieve details for a specific report.
+      tags:
+      - Reporting
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Report identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Report details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  report:
+                    $ref: '#/components/schemas/Report'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+  schemas:
+    Report:
+      type: object
+      description: A report record
+      properties:
+        id:
+          type: string
+          description: Report identifier
+        name:
+          type: string
+          description: Report name
+        type:
+          type: string
+          description: Report type
+        status:
+          type: string
+          description: Report generation status
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials authentication
+      flows:
+        clientCredentials:
+          tokenUrl: /auth/token
+          scopes: {}
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token obtained from the OAuth 2.0 token endpoint
+externalDocs:
+  description: Paradox API Documentation
+  url: https://readme.paradox.ai/docs

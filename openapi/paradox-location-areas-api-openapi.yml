@@ -1,0 +1,295 @@
+openapi: 3.1.0
+info:
+  title: Paradox Authentication Location Areas API
+  description: API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
+  version: 1.0.0
+  contact:
+    name: Paradox Support
+    url: https://www.paradox.ai/contact
+    email: support@paradox.ai
+  license:
+    name: Proprietary
+    url: https://www.paradox.ai/legal/service-terms
+  termsOfService: https://www.paradox.ai/legal/service-terms
+servers:
+- url: https://api.paradox.ai/api/v1/public
+  description: Production (US)
+- url: https://api.eu1.paradox.ai/api/v1/public
+  description: Production (EU)
+- url: https://stgapi.paradox.ai/api/v1/public
+  description: Staging (US)
+- url: https://api.stg.eu1.paradox.ai/api/v1/public
+  description: Staging (EU)
+- url: https://testapi.paradox.ai/api/v1/public
+  description: Test
+- url: https://dev2api.paradox.ai/api/v1/public
+  description: Development
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Location Areas
+  description: Manage location areas
+paths:
+  /location/{location_id}/areas:
+    get:
+      operationId: getLocationAreas
+      summary: Paradox Get location areas
+      description: Retrieve all areas for a specific location.
+      tags:
+      - Location Areas
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        description: Location identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Areas returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  areas:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Area'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createLocationArea
+      summary: Paradox Create location area
+      description: Create a new area within a location.
+      tags:
+      - Location Areas
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        description: Location identifier
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AreaCreate'
+      responses:
+        '200':
+          description: Area created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  area:
+                    $ref: '#/components/schemas/Area'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /location/{location_id}/areas/{area_id}:
+    get:
+      operationId: getLocationArea
+      summary: Paradox Get single location area
+      description: Retrieve details for a specific area within a location.
+      tags:
+      - Location Areas
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        description: Location identifier
+        schema:
+          type: string
+      - name: area_id
+        in: path
+        required: true
+        description: Area identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Area details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  area:
+                    $ref: '#/components/schemas/Area'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateLocationArea
+      summary: Paradox Update location area
+      description: Update an existing area within a location.
+      tags:
+      - Location Areas
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        description: Location identifier
+        schema:
+          type: string
+      - name: area_id
+        in: path
+        required: true
+        description: Area identifier
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AreaCreate'
+      responses:
+        '200':
+          description: Area updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  area:
+                    $ref: '#/components/schemas/Area'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteLocationArea
+      summary: Paradox Delete location area
+      description: Delete an area within a location.
+      tags:
+      - Location Areas
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        description: Location identifier
+        schema:
+          type: string
+      - name: area_id
+        in: path
+        required: true
+        description: Area identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Area deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Area:
+      type: object
+      description: An area within a location
+      properties:
+        oid:
+          type: string
+          description: Area identifier
+        name:
+          type: string
+          description: Area name
+        location_id:
+          type: string
+          description: Parent location identifier
+        type:
+          type: integer
+          description: 'Area type: 1=area, 2=school'
+    AreaCreate:
+      type: object
+      description: Request body for creating a new area
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Area name
+        type:
+          type: integer
+          description: 'Area type: 1=area, 2=school'
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials authentication
+      flows:
+        clientCredentials:
+          tokenUrl: /auth/token
+          scopes: {}
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token obtained from the OAuth 2.0 token endpoint
+externalDocs:
+  description: Paradox API Documentation
+  url: https://readme.paradox.ai/docs

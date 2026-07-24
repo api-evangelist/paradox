@@ -1,0 +1,385 @@
+openapi: 3.1.0
+info:
+  title: Paradox Authentication Locations API
+  description: API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
+  version: 1.0.0
+  contact:
+    name: Paradox Support
+    url: https://www.paradox.ai/contact
+    email: support@paradox.ai
+  license:
+    name: Proprietary
+    url: https://www.paradox.ai/legal/service-terms
+  termsOfService: https://www.paradox.ai/legal/service-terms
+servers:
+- url: https://api.paradox.ai/api/v1/public
+  description: Production (US)
+- url: https://api.eu1.paradox.ai/api/v1/public
+  description: Production (EU)
+- url: https://stgapi.paradox.ai/api/v1/public
+  description: Staging (US)
+- url: https://api.stg.eu1.paradox.ai/api/v1/public
+  description: Staging (EU)
+- url: https://testapi.paradox.ai/api/v1/public
+  description: Test
+- url: https://dev2api.paradox.ai/api/v1/public
+  description: Development
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Locations
+  description: Manage locations including creating, retrieving, updating, deleting, and lookup by job location code
+paths:
+  /company/locations:
+    get:
+      operationId: getLocations
+      summary: Paradox Get locations
+      description: Retrieve a list of all locations in the company.
+      tags:
+      - Locations
+      responses:
+        '200':
+          description: Locations returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  locations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /location:
+    post:
+      operationId: createLocation
+      summary: Paradox Create location
+      description: Create a new location in the Paradox platform.
+      tags:
+      - Locations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationCreate'
+      responses:
+        '200':
+          description: Location created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  location:
+                    $ref: '#/components/schemas/Location'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /location/{id}:
+    get:
+      operationId: getLocation
+      summary: Paradox Get single location
+      description: Retrieve details for a specific location by identifier.
+      tags:
+      - Locations
+      parameters:
+      - $ref: '#/components/parameters/LocationId'
+      responses:
+        '200':
+          description: Location details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  location:
+                    $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateLocation
+      summary: Paradox Update location
+      description: Update an existing location.
+      tags:
+      - Locations
+      parameters:
+      - $ref: '#/components/parameters/LocationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationUpdate'
+      responses:
+        '200':
+          description: Location updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  location:
+                    $ref: '#/components/schemas/Location'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteLocation
+      summary: Paradox Delete location
+      description: Delete a location by identifier.
+      tags:
+      - Locations
+      parameters:
+      - $ref: '#/components/parameters/LocationId'
+      responses:
+        '200':
+          description: Location deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /location/code/{job_loc_code}:
+    get:
+      operationId: getLocationByCode
+      summary: Paradox Get location by job location code
+      description: Look up a location by its job location code.
+      tags:
+      - Locations
+      parameters:
+      - name: job_loc_code
+        in: path
+        required: true
+        description: Job location code
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Location details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  location:
+                    $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateLocationByCode
+      summary: Paradox Update location by job location code
+      description: Update a location identified by its job location code.
+      tags:
+      - Locations
+      parameters:
+      - name: job_loc_code
+        in: path
+        required: true
+        description: Job location code
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationUpdate'
+      responses:
+        '200':
+          description: Location updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  location:
+                    $ref: '#/components/schemas/Location'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    LocationId:
+      name: id
+      in: path
+      required: true
+      description: Location identifier
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    Location:
+      type: object
+      description: A physical location or job site in the Paradox platform
+      properties:
+        oid:
+          type: string
+          description: Location identifier
+        name:
+          type: string
+          description: Location name
+        job_loc_code:
+          type: string
+          description: Job location code
+        address:
+          type: string
+          description: Street address
+        city:
+          type: string
+          description: City
+        state:
+          type: string
+          description: State or province
+        zip_code:
+          type: string
+          description: Postal code
+        country:
+          type: string
+          description: Country
+        timezone:
+          type: string
+          description: Location timezone
+        active:
+          type: boolean
+          description: Whether the location is active
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+    LocationCreate:
+      type: object
+      description: Request body for creating a new location
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Location name
+        job_loc_code:
+          type: string
+          description: Job location code
+        address:
+          type: string
+          description: Street address
+        city:
+          type: string
+        state:
+          type: string
+        zip_code:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+    LocationUpdate:
+      type: object
+      description: Request body for updating an existing location
+      properties:
+        name:
+          type: string
+        job_loc_code:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip_code:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+        active:
+          type: boolean
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials authentication
+      flows:
+        clientCredentials:
+          tokenUrl: /auth/token
+          scopes: {}
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token obtained from the OAuth 2.0 token endpoint
+externalDocs:
+  description: Paradox API Documentation
+  url: https://readme.paradox.ai/docs
