@@ -5,6 +5,19 @@ description: >-
   that automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven
   experiences.
 type: Index
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.paradox.ai/images/paradox-logo.png
 url: https://raw.githubusercontent.com/api-evangelist/paradox/refs/heads/main/apis.yml
 created: '2025-01-01'
@@ -22,6 +35,8 @@ tags:
   - SMS
   - Talent Acquisition
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/paradox/overview
   - type: AgenticAccess
     url: agentic-access/paradox-agentic-access.yml
   - type: DomainSecurity
@@ -69,172 +84,472 @@ common:
   - type: JSONLDContext
     url: json-ld/paradox-context.jsonld
 apis:
-  - name: Paradox Conversational AI API
-    description: API for integrating Paradox conversational AI recruiting assistant capabilities into your applications.
-    image: https://www.paradox.ai/images/api-icon.png
-    humanURL: https://www.paradox.ai
-    baseURL: https://api.paradox.ai
-    tags:
-      - AI
-      - Candidate Experience
-      - Chatbot
-      - Conversational AI
-      - HR Technology
-      - Recruiting
-    properties:
-      - type: Documentation
-        url: https://developers.paradox.ai/docs
-      - type: OpenAPI
-        url: openapi/paradox-api-openapi.yml
-      - type: Authentication
-        url: https://developers.paradox.ai/docs/authentication
-      - type: RateLimits
-        url: https://developers.paradox.ai/docs/rate-limits
-    contact:
-      - type: Support
-        url: https://www.paradox.ai/support
-      - type: Email
-        url: mailto:support@paradox.ai
-  - name: Paradox Company API
-    description: >-
-      API for accessing company-level data in Paradox including conversations, groups, schools, areas, and AI assistant
-      configuration.
-    image: https://www.paradox.ai/images/paradox-logo.png
-    humanURL: https://readme.paradox.ai/reference/get-company-conversations
-    baseURL: https://api.paradox.ai/api/v1/public
-    tags:
-      - AI Assistant
-      - Company
-      - Conversations
-      - Groups
-    properties:
-      - type: Documentation
-        url: https://readme.paradox.ai/reference/get-company-conversations
-      - type: APIReference
-        url: https://readme.paradox.ai/reference/overview
-      - type: OpenAPI
-        url: openapi/paradox-api-openapi.yml
-  - name: Paradox Candidates API
-    description: >-
-      API for managing candidates within the Paradox platform including creating, retrieving, updating, deleting, and
-      unsubscribing candidates, as well as sending candidate messages and scheduling shortlist reviews.
-    image: https://www.paradox.ai/images/paradox-logo.png
-    humanURL: https://readme.paradox.ai/reference/get-candidates
-    baseURL: https://api.paradox.ai/api/v1/public
-    tags:
-      - Candidates
-      - Messaging
-      - Recruiting
-      - Screening
-    properties:
-      - type: Documentation
-        url: https://readme.paradox.ai/reference/get-candidates
-      - type: APIReference
-        url: https://readme.paradox.ai/reference/create-candidate
-      - type: OpenAPI
-        url: openapi/paradox-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/paradox-candidate-schema.json
-  - name: Paradox Users API
-    description: >-
-      API for managing users within the Paradox platform including creating, retrieving, updating, deleting,
-      deactivating, and reactivating users, as well as managing user roles and looking up users by employee ID.
-    image: https://www.paradox.ai/images/paradox-logo.png
-    humanURL: https://readme.paradox.ai/reference/get-users
-    baseURL: https://api.paradox.ai/api/v1/public
-    tags:
-      - Administration
-      - Roles
-      - Users
-    properties:
-      - type: Documentation
-        url: https://readme.paradox.ai/reference/get-users
-      - type: OpenAPI
-        url: openapi/paradox-api-openapi.yml
-  - name: Paradox Scheduling API
-    description: >-
-      API for managing interview scheduling within the Paradox platform including retrieving multiparty interviewers,
-      interview settings, job location rooms, sending interview alerts, and accessing interview history.
-    image: https://www.paradox.ai/images/paradox-logo.png
-    humanURL: https://readme.paradox.ai/reference/send-interview-alerts
-    baseURL: https://api.paradox.ai/api/v1/public
-    tags:
-      - Calendars
-      - Interviews
-      - Scheduling
-    properties:
-      - type: Documentation
-        url: https://readme.paradox.ai/reference/send-interview-alerts
-      - type: APIReference
-        url: https://readme.paradox.ai/reference/get-job-location-rooms
-      - type: OpenAPI
-        url: openapi/paradox-api-openapi.yml
-  - name: Paradox Locations API
-    description: >-
-      API for managing locations within the Paradox platform including creating, retrieving, updating, and deleting
-      locations, as well as looking up locations by job location code and managing location rooms.
-    image: https://www.paradox.ai/images/paradox-logo.png
-    humanURL: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
-    baseURL: https://api.paradox.ai/api/v1/public
-    tags:
-      - Job Sites
-      - Locations
-      - Rooms
-    properties:
-      - type: Documentation
-        url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
-      - type: APIReference
-        url: https://readme.paradox.ai/reference/update-a-location
-      - type: OpenAPI
-        url: openapi/paradox-api-openapi.yml
-  - name: Paradox Reporting API
-    description: >-
-      API for accessing and generating reports within the Paradox platform including retrieving report lists, creating
-      new reports, and accessing individual report details.
-    image: https://www.paradox.ai/images/paradox-logo.png
-    humanURL: https://readme.paradox.ai/reference/get-report-list
-    baseURL: https://api.paradox.ai/api/v1/public
-    tags:
-      - Analytics
-      - Data
-      - Reporting
-    properties:
-      - type: Documentation
-        url: https://readme.paradox.ai/reference/get-report-list
-      - type: OpenAPI
-        url: openapi/paradox-api-openapi.yml
-  - name: Paradox Candidate Attributes API
-    description: >-
-      API for managing candidate attributes within the Paradox platform including retrieving, patching, and updating
-      candidate attribute data.
-    image: https://www.paradox.ai/images/paradox-logo.png
-    humanURL: https://readme.paradox.ai/reference/get-candidate-attributes
-    baseURL: https://api.paradox.ai/api/v1/public
-    tags:
-      - Attributes
-      - Candidates
-      - Custom Fields
-    properties:
-      - type: Documentation
-        url: https://readme.paradox.ai/reference/get-candidate-attributes
-      - type: OpenAPI
-        url: openapi/paradox-api-openapi.yml
-  - name: Paradox User Permissions API
-    description: >-
-      API for managing user location permissions within the Paradox platform including adding, retrieving, and deleting
-      location-based access permissions for users.
-    image: https://www.paradox.ai/images/paradox-logo.png
-    humanURL: https://readme.paradox.ai/reference/authentication
-    baseURL: https://api.paradox.ai/api/v1/public
-    tags:
-      - Access Control
-      - Permissions
-      - Users
-    properties:
-      - type: Documentation
-        url: https://readme.paradox.ai/reference/authentication
-      - type: OpenAPI
-        url: openapi/paradox-api-openapi.yml
+- aid: paradox:paradox-authentication-api
+  name: Paradox Authentication API
+  description: OAuth 2.0 token and JWT verification endpoints
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
+- aid: paradox:paradox-candidate-attributes-api
+  name: Paradox Candidate Attributes API
+  description: Manage custom candidate attribute data
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Candidate Attributes
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-candidate-attributes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
+- aid: paradox:paradox-candidates-api
+  name: Paradox Candidates API
+  description: >-
+    Manage candidates including creating, retrieving, updating, deleting, messaging, and unsubscribing
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Candidates
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-candidates-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
+- aid: paradox:paradox-company-api
+  name: Paradox Company API
+  description: >-
+    Access company-level data including conversations, groups, schools, areas, and AI assistant
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Company
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-company-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
+- aid: paradox:paradox-location-areas-api
+  name: Paradox Location Areas API
+  description: Manage location areas
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Location Areas
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-location-areas-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
+- aid: paradox:paradox-location-rooms-api
+  name: Paradox Location Rooms API
+  description: Manage location rooms
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Location Rooms
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-location-rooms-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
+- aid: paradox:paradox-locations-api
+  name: Paradox Locations API
+  description: >-
+    Manage locations including creating, retrieving, updating, deleting, and lookup by job location code
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-locations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
+- aid: paradox:paradox-reporting-api
+  name: Paradox Reporting API
+  description: Access and generate reports
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-reporting-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
+- aid: paradox:paradox-scheduling-api
+  name: Paradox Scheduling API
+  description: Manage interview scheduling, interviewers, settings, rooms, alerts, and history
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Scheduling
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-scheduling-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
+- aid: paradox:paradox-user-permissions-api
+  name: Paradox User Permissions API
+  description: Manage user location permissions
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - User Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-user-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
+- aid: paradox:paradox-users-api
+  name: Paradox Users API
+  description: >-
+    Manage users including creating, retrieving, updating, deleting, deactivating, and reactivating
+  humanURL: https://www.paradox.ai
+  baseURL: https://api.paradox.ai
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/paradox-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.paradox.ai/docs
+  - type: Authentication
+    url: https://developers.paradox.ai/docs/authentication
+  - type: RateLimits
+    url: https://developers.paradox.ai/docs/rate-limits
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-company-conversations
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/overview
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidates
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/create-candidate
+  - type: JSONSchema
+    url: json-schema/paradox-candidate-schema.json
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-users
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/send-interview-alerts
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/get-job-location-rooms
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-single-location-by-job_loc_code
+  - type: APIReference
+    url: https://readme.paradox.ai/reference/update-a-location
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-report-list
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/get-candidate-attributes
+  - type: Documentation
+    url: https://readme.paradox.ai/reference/authentication
 maintainers:
   - name: Kin Lane
     email: kin@apievangelist.com
