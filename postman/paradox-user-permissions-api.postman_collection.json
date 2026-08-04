@@ -1,0 +1,695 @@
+{
+  "info": {
+    "_postman_id": "68404899-b8cb-4394-b5c8-7f24d94c6c99",
+    "name": "Paradox Authentication User Permissions API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:54.000Z",
+    "updatedAt": "2026-07-28T02:31:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-68404899-b8cb-4394-b5c8-7f24d94c6c99"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{oid}",
+          "item": [
+            {
+              "name": "permissions",
+              "item": [
+                {
+                  "name": "locations",
+                  "item": [
+                    {
+                      "name": "Paradox Get user location permissions",
+                      "id": "1d4797a0-9ad6-42a3-ba23-1ef2dc560784",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":oid",
+                            "permissions",
+                            "locations"
+                          ],
+                          "variable": [
+                            {
+                              "id": "edade93e-0fa5-4bd5-ba50-c61b0ef38172",
+                              "key": "oid",
+                              "value": "<string>",
+                              "description": "(Required) User OID or external identifier"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve location-based access permissions for a user."
+                      },
+                      "response": [
+                        {
+                          "id": "eb31cc0b-e394-4a9d-9be8-9a326d0c4b14",
+                          "name": "Location permissions returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":oid",
+                                "permissions",
+                                "locations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "oid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"permissions\": [\n    {\n      \"location_id\": \"<string>\",\n      \"location_name\": \"<string>\",\n      \"granted_at\": \"<dateTime>\"\n    },\n    {\n      \"location_id\": \"<string>\",\n      \"location_name\": \"<string>\",\n      \"granted_at\": \"<dateTime>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-eb31cc0b-e394-4a9d-9be8-9a326d0c4b14"
+                        },
+                        {
+                          "id": "6b230052-3678-4f64-9b18-957dc7d7f47c",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":oid",
+                                "permissions",
+                                "locations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "oid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-6b230052-3678-4f64-9b18-957dc7d7f47c"
+                        },
+                        {
+                          "id": "dada8a45-b58e-4913-8f41-f501c8edfb22",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":oid",
+                                "permissions",
+                                "locations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "oid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-dada8a45-b58e-4913-8f41-f501c8edfb22"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-1d4797a0-9ad6-42a3-ba23-1ef2dc560784"
+                    },
+                    {
+                      "name": "Paradox Add user location permission",
+                      "id": "34847318-3ca6-405e-9eab-792a11377193",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"location_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":oid",
+                            "permissions",
+                            "locations"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6a956d65-d997-478e-abc6-3ba33498a4d3",
+                              "key": "oid",
+                              "value": "<string>",
+                              "description": "(Required) User OID or external identifier"
+                            }
+                          ]
+                        },
+                        "description": "Add a location-based access permission for a user."
+                      },
+                      "response": [
+                        {
+                          "id": "451a83c9-fae7-4397-9589-469a2f7841d2",
+                          "name": "Permission added successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"location_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":oid",
+                                "permissions",
+                                "locations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "oid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-451a83c9-fae7-4397-9589-469a2f7841d2"
+                        },
+                        {
+                          "id": "35970859-1dca-4330-b92e-4e2febf6595b",
+                          "name": "Invalid request data",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"location_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":oid",
+                                "permissions",
+                                "locations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "oid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-35970859-1dca-4330-b92e-4e2febf6595b"
+                        },
+                        {
+                          "id": "18c19dcb-0c7a-4ba4-aefb-fb11ac5adddd",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"location_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":oid",
+                                "permissions",
+                                "locations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "oid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-18c19dcb-0c7a-4ba4-aefb-fb11ac5adddd"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-34847318-3ca6-405e-9eab-792a11377193"
+                    },
+                    {
+                      "name": "Paradox Delete user location permission",
+                      "id": "7191521f-688a-41d7-86a2-b2fe34c1f7fe",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"location_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":oid",
+                            "permissions",
+                            "locations"
+                          ],
+                          "variable": [
+                            {
+                              "id": "58ac8f07-a4b4-4575-a3b8-fdec7fbb7759",
+                              "key": "oid",
+                              "value": "<string>",
+                              "description": "(Required) User OID or external identifier"
+                            }
+                          ]
+                        },
+                        "description": "Remove a location-based access permission from a user."
+                      },
+                      "response": [
+                        {
+                          "id": "da2aaf0a-4dc3-4ac3-94eb-a4aaabdfcac5",
+                          "name": "Permission removed successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"location_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":oid",
+                                "permissions",
+                                "locations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "oid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-da2aaf0a-4dc3-4ac3-94eb-a4aaabdfcac5"
+                        },
+                        {
+                          "id": "7ad1801e-56f8-422d-b191-dc3c8d980c36",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"location_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:oid/permissions/locations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":oid",
+                                "permissions",
+                                "locations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "oid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-7ad1801e-56f8-422d-b191-dc3c8d980c36"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-7191521f-688a-41d7-86a2-b2fe34c1f7fe"
+                    }
+                  ],
+                  "id": "f216d4de-9e5d-454d-8e2d-298d345c48e3",
+                  "createdAt": "2026-07-28T02:31:55.000Z",
+                  "updatedAt": "2026-07-28T02:31:55.000Z",
+                  "uid": "35240-f216d4de-9e5d-454d-8e2d-298d345c48e3"
+                }
+              ],
+              "id": "a641bf4f-e1fe-4187-8ceb-296fc1c0aa5d",
+              "createdAt": "2026-07-28T02:31:55.000Z",
+              "updatedAt": "2026-07-28T02:31:55.000Z",
+              "uid": "35240-a641bf4f-e1fe-4187-8ceb-296fc1c0aa5d"
+            }
+          ],
+          "id": "1f0e2ad0-47fc-4640-bf8b-30548d7e8fc7",
+          "createdAt": "2026-07-28T02:31:55.000Z",
+          "updatedAt": "2026-07-28T02:31:55.000Z",
+          "uid": "35240-1f0e2ad0-47fc-4640-bf8b-30548d7e8fc7"
+        }
+      ],
+      "id": "e2b530a4-12af-44dd-ae75-bd788bf8981b",
+      "createdAt": "2026-07-28T02:31:55.000Z",
+      "updatedAt": "2026-07-28T02:31:55.000Z",
+      "uid": "35240-e2b530a4-12af-44dd-ae75-bd788bf8981b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}

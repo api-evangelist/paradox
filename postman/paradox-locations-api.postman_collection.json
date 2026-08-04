@@ -1,0 +1,1585 @@
+{
+  "info": {
+    "_postman_id": "e3dcb39c-07f6-400a-9cee-52e4410d9a02",
+    "name": "Paradox Authentication Locations API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:50.000Z",
+    "updatedAt": "2026-07-28T02:31:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e3dcb39c-07f6-400a-9cee-52e4410d9a02"
+  },
+  "item": [
+    {
+      "name": "company",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "Paradox Get locations",
+              "id": "ceadc151-8945-4413-9af4-2cba13a80c34",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/company/locations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "company",
+                    "locations"
+                  ]
+                },
+                "description": "Retrieve a list of all locations in the company."
+              },
+              "response": [
+                {
+                  "id": "b70d7a80-719c-493e-a89e-3b91689aefe3",
+                  "name": "Locations returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/company/locations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "company",
+                        "locations"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"locations\": [\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"job_loc_code\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"timezone\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"job_loc_code\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"timezone\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-b70d7a80-719c-493e-a89e-3b91689aefe3"
+                },
+                {
+                  "id": "dd7a6088-1394-4c5f-96b1-6fa289b12d56",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/company/locations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "company",
+                        "locations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-dd7a6088-1394-4c5f-96b1-6fa289b12d56"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:51.000Z",
+              "updatedAt": "2026-07-28T02:31:51.000Z",
+              "uid": "35240-ceadc151-8945-4413-9af4-2cba13a80c34"
+            }
+          ],
+          "id": "a1cc3154-fa80-4347-9ed3-d5c262ecde59",
+          "createdAt": "2026-07-28T02:31:51.000Z",
+          "updatedAt": "2026-07-28T02:31:51.000Z",
+          "uid": "35240-a1cc3154-fa80-4347-9ed3-d5c262ecde59"
+        }
+      ],
+      "id": "e863ed0e-779f-48a3-871f-68674f7ffbf8",
+      "createdAt": "2026-07-28T02:31:51.000Z",
+      "updatedAt": "2026-07-28T02:31:51.000Z",
+      "uid": "35240-e863ed0e-779f-48a3-871f-68674f7ffbf8"
+    },
+    {
+      "name": "location",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Paradox Get single location",
+              "id": "4edb9476-fcb7-4582-9e59-14f73ce86659",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/location/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "location",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "82c4af18-02c8-4366-9273-0d53367c5e4d",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Location identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details for a specific location by identifier."
+              },
+              "response": [
+                {
+                  "id": "e8929909-9752-41ba-b1ba-d8054374cbc1",
+                  "name": "Location details returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"location\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"job_loc_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-e8929909-9752-41ba-b1ba-d8054374cbc1"
+                },
+                {
+                  "id": "20161f80-939a-427c-8172-a8ff193950a5",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-20161f80-939a-427c-8172-a8ff193950a5"
+                },
+                {
+                  "id": "d0f18f51-8459-4705-8d92-e40c2da01ef4",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-d0f18f51-8459-4705-8d92-e40c2da01ef4"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:51.000Z",
+              "updatedAt": "2026-07-28T02:31:51.000Z",
+              "uid": "35240-4edb9476-fcb7-4582-9e59-14f73ce86659"
+            },
+            {
+              "name": "Paradox Update location",
+              "id": "240b17db-23a4-4de0-accf-e3e746b3ace8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/location/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "location",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d1b2f3c0-50bc-4bf8-84a5-92c094044a45",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Location identifier"
+                    }
+                  ]
+                },
+                "description": "Update an existing location."
+              },
+              "response": [
+                {
+                  "id": "bcfbe097-d2fb-4de4-9fb1-f85048212a06",
+                  "name": "Location updated successfully",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"location\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"job_loc_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-bcfbe097-d2fb-4de4-9fb1-f85048212a06"
+                },
+                {
+                  "id": "1187f68c-8641-4136-a63f-a0c98b9c98e0",
+                  "name": "Invalid request data",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-1187f68c-8641-4136-a63f-a0c98b9c98e0"
+                },
+                {
+                  "id": "24e7964c-d1fc-4bc1-af46-d16682bcdcbe",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-24e7964c-d1fc-4bc1-af46-d16682bcdcbe"
+                },
+                {
+                  "id": "effbb006-55e4-481b-9db0-81e59b4dbdec",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-effbb006-55e4-481b-9db0-81e59b4dbdec"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:51.000Z",
+              "updatedAt": "2026-07-28T02:31:51.000Z",
+              "uid": "35240-240b17db-23a4-4de0-accf-e3e746b3ace8"
+            },
+            {
+              "name": "Paradox Delete location",
+              "id": "a351d188-dee0-401d-86a5-267a939e9e67",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/location/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "location",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5ec8d55b-2d93-4264-9e3b-475f4f727724",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Location identifier"
+                    }
+                  ]
+                },
+                "description": "Delete a location by identifier."
+              },
+              "response": [
+                {
+                  "id": "4b3ca41d-677a-4138-923c-e7e0da9d2ac0",
+                  "name": "Location deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-4b3ca41d-677a-4138-923c-e7e0da9d2ac0"
+                },
+                {
+                  "id": "ba6507ed-7157-4d9c-8f85-4219d8dbb450",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-ba6507ed-7157-4d9c-8f85-4219d8dbb450"
+                },
+                {
+                  "id": "32003099-28f9-4ecf-b3e9-13bb53eed906",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-32003099-28f9-4ecf-b3e9-13bb53eed906"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:51.000Z",
+              "updatedAt": "2026-07-28T02:31:51.000Z",
+              "uid": "35240-a351d188-dee0-401d-86a5-267a939e9e67"
+            }
+          ],
+          "id": "2316be31-d6cd-4494-b2aa-42a0d4b41db1",
+          "createdAt": "2026-07-28T02:31:51.000Z",
+          "updatedAt": "2026-07-28T02:31:51.000Z",
+          "uid": "35240-2316be31-d6cd-4494-b2aa-42a0d4b41db1"
+        },
+        {
+          "name": "code",
+          "item": [
+            {
+              "name": "{job_loc_code}",
+              "item": [
+                {
+                  "name": "Paradox Get location by job location code",
+                  "id": "5977563b-2606-42be-b5f6-be88cc7bd9ae",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/code/:job_loc_code",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        "code",
+                        ":job_loc_code"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4126195c-0af7-4006-bb63-b4937a664374",
+                          "key": "job_loc_code",
+                          "value": "<string>",
+                          "description": "(Required) Job location code"
+                        }
+                      ]
+                    },
+                    "description": "Look up a location by its job location code."
+                  },
+                  "response": [
+                    {
+                      "id": "041ee253-37bd-4e83-813d-8db84868b4dd",
+                      "name": "Location details returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/code/:job_loc_code",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "code",
+                            ":job_loc_code"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_loc_code"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"location\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"job_loc_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:51.000Z",
+                      "updatedAt": "2026-07-28T02:31:51.000Z",
+                      "uid": "35240-041ee253-37bd-4e83-813d-8db84868b4dd"
+                    },
+                    {
+                      "id": "21dc0f88-d1e1-4d3d-9de5-81355a710ff1",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/code/:job_loc_code",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "code",
+                            ":job_loc_code"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_loc_code"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:51.000Z",
+                      "updatedAt": "2026-07-28T02:31:51.000Z",
+                      "uid": "35240-21dc0f88-d1e1-4d3d-9de5-81355a710ff1"
+                    },
+                    {
+                      "id": "f6cdfc74-d4c2-4629-b3c0-acebaa7c67c1",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/code/:job_loc_code",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "code",
+                            ":job_loc_code"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_loc_code"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:51.000Z",
+                      "updatedAt": "2026-07-28T02:31:51.000Z",
+                      "uid": "35240-f6cdfc74-d4c2-4629-b3c0-acebaa7c67c1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-5977563b-2606-42be-b5f6-be88cc7bd9ae"
+                },
+                {
+                  "name": "Paradox Update location by job location code",
+                  "id": "76c41861-ba92-4660-a38f-49c7c02fd89a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/location/code/:job_loc_code",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        "code",
+                        ":job_loc_code"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3f8eda62-6271-4041-9b8e-6bba9fd3f01c",
+                          "key": "job_loc_code",
+                          "value": "<string>",
+                          "description": "(Required) Job location code"
+                        }
+                      ]
+                    },
+                    "description": "Update a location identified by its job location code."
+                  },
+                  "response": [
+                    {
+                      "id": "c3479c43-d0ab-48b2-9b33-847c69e15af2",
+                      "name": "Location updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/code/:job_loc_code",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "code",
+                            ":job_loc_code"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_loc_code"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"location\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"job_loc_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:51.000Z",
+                      "updatedAt": "2026-07-28T02:31:51.000Z",
+                      "uid": "35240-c3479c43-d0ab-48b2-9b33-847c69e15af2"
+                    },
+                    {
+                      "id": "b6a3155c-7cf2-417e-86a9-588a2b83010c",
+                      "name": "Invalid request data",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/code/:job_loc_code",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "code",
+                            ":job_loc_code"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_loc_code"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:51.000Z",
+                      "updatedAt": "2026-07-28T02:31:51.000Z",
+                      "uid": "35240-b6a3155c-7cf2-417e-86a9-588a2b83010c"
+                    },
+                    {
+                      "id": "d07a2c6f-bd44-410a-9d8c-dc71afafc138",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/code/:job_loc_code",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "code",
+                            ":job_loc_code"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_loc_code"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:51.000Z",
+                      "updatedAt": "2026-07-28T02:31:51.000Z",
+                      "uid": "35240-d07a2c6f-bd44-410a-9d8c-dc71afafc138"
+                    },
+                    {
+                      "id": "048c77ee-babe-4c4d-9f9e-7440110e9996",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/code/:job_loc_code",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "code",
+                            ":job_loc_code"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_loc_code"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:51.000Z",
+                      "updatedAt": "2026-07-28T02:31:51.000Z",
+                      "uid": "35240-048c77ee-babe-4c4d-9f9e-7440110e9996"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-76c41861-ba92-4660-a38f-49c7c02fd89a"
+                }
+              ],
+              "id": "92f51d3a-8803-4bd7-8cc7-24ebbb2641cd",
+              "createdAt": "2026-07-28T02:31:51.000Z",
+              "updatedAt": "2026-07-28T02:31:51.000Z",
+              "uid": "35240-92f51d3a-8803-4bd7-8cc7-24ebbb2641cd"
+            }
+          ],
+          "id": "da9fdb21-ce83-4b86-be1a-c62817a5fd4d",
+          "createdAt": "2026-07-28T02:31:51.000Z",
+          "updatedAt": "2026-07-28T02:31:51.000Z",
+          "uid": "35240-da9fdb21-ce83-4b86-be1a-c62817a5fd4d"
+        },
+        {
+          "name": "Paradox Create location",
+          "id": "1029b45a-ce0f-4758-9226-dd4721ccab1c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/location",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "location"
+              ]
+            },
+            "description": "Create a new location in the Paradox platform."
+          },
+          "response": [
+            {
+              "id": "bda5a02f-2c2a-409d-8f24-c1e287f88eca",
+              "name": "Location created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/location",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "location"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"location\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"job_loc_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:31:51.000Z",
+              "updatedAt": "2026-07-28T02:31:51.000Z",
+              "uid": "35240-bda5a02f-2c2a-409d-8f24-c1e287f88eca"
+            },
+            {
+              "id": "51e004f9-e235-4990-9600-938850e0db25",
+              "name": "Invalid request data",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/location",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "location"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:31:51.000Z",
+              "updatedAt": "2026-07-28T02:31:51.000Z",
+              "uid": "35240-51e004f9-e235-4990-9600-938850e0db25"
+            },
+            {
+              "id": "a18b2c50-1b6f-48e0-8598-2bb0430cfdb3",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/location",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "location"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:31:51.000Z",
+              "updatedAt": "2026-07-28T02:31:51.000Z",
+              "uid": "35240-a18b2c50-1b6f-48e0-8598-2bb0430cfdb3"
+            }
+          ],
+          "createdAt": "2026-07-28T02:31:51.000Z",
+          "updatedAt": "2026-07-28T02:31:51.000Z",
+          "uid": "35240-1029b45a-ce0f-4758-9226-dd4721ccab1c"
+        }
+      ],
+      "id": "60133e48-4252-47c7-8965-c83e52cf6fce",
+      "createdAt": "2026-07-28T02:31:51.000Z",
+      "updatedAt": "2026-07-28T02:31:51.000Z",
+      "uid": "35240-60133e48-4252-47c7-8965-c83e52cf6fce"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}

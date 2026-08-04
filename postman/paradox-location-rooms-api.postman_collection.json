@@ -1,0 +1,1180 @@
+{
+  "info": {
+    "_postman_id": "45800ea0-2cbf-45e0-9074-bbd3c21af05c",
+    "name": "Paradox Authentication Location Rooms API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:45.000Z",
+    "updatedAt": "2026-07-28T02:31:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-45800ea0-2cbf-45e0-9074-bbd3c21af05c"
+  },
+  "item": [
+    {
+      "name": "location",
+      "item": [
+        {
+          "name": "{location_id}",
+          "item": [
+            {
+              "name": "rooms",
+              "item": [
+                {
+                  "name": "{room_id}",
+                  "item": [
+                    {
+                      "name": "Paradox Get single location room",
+                      "id": "6ee02b18-fa1d-467b-a2f8-bd27bb5ab800",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "rooms",
+                            ":room_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "08fdfb9a-8ca3-4e84-9a84-1d946ef20639",
+                              "key": "location_id",
+                              "value": "<string>",
+                              "description": "(Required) Location identifier"
+                            },
+                            {
+                              "id": "0174250d-12ce-4622-91c3-2a355b72ed2c",
+                              "key": "room_id",
+                              "value": "<string>",
+                              "description": "(Required) Room identifier"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve details for a specific room within a location."
+                      },
+                      "response": [
+                        {
+                          "id": "77df2d0d-19ac-487c-927a-f7dbcc250de3",
+                          "name": "Room details returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "rooms",
+                                ":room_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "room_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"room\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"location_id\": \"<string>\",\n    \"capacity\": \"<integer>\",\n    \"active\": \"<boolean>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:31:46.000Z",
+                          "updatedAt": "2026-07-28T02:31:46.000Z",
+                          "uid": "35240-77df2d0d-19ac-487c-927a-f7dbcc250de3"
+                        },
+                        {
+                          "id": "c39aac5b-39de-4463-b0ec-bc2c9e87639e",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "rooms",
+                                ":room_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "room_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:46.000Z",
+                          "updatedAt": "2026-07-28T02:31:46.000Z",
+                          "uid": "35240-c39aac5b-39de-4463-b0ec-bc2c9e87639e"
+                        },
+                        {
+                          "id": "fc8fbcce-2311-47c9-a8cd-6c46bb3d39f9",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "rooms",
+                                ":room_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "room_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:46.000Z",
+                          "updatedAt": "2026-07-28T02:31:46.000Z",
+                          "uid": "35240-fc8fbcce-2311-47c9-a8cd-6c46bb3d39f9"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:31:46.000Z",
+                      "updatedAt": "2026-07-28T02:31:46.000Z",
+                      "uid": "35240-6ee02b18-fa1d-467b-a2f8-bd27bb5ab800"
+                    },
+                    {
+                      "name": "Paradox Update location room",
+                      "id": "28ee1761-a5a3-4361-b3d5-595ddd37ab3f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"capacity\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "rooms",
+                            ":room_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c2c61dbd-97d4-42bf-98d6-6c370a573cd9",
+                              "key": "location_id",
+                              "value": "<string>",
+                              "description": "(Required) Location identifier"
+                            },
+                            {
+                              "id": "bdd8ba08-8da1-42f4-8bc9-02001c39a7f2",
+                              "key": "room_id",
+                              "value": "<string>",
+                              "description": "(Required) Room identifier"
+                            }
+                          ]
+                        },
+                        "description": "Update an existing room within a location."
+                      },
+                      "response": [
+                        {
+                          "id": "24e2a54e-bf56-4561-ab34-19b17ce8b6ec",
+                          "name": "Room updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"capacity\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "rooms",
+                                ":room_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "room_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"room\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"location_id\": \"<string>\",\n    \"capacity\": \"<integer>\",\n    \"active\": \"<boolean>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:31:46.000Z",
+                          "updatedAt": "2026-07-28T02:31:46.000Z",
+                          "uid": "35240-24e2a54e-bf56-4561-ab34-19b17ce8b6ec"
+                        },
+                        {
+                          "id": "7bc3077e-20ae-4df8-b461-442f2d9d1dd0",
+                          "name": "Invalid request data",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"capacity\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "rooms",
+                                ":room_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "room_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:46.000Z",
+                          "updatedAt": "2026-07-28T02:31:46.000Z",
+                          "uid": "35240-7bc3077e-20ae-4df8-b461-442f2d9d1dd0"
+                        },
+                        {
+                          "id": "c8452c8e-5d29-4363-8eca-abd8b854865d",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"capacity\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "rooms",
+                                ":room_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "room_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:46.000Z",
+                          "updatedAt": "2026-07-28T02:31:46.000Z",
+                          "uid": "35240-c8452c8e-5d29-4363-8eca-abd8b854865d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:31:46.000Z",
+                      "updatedAt": "2026-07-28T02:31:46.000Z",
+                      "uid": "35240-28ee1761-a5a3-4361-b3d5-595ddd37ab3f"
+                    },
+                    {
+                      "name": "Paradox Delete location room",
+                      "id": "8b3556f4-8823-411f-8b08-a11633351f73",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "rooms",
+                            ":room_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a04da962-399c-4ac9-a452-b3799342987a",
+                              "key": "location_id",
+                              "value": "<string>",
+                              "description": "(Required) Location identifier"
+                            },
+                            {
+                              "id": "dd8ea338-ae91-4756-aa38-fab50e1551a3",
+                              "key": "room_id",
+                              "value": "<string>",
+                              "description": "(Required) Room identifier"
+                            }
+                          ]
+                        },
+                        "description": "Delete a room within a location."
+                      },
+                      "response": [
+                        {
+                          "id": "ec435c84-6c7d-4b4c-8161-d6bc68cfeaec",
+                          "name": "Room deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "rooms",
+                                ":room_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "room_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T02:31:46.000Z",
+                          "updatedAt": "2026-07-28T02:31:46.000Z",
+                          "uid": "35240-ec435c84-6c7d-4b4c-8161-d6bc68cfeaec"
+                        },
+                        {
+                          "id": "9bb958bf-d5ef-463c-86e7-9d91f8959f72",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "rooms",
+                                ":room_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "room_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:46.000Z",
+                          "updatedAt": "2026-07-28T02:31:46.000Z",
+                          "uid": "35240-9bb958bf-d5ef-463c-86e7-9d91f8959f72"
+                        },
+                        {
+                          "id": "fdacc948-21ff-4e0f-ba5b-8186a89e667c",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/rooms/:room_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "rooms",
+                                ":room_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "room_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:46.000Z",
+                          "updatedAt": "2026-07-28T02:31:46.000Z",
+                          "uid": "35240-fdacc948-21ff-4e0f-ba5b-8186a89e667c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:31:46.000Z",
+                      "updatedAt": "2026-07-28T02:31:46.000Z",
+                      "uid": "35240-8b3556f4-8823-411f-8b08-a11633351f73"
+                    }
+                  ],
+                  "id": "4bc52a76-f3d4-41a0-b644-ff8233e5f6d8",
+                  "createdAt": "2026-07-28T02:31:46.000Z",
+                  "updatedAt": "2026-07-28T02:31:46.000Z",
+                  "uid": "35240-4bc52a76-f3d4-41a0-b644-ff8233e5f6d8"
+                },
+                {
+                  "name": "Paradox Get location rooms",
+                  "id": "4de0cfc9-07ec-4d1c-967d-3cf25f2edfae",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:location_id/rooms",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":location_id",
+                        "rooms"
+                      ],
+                      "variable": [
+                        {
+                          "id": "35a26c90-e80c-4737-968d-569e10341889",
+                          "key": "location_id",
+                          "value": "<string>",
+                          "description": "(Required) Location identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all rooms for a specific location."
+                  },
+                  "response": [
+                    {
+                      "id": "fd627faa-8f37-4c50-a672-e376af445b87",
+                      "name": "Rooms returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/rooms",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "rooms"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"rooms\": [\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"location_id\": \"<string>\",\n      \"capacity\": \"<integer>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"location_id\": \"<string>\",\n      \"capacity\": \"<integer>\",\n      \"active\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:31:46.000Z",
+                      "updatedAt": "2026-07-28T02:31:46.000Z",
+                      "uid": "35240-fd627faa-8f37-4c50-a672-e376af445b87"
+                    },
+                    {
+                      "id": "979ff018-7c13-4e3c-a665-e80dd8f6fdb0",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/rooms",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "rooms"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:46.000Z",
+                      "updatedAt": "2026-07-28T02:31:46.000Z",
+                      "uid": "35240-979ff018-7c13-4e3c-a665-e80dd8f6fdb0"
+                    },
+                    {
+                      "id": "84150c5d-d4ad-467d-9639-6a3969416bc7",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/rooms",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "rooms"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:46.000Z",
+                      "updatedAt": "2026-07-28T02:31:46.000Z",
+                      "uid": "35240-84150c5d-d4ad-467d-9639-6a3969416bc7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:46.000Z",
+                  "updatedAt": "2026-07-28T02:31:46.000Z",
+                  "uid": "35240-4de0cfc9-07ec-4d1c-967d-3cf25f2edfae"
+                },
+                {
+                  "name": "Paradox Create location room",
+                  "id": "6191a93b-790d-49f5-b1db-b606c99b1fc7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"capacity\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:location_id/rooms",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":location_id",
+                        "rooms"
+                      ],
+                      "variable": [
+                        {
+                          "id": "696659de-b0f0-4871-abe9-57c37a002a7e",
+                          "key": "location_id",
+                          "value": "<string>",
+                          "description": "(Required) Location identifier"
+                        }
+                      ]
+                    },
+                    "description": "Create a new room within a location."
+                  },
+                  "response": [
+                    {
+                      "id": "a0731f09-7650-40f6-a541-7655ad5951b7",
+                      "name": "Room created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"capacity\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/rooms",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "rooms"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"room\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"location_id\": \"<string>\",\n    \"capacity\": \"<integer>\",\n    \"active\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:46.000Z",
+                      "updatedAt": "2026-07-28T02:31:46.000Z",
+                      "uid": "35240-a0731f09-7650-40f6-a541-7655ad5951b7"
+                    },
+                    {
+                      "id": "6fd14871-7714-4a9f-8b88-802f1e6e6876",
+                      "name": "Invalid request data",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"capacity\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/rooms",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "rooms"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:46.000Z",
+                      "updatedAt": "2026-07-28T02:31:46.000Z",
+                      "uid": "35240-6fd14871-7714-4a9f-8b88-802f1e6e6876"
+                    },
+                    {
+                      "id": "cafbb52f-ece5-41ad-baf7-dbc7babdf3df",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"capacity\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/rooms",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "rooms"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:46.000Z",
+                      "updatedAt": "2026-07-28T02:31:46.000Z",
+                      "uid": "35240-cafbb52f-ece5-41ad-baf7-dbc7babdf3df"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:46.000Z",
+                  "updatedAt": "2026-07-28T02:31:46.000Z",
+                  "uid": "35240-6191a93b-790d-49f5-b1db-b606c99b1fc7"
+                }
+              ],
+              "id": "0e47e170-e6ce-4ecb-b2c7-6c946d9e0161",
+              "createdAt": "2026-07-28T02:31:46.000Z",
+              "updatedAt": "2026-07-28T02:31:46.000Z",
+              "uid": "35240-0e47e170-e6ce-4ecb-b2c7-6c946d9e0161"
+            }
+          ],
+          "id": "24a2ac60-f2e4-4886-883b-af765bf0169a",
+          "createdAt": "2026-07-28T02:31:46.000Z",
+          "updatedAt": "2026-07-28T02:31:46.000Z",
+          "uid": "35240-24a2ac60-f2e4-4886-883b-af765bf0169a"
+        }
+      ],
+      "id": "1e9ae7df-a4b3-4ba2-b31f-1ffc55e49327",
+      "createdAt": "2026-07-28T02:31:46.000Z",
+      "updatedAt": "2026-07-28T02:31:46.000Z",
+      "uid": "35240-1e9ae7df-a4b3-4ba2-b31f-1ffc55e49327"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}

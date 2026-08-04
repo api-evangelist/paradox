@@ -1,0 +1,1055 @@
+{
+  "info": {
+    "_postman_id": "e7320baf-6eac-46e8-8cf4-bd7b0d4ba7d2",
+    "name": "Paradox Authentication Scheduling API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:52.000Z",
+    "updatedAt": "2026-07-28T02:31:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e7320baf-6eac-46e8-8cf4-bd7b0d4ba7d2"
+  },
+  "item": [
+    {
+      "name": "scheduling",
+      "item": [
+        {
+          "name": "multiparty-interviewers",
+          "item": [
+            {
+              "name": "Paradox Get multiparty interviewers",
+              "id": "3ec1fd7f-31e7-40ec-8689-8ca7e319cbbe",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scheduling/multiparty-interviewers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduling",
+                    "multiparty-interviewers"
+                  ]
+                },
+                "description": "Retrieve the list of available multiparty interviewers for scheduling."
+              },
+              "response": [
+                {
+                  "id": "bb94fe93-c5d2-47ef-9365-5fc97d26699c",
+                  "name": "Interviewers returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/multiparty-interviewers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "multiparty-interviewers"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"interviewers\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"timezone\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-bb94fe93-c5d2-47ef-9365-5fc97d26699c"
+                },
+                {
+                  "id": "a989950d-4db2-456d-a574-03cadbe233dd",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/multiparty-interviewers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "multiparty-interviewers"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-a989950d-4db2-456d-a574-03cadbe233dd"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:53.000Z",
+              "updatedAt": "2026-07-28T02:31:53.000Z",
+              "uid": "35240-3ec1fd7f-31e7-40ec-8689-8ca7e319cbbe"
+            }
+          ],
+          "id": "a4628175-effe-40fa-af19-c3ac24d8e374",
+          "createdAt": "2026-07-28T02:31:53.000Z",
+          "updatedAt": "2026-07-28T02:31:53.000Z",
+          "uid": "35240-a4628175-effe-40fa-af19-c3ac24d8e374"
+        },
+        {
+          "name": "interview-settings",
+          "item": [
+            {
+              "name": "Paradox Get interview settings",
+              "id": "4e5b95d0-c7e4-4e32-ac12-f4ecc4e36122",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scheduling/interview-settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduling",
+                    "interview-settings"
+                  ]
+                },
+                "description": "Retrieve interview scheduling configuration settings."
+              },
+              "response": [
+                {
+                  "id": "8cf6d753-7350-4e06-83ba-e840c39443ec",
+                  "name": "Interview settings returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/interview-settings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "interview-settings"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"settings\": {\n    \"duration\": \"<integer>\",\n    \"buffer_time\": \"<integer>\",\n    \"scheduling_window\": \"<integer>\",\n    \"confirmation_required\": \"<boolean>\",\n    \"reminder_enabled\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-8cf6d753-7350-4e06-83ba-e840c39443ec"
+                },
+                {
+                  "id": "6609b86e-1a64-4ea7-8105-e3a43b600226",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/interview-settings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "interview-settings"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-6609b86e-1a64-4ea7-8105-e3a43b600226"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:53.000Z",
+              "updatedAt": "2026-07-28T02:31:53.000Z",
+              "uid": "35240-4e5b95d0-c7e4-4e32-ac12-f4ecc4e36122"
+            }
+          ],
+          "id": "4e84cff3-93cb-405b-a46c-c32902672a2e",
+          "createdAt": "2026-07-28T02:31:53.000Z",
+          "updatedAt": "2026-07-28T02:31:53.000Z",
+          "uid": "35240-4e84cff3-93cb-405b-a46c-c32902672a2e"
+        },
+        {
+          "name": "job-location-rooms",
+          "item": [
+            {
+              "name": "Paradox Get job location rooms",
+              "id": "f5bbc6b8-d288-4589-b9c4-a8b7ccf12ea3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scheduling/job-location-rooms",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduling",
+                    "job-location-rooms"
+                  ]
+                },
+                "description": "Retrieve available interview rooms for job locations."
+              },
+              "response": [
+                {
+                  "id": "d8abd08d-29e9-4f3d-b375-e69e7c27c7be",
+                  "name": "Job location rooms returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/job-location-rooms",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "job-location-rooms"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"rooms\": [\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"location_id\": \"<string>\",\n      \"capacity\": \"<integer>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"location_id\": \"<string>\",\n      \"capacity\": \"<integer>\",\n      \"active\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-d8abd08d-29e9-4f3d-b375-e69e7c27c7be"
+                },
+                {
+                  "id": "abd7d31d-d862-4717-a0f9-85e6a76362fb",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/job-location-rooms",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "job-location-rooms"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-abd7d31d-d862-4717-a0f9-85e6a76362fb"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:53.000Z",
+              "updatedAt": "2026-07-28T02:31:53.000Z",
+              "uid": "35240-f5bbc6b8-d288-4589-b9c4-a8b7ccf12ea3"
+            }
+          ],
+          "id": "51bc7527-a1b0-4d45-be3c-2609b9f5ff92",
+          "createdAt": "2026-07-28T02:31:53.000Z",
+          "updatedAt": "2026-07-28T02:31:53.000Z",
+          "uid": "35240-51bc7527-a1b0-4d45-be3c-2609b9f5ff92"
+        },
+        {
+          "name": "send-interview-alerts",
+          "item": [
+            {
+              "name": "Paradox Send interview alerts",
+              "id": "c0df9af4-b93e-4962-8c5c-3903ac4069c4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"interview_id\": \"<string>\",\n  \"alert_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scheduling/send-interview-alerts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduling",
+                    "send-interview-alerts"
+                  ]
+                },
+                "description": "Send interview alert notifications to candidates and/or interviewers about upcoming or changed interviews."
+              },
+              "response": [
+                {
+                  "id": "cb0d4a4b-a452-48fe-ae50-8a062297ec83",
+                  "name": "Interview alerts sent successfully",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"interview_id\": \"<string>\",\n  \"alert_type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/send-interview-alerts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "send-interview-alerts"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-cb0d4a4b-a452-48fe-ae50-8a062297ec83"
+                },
+                {
+                  "id": "54e0c41a-c98f-4beb-9067-56226fb92d1f",
+                  "name": "Invalid request data",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"interview_id\": \"<string>\",\n  \"alert_type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/send-interview-alerts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "send-interview-alerts"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-54e0c41a-c98f-4beb-9067-56226fb92d1f"
+                },
+                {
+                  "id": "a8efdc73-71d0-4b81-9cec-ab3e58cbbeeb",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"interview_id\": \"<string>\",\n  \"alert_type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/send-interview-alerts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "send-interview-alerts"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-a8efdc73-71d0-4b81-9cec-ab3e58cbbeeb"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:53.000Z",
+              "updatedAt": "2026-07-28T02:31:53.000Z",
+              "uid": "35240-c0df9af4-b93e-4962-8c5c-3903ac4069c4"
+            }
+          ],
+          "id": "d806f5bd-fb90-473b-ac96-7f226fc131ce",
+          "createdAt": "2026-07-28T02:31:53.000Z",
+          "updatedAt": "2026-07-28T02:31:53.000Z",
+          "uid": "35240-d806f5bd-fb90-473b-ac96-7f226fc131ce"
+        },
+        {
+          "name": "interview-history",
+          "item": [
+            {
+              "name": "Paradox Get interview history",
+              "id": "63016d91-9d1f-472b-800d-b692df598461",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scheduling/interview-history?candidate_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduling",
+                    "interview-history"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by candidate identifier",
+                      "key": "candidate_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by start date",
+                      "key": "start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter by end date",
+                      "key": "end_date",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                },
+                "description": "Retrieve interview history records."
+              },
+              "response": [
+                {
+                  "id": "26058f43-586b-4e4d-844d-6023afd9e053",
+                  "name": "Interview history returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/interview-history?candidate_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "interview-history"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by candidate identifier",
+                          "key": "candidate_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by start date",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Filter by end date",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"interviews\": [\n    {\n      \"id\": \"<string>\",\n      \"candidate_id\": \"<string>\",\n      \"interviewer_id\": \"<string>\",\n      \"location_id\": \"<string>\",\n      \"room_id\": \"<string>\",\n      \"scheduled_at\": \"<dateTime>\",\n      \"duration\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"type\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"candidate_id\": \"<string>\",\n      \"interviewer_id\": \"<string>\",\n      \"location_id\": \"<string>\",\n      \"room_id\": \"<string>\",\n      \"scheduled_at\": \"<dateTime>\",\n      \"duration\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"type\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-26058f43-586b-4e4d-844d-6023afd9e053"
+                },
+                {
+                  "id": "64b98d89-58aa-49c5-ace9-2303fd116dc8",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/interview-history?candidate_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "interview-history"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by candidate identifier",
+                          "key": "candidate_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by start date",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Filter by end date",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-64b98d89-58aa-49c5-ace9-2303fd116dc8"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:53.000Z",
+              "updatedAt": "2026-07-28T02:31:53.000Z",
+              "uid": "35240-63016d91-9d1f-472b-800d-b692df598461"
+            }
+          ],
+          "id": "4194f6c4-b9d6-4e08-967d-9d2f2a9dd69e",
+          "createdAt": "2026-07-28T02:31:53.000Z",
+          "updatedAt": "2026-07-28T02:31:53.000Z",
+          "uid": "35240-4194f6c4-b9d6-4e08-967d-9d2f2a9dd69e"
+        },
+        {
+          "name": "communication",
+          "item": [
+            {
+              "name": "Paradox Schedule shortlist review",
+              "id": "33ff572d-bbe5-4275-9cea-b4f20adb78a1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email_title\": \"<string>\",\n  \"email_text\": \"<string>\",\n  \"action_link\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scheduling/communication",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduling",
+                    "communication"
+                  ]
+                },
+                "description": "Send an email to hiring manager(s) with a shortlist of candidates for review and scheduling."
+              },
+              "response": [
+                {
+                  "id": "fec991e4-5466-4dcd-a987-ee683f9c6e0c",
+                  "name": "Shortlist review email sent successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email_title\": \"<string>\",\n  \"email_text\": \"<string>\",\n  \"action_link\": \"<uri>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/communication",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "communication"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-fec991e4-5466-4dcd-a987-ee683f9c6e0c"
+                },
+                {
+                  "id": "07d1c294-7129-450c-97e4-3a5f2e6e87d2",
+                  "name": "Invalid request data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email_title\": \"<string>\",\n  \"email_text\": \"<string>\",\n  \"action_link\": \"<uri>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/communication",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "communication"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-07d1c294-7129-450c-97e4-3a5f2e6e87d2"
+                },
+                {
+                  "id": "cf2a41f6-1712-4fd6-814c-a1bd0bdfcfbe",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email_title\": \"<string>\",\n  \"email_text\": \"<string>\",\n  \"action_link\": \"<uri>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduling/communication",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduling",
+                        "communication"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:53.000Z",
+                  "updatedAt": "2026-07-28T02:31:53.000Z",
+                  "uid": "35240-cf2a41f6-1712-4fd6-814c-a1bd0bdfcfbe"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:53.000Z",
+              "updatedAt": "2026-07-28T02:31:53.000Z",
+              "uid": "35240-33ff572d-bbe5-4275-9cea-b4f20adb78a1"
+            }
+          ],
+          "id": "35e215b6-8cdf-4234-ad41-ceb8231e06ed",
+          "createdAt": "2026-07-28T02:31:53.000Z",
+          "updatedAt": "2026-07-28T02:31:53.000Z",
+          "uid": "35240-35e215b6-8cdf-4234-ad41-ceb8231e06ed"
+        }
+      ],
+      "id": "a01852a7-bc1a-441c-b170-80a5c336d1f9",
+      "createdAt": "2026-07-28T02:31:53.000Z",
+      "updatedAt": "2026-07-28T02:31:53.000Z",
+      "uid": "35240-a01852a7-bc1a-441c-b170-80a5c336d1f9"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}

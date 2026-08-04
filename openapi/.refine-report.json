@@ -1,0 +1,34 @@
+{
+  "provider": "paradox",
+  "sources": [
+    "paradox-authentication-api-openapi.yml",
+    "paradox-candidate-attributes-api-openapi.yml",
+    "paradox-candidates-api-openapi.yml",
+    "paradox-company-api-openapi.yml",
+    "paradox-location-areas-api-openapi.yml",
+    "paradox-location-rooms-api-openapi.yml",
+    "paradox-locations-api-openapi.yml",
+    "paradox-reporting-api-openapi.yml",
+    "paradox-scheduling-api-openapi.yml",
+    "paradox-user-permissions-api-openapi.yml",
+    "paradox-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "paradox-authentication-api-openapi.yml",
+    "paradox-candidate-attributes-api-openapi.yml",
+    "paradox-candidates-api-openapi.yml",
+    "paradox-company-api-openapi.yml",
+    "paradox-location-areas-api-openapi.yml",
+    "paradox-location-rooms-api-openapi.yml",
+    "paradox-locations-api-openapi.yml",
+    "paradox-reporting-api-openapi.yml",
+    "paradox-scheduling-api-openapi.yml",
+    "paradox-user-permissions-api-openapi.yml",
+    "paradox-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

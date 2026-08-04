@@ -1,0 +1,552 @@
+{
+  "info": {
+    "_postman_id": "ffa297bb-a99b-4b6f-940a-603da34a0640",
+    "name": "Paradox Authentication Company API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:40.000Z",
+    "updatedAt": "2026-07-28T02:31:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ffa297bb-a99b-4b6f-940a-603da34a0640"
+  },
+  "item": [
+    {
+      "name": "company",
+      "item": [
+        {
+          "name": "conversations",
+          "item": [
+            {
+              "name": "Paradox Get company conversations",
+              "id": "5216820a-b820-402a-861d-f36fdf1e9786",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/company/conversations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "company",
+                    "conversations"
+                  ]
+                },
+                "description": "Retrieve all conversation configurations for the company."
+              },
+              "response": [
+                {
+                  "id": "8ba9dcc6-9b23-4910-b52d-1f9bbbd18140",
+                  "name": "Conversations returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/company/conversations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "company",
+                        "conversations"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"conversations\": [\n    {\n      \"oid\": \"<string>\",\n      \"label\": \"<string>\",\n      \"is_remote\": 1,\n      \"deactivated\": 1,\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"oid\": \"<string>\",\n      \"label\": \"<string>\",\n      \"is_remote\": 1,\n      \"deactivated\": 1,\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:31:41.000Z",
+                  "updatedAt": "2026-07-28T02:31:41.000Z",
+                  "uid": "35240-8ba9dcc6-9b23-4910-b52d-1f9bbbd18140"
+                },
+                {
+                  "id": "19438ed5-472b-4cb7-bf86-53fc801de4b1",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/company/conversations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "company",
+                        "conversations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:41.000Z",
+                  "updatedAt": "2026-07-28T02:31:41.000Z",
+                  "uid": "35240-19438ed5-472b-4cb7-bf86-53fc801de4b1"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:41.000Z",
+              "updatedAt": "2026-07-28T02:31:41.000Z",
+              "uid": "35240-5216820a-b820-402a-861d-f36fdf1e9786"
+            }
+          ],
+          "id": "e71b5d60-4cb3-44d3-8638-debf0c8ea910",
+          "createdAt": "2026-07-28T02:31:41.000Z",
+          "updatedAt": "2026-07-28T02:31:41.000Z",
+          "uid": "35240-e71b5d60-4cb3-44d3-8638-debf0c8ea910"
+        },
+        {
+          "name": "groups",
+          "item": [
+            {
+              "name": "Paradox Get company groups",
+              "id": "eae5f1d6-4ecb-4050-9a9a-c36fa945e6d0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/company/groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "company",
+                    "groups"
+                  ]
+                },
+                "description": "Retrieve all groups configured for the company."
+              },
+              "response": [
+                {
+                  "id": "f0cf3047-4341-4132-8c4a-25b7ca25f422",
+                  "name": "Groups returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/company/groups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "company",
+                        "groups"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"groups\": [\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:31:41.000Z",
+                  "updatedAt": "2026-07-28T02:31:41.000Z",
+                  "uid": "35240-f0cf3047-4341-4132-8c4a-25b7ca25f422"
+                },
+                {
+                  "id": "2b09ef0b-473e-4404-918a-bed513198a19",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/company/groups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "company",
+                        "groups"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:41.000Z",
+                  "updatedAt": "2026-07-28T02:31:41.000Z",
+                  "uid": "35240-2b09ef0b-473e-4404-918a-bed513198a19"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:41.000Z",
+              "updatedAt": "2026-07-28T02:31:41.000Z",
+              "uid": "35240-eae5f1d6-4ecb-4050-9a9a-c36fa945e6d0"
+            }
+          ],
+          "id": "9924444f-090b-48c1-ada9-9a004444fa98",
+          "createdAt": "2026-07-28T02:31:41.000Z",
+          "updatedAt": "2026-07-28T02:31:41.000Z",
+          "uid": "35240-9924444f-090b-48c1-ada9-9a004444fa98"
+        },
+        {
+          "name": "school_areas",
+          "item": [
+            {
+              "name": "Paradox Get company schools and areas",
+              "id": "4328cbde-de57-444f-828e-ccb51edcff6b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/company/school_areas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "company",
+                    "school_areas"
+                  ]
+                },
+                "description": "Retrieve all schools and areas configured for the company."
+              },
+              "response": [
+                {
+                  "id": "be4f71f6-625c-45e5-8bc7-91f4e2b85f60",
+                  "name": "Schools and areas returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/company/school_areas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "company",
+                        "school_areas"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"school_areas\": [\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": 1\n    },\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": 1\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:31:41.000Z",
+                  "updatedAt": "2026-07-28T02:31:41.000Z",
+                  "uid": "35240-be4f71f6-625c-45e5-8bc7-91f4e2b85f60"
+                },
+                {
+                  "id": "9f735a92-a03a-4696-938a-7c2886f27184",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/company/school_areas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "company",
+                        "school_areas"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:41.000Z",
+                  "updatedAt": "2026-07-28T02:31:41.000Z",
+                  "uid": "35240-9f735a92-a03a-4696-938a-7c2886f27184"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:41.000Z",
+              "updatedAt": "2026-07-28T02:31:41.000Z",
+              "uid": "35240-4328cbde-de57-444f-828e-ccb51edcff6b"
+            }
+          ],
+          "id": "cbc95f70-3385-4d04-9f64-162a51921197",
+          "createdAt": "2026-07-28T02:31:41.000Z",
+          "updatedAt": "2026-07-28T02:31:41.000Z",
+          "uid": "35240-cbc95f70-3385-4d04-9f64-162a51921197"
+        },
+        {
+          "name": "ai",
+          "item": [
+            {
+              "name": "Paradox Get AI assistant",
+              "id": "bd45581e-5efd-4bbe-80cb-179b9fc11b56",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/company/ai",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "company",
+                    "ai"
+                  ]
+                },
+                "description": "Retrieve the AI assistant name and image configuration."
+              },
+              "response": [
+                {
+                  "id": "9e877114-ad46-4179-b100-3a5b7ea31e48",
+                  "name": "AI assistant details returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/company/ai",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "company",
+                        "ai"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"ai_name\": \"<string>\",\n  \"ai_logo_uri\": \"<uri>\"\n}",
+                  "createdAt": "2026-07-28T02:31:41.000Z",
+                  "updatedAt": "2026-07-28T02:31:41.000Z",
+                  "uid": "35240-9e877114-ad46-4179-b100-3a5b7ea31e48"
+                },
+                {
+                  "id": "57bbeab8-056b-486d-9ad7-a1c3b5efea0d",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/company/ai",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "company",
+                        "ai"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:41.000Z",
+                  "updatedAt": "2026-07-28T02:31:41.000Z",
+                  "uid": "35240-57bbeab8-056b-486d-9ad7-a1c3b5efea0d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:41.000Z",
+              "updatedAt": "2026-07-28T02:31:41.000Z",
+              "uid": "35240-bd45581e-5efd-4bbe-80cb-179b9fc11b56"
+            }
+          ],
+          "id": "cd9b7cf9-e537-4437-a63c-f11bbb157868",
+          "createdAt": "2026-07-28T02:31:41.000Z",
+          "updatedAt": "2026-07-28T02:31:41.000Z",
+          "uid": "35240-cd9b7cf9-e537-4437-a63c-f11bbb157868"
+        }
+      ],
+      "id": "df82878d-5999-405a-9f32-06a0cb8881fc",
+      "createdAt": "2026-07-28T02:31:41.000Z",
+      "updatedAt": "2026-07-28T02:31:41.000Z",
+      "uid": "35240-df82878d-5999-405a-9f32-06a0cb8881fc"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}

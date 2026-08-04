@@ -1,0 +1,2720 @@
+{
+  "info": {
+    "_postman_id": "c72ee239-6373-4d13-9bf0-a7440f1bba6c",
+    "name": "Paradox Authentication Candidates API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:39.000Z",
+    "updatedAt": "2026-07-28T02:31:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c72ee239-6373-4d13-9bf0-a7440f1bba6c"
+  },
+  "item": [
+    {
+      "name": "candidates",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Paradox Get single candidate",
+              "id": "14783da5-d51f-4c1f-a725-4cbe9642eafd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/candidates/:id?conversation=<boolean>&note=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Include conversation history",
+                      "key": "conversation",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Include candidate notes",
+                      "key": "note",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "14885f01-3145-4697-aa1b-ff1a25c6bbd0",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Candidate OID, external OID, or external ID"
+                    }
+                  ]
+                },
+                "description": "Retrieve details for a specific candidate by OID or external OID."
+              },
+              "response": [
+                {
+                  "id": "6489a9e2-cfb5-42f1-adf6-45f424b62868",
+                  "name": "Candidate details returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:id?conversation=<boolean>&note=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Include conversation history",
+                          "key": "conversation",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Include candidate notes",
+                          "key": "note",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"candidate\": {\n    \"OID\": \"<integer>\",\n    \"external_oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone\": \"<string>\",\n    \"ex_id\": \"<string>\",\n    \"ex_status\": \"<string>\",\n    \"ex_step\": \"<string>\",\n    \"ex_reason\": \"<string>\",\n    \"job_req_id\": \"<string>\",\n    \"job_title\": \"<string>\",\n    \"job_loc_code\": \"<string>\",\n    \"primary_contact_method\": 5,\n    \"hired_date\": \"<string,null-date-time>\",\n    \"hirevue_link\": \"<string>\",\n    \"pymetrics_link\": \"<string>\",\n    \"adp_link\": \"<string>\",\n    \"hirevue_instructions\": \"<string>\",\n    \"audience_type\": \"<string>\",\n    \"hm_cid\": \"<string>\",\n    \"external_group_id\": \"<string>\",\n    \"referrer_email\": \"<email>\",\n    \"referrer_name\": \"<string>\",\n    \"recruiter_email\": \"<email>\",\n    \"hiring_manager\": \"<string>\",\n    \"external_referrer\": \"<string>\",\n    \"language_preference\": \"en\",\n    \"candidate_journey\": \"<string>\",\n    \"candidate_journey_status\": \"<string>\",\n    \"candidate_attribute_data\": {\n      \"velit0_\": \"<string>\",\n      \"commodod2\": \"<string>\"\n    },\n    \"job_application_id\": \"<string>\",\n    \"candidate_location_info\": \"<string>\",\n    \"external_source_id\": \"<string>\",\n    \"talent_community\": false,\n    \"community_of_interest\": \"<integer>\",\n    \"consent_to_marketing\": \"<string>\",\n    \"note\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-6489a9e2-cfb5-42f1-adf6-45f424b62868"
+                },
+                {
+                  "id": "b8cc0c3a-5e26-46ec-bbba-9f83072b01cc",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:id?conversation=<boolean>&note=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Include conversation history",
+                          "key": "conversation",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Include candidate notes",
+                          "key": "note",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-b8cc0c3a-5e26-46ec-bbba-9f83072b01cc"
+                },
+                {
+                  "id": "47ab0c7d-e697-4ff5-b75f-096305091f49",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:id?conversation=<boolean>&note=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Include conversation history",
+                          "key": "conversation",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Include candidate notes",
+                          "key": "note",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-47ab0c7d-e697-4ff5-b75f-096305091f49"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-14783da5-d51f-4c1f-a725-4cbe9642eafd"
+            },
+            {
+              "name": "Paradox Update candidate",
+              "id": "2b8a3d5a-1184-46f1-a5eb-f52663c0ccd9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email\": \"<email>\",\n  \"ex_id\": \"<string>\",\n  \"hirevue_link\": \"<string>\",\n  \"pymetrics_link\": \"<string>\",\n  \"ex_step\": \"<string>\",\n  \"ex_status\": \"<string>\",\n  \"ex_reason\": \"<string>\",\n  \"job_req_id\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"primary_contact_method\": \"<string>\",\n  \"hired_date\": \"<dateTime>\",\n  \"adp_link\": \"<string>\",\n  \"audience_type\": \"<string>\",\n  \"recruiter_email\": \"<email>\",\n  \"hiring_manager\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"candidate_journey\": \"<string>\",\n  \"candidate_journey_status\": \"<string>\",\n  \"candidate_attribute_data\": {\n    \"incididunt_2f\": \"<string>\",\n    \"officia_5\": \"<string>\",\n    \"ad9e\": \"<string>\"\n  },\n  \"note\": \"<string>\",\n  \"use_paradox_status_map\": \"<boolean>\",\n  \"status_map_name\": \"<string>\",\n  \"status_map_ex_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/candidates/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a46b3b86-6a04-402a-b3f2-ccc1c28f78c6",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Candidate OID, external OID, or external ID"
+                    }
+                  ]
+                },
+                "description": "Update an existing candidate by OID, external OID, or external ID. Supports updating name, contact information, status, journey details, attributes, and attached documents."
+              },
+              "response": [
+                {
+                  "id": "a805dab6-3635-4977-b8a3-a92a54a5b125",
+                  "name": "Candidate updated successfully",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email\": \"<email>\",\n  \"ex_id\": \"<string>\",\n  \"hirevue_link\": \"<string>\",\n  \"pymetrics_link\": \"<string>\",\n  \"ex_step\": \"<string>\",\n  \"ex_status\": \"<string>\",\n  \"ex_reason\": \"<string>\",\n  \"job_req_id\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"primary_contact_method\": \"<string>\",\n  \"hired_date\": \"<dateTime>\",\n  \"adp_link\": \"<string>\",\n  \"audience_type\": \"<string>\",\n  \"recruiter_email\": \"<email>\",\n  \"hiring_manager\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"candidate_journey\": \"<string>\",\n  \"candidate_journey_status\": \"<string>\",\n  \"candidate_attribute_data\": {\n    \"incididunt_2f\": \"<string>\",\n    \"officia_5\": \"<string>\",\n    \"ad9e\": \"<string>\"\n  },\n  \"note\": \"<string>\",\n  \"use_paradox_status_map\": \"<boolean>\",\n  \"status_map_name\": \"<string>\",\n  \"status_map_ex_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"candidate\": {\n    \"OID\": \"<integer>\",\n    \"external_oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone\": \"<string>\",\n    \"ex_id\": \"<string>\",\n    \"ex_status\": \"<string>\",\n    \"ex_step\": \"<string>\",\n    \"ex_reason\": \"<string>\",\n    \"job_req_id\": \"<string>\",\n    \"job_title\": \"<string>\",\n    \"job_loc_code\": \"<string>\",\n    \"primary_contact_method\": 5,\n    \"hired_date\": \"<string,null-date-time>\",\n    \"hirevue_link\": \"<string>\",\n    \"pymetrics_link\": \"<string>\",\n    \"adp_link\": \"<string>\",\n    \"hirevue_instructions\": \"<string>\",\n    \"audience_type\": \"<string>\",\n    \"hm_cid\": \"<string>\",\n    \"external_group_id\": \"<string>\",\n    \"referrer_email\": \"<email>\",\n    \"referrer_name\": \"<string>\",\n    \"recruiter_email\": \"<email>\",\n    \"hiring_manager\": \"<string>\",\n    \"external_referrer\": \"<string>\",\n    \"language_preference\": \"en\",\n    \"candidate_journey\": \"<string>\",\n    \"candidate_journey_status\": \"<string>\",\n    \"candidate_attribute_data\": {\n      \"velit0_\": \"<string>\",\n      \"commodod2\": \"<string>\"\n    },\n    \"job_application_id\": \"<string>\",\n    \"candidate_location_info\": \"<string>\",\n    \"external_source_id\": \"<string>\",\n    \"talent_community\": false,\n    \"community_of_interest\": \"<integer>\",\n    \"consent_to_marketing\": \"<string>\",\n    \"note\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-a805dab6-3635-4977-b8a3-a92a54a5b125"
+                },
+                {
+                  "id": "bf5d54f1-abe6-41ef-9bf6-e88dd6ceaf40",
+                  "name": "Invalid request data",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email\": \"<email>\",\n  \"ex_id\": \"<string>\",\n  \"hirevue_link\": \"<string>\",\n  \"pymetrics_link\": \"<string>\",\n  \"ex_step\": \"<string>\",\n  \"ex_status\": \"<string>\",\n  \"ex_reason\": \"<string>\",\n  \"job_req_id\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"primary_contact_method\": \"<string>\",\n  \"hired_date\": \"<dateTime>\",\n  \"adp_link\": \"<string>\",\n  \"audience_type\": \"<string>\",\n  \"recruiter_email\": \"<email>\",\n  \"hiring_manager\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"candidate_journey\": \"<string>\",\n  \"candidate_journey_status\": \"<string>\",\n  \"candidate_attribute_data\": {\n    \"incididunt_2f\": \"<string>\",\n    \"officia_5\": \"<string>\",\n    \"ad9e\": \"<string>\"\n  },\n  \"note\": \"<string>\",\n  \"use_paradox_status_map\": \"<boolean>\",\n  \"status_map_name\": \"<string>\",\n  \"status_map_ex_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-bf5d54f1-abe6-41ef-9bf6-e88dd6ceaf40"
+                },
+                {
+                  "id": "ac8bf375-3c67-4385-afe9-af752900354b",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email\": \"<email>\",\n  \"ex_id\": \"<string>\",\n  \"hirevue_link\": \"<string>\",\n  \"pymetrics_link\": \"<string>\",\n  \"ex_step\": \"<string>\",\n  \"ex_status\": \"<string>\",\n  \"ex_reason\": \"<string>\",\n  \"job_req_id\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"primary_contact_method\": \"<string>\",\n  \"hired_date\": \"<dateTime>\",\n  \"adp_link\": \"<string>\",\n  \"audience_type\": \"<string>\",\n  \"recruiter_email\": \"<email>\",\n  \"hiring_manager\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"candidate_journey\": \"<string>\",\n  \"candidate_journey_status\": \"<string>\",\n  \"candidate_attribute_data\": {\n    \"incididunt_2f\": \"<string>\",\n    \"officia_5\": \"<string>\",\n    \"ad9e\": \"<string>\"\n  },\n  \"note\": \"<string>\",\n  \"use_paradox_status_map\": \"<boolean>\",\n  \"status_map_name\": \"<string>\",\n  \"status_map_ex_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-ac8bf375-3c67-4385-afe9-af752900354b"
+                },
+                {
+                  "id": "7183208d-d8d2-40a3-8eaf-0fd3c510319f",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email\": \"<email>\",\n  \"ex_id\": \"<string>\",\n  \"hirevue_link\": \"<string>\",\n  \"pymetrics_link\": \"<string>\",\n  \"ex_step\": \"<string>\",\n  \"ex_status\": \"<string>\",\n  \"ex_reason\": \"<string>\",\n  \"job_req_id\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"primary_contact_method\": \"<string>\",\n  \"hired_date\": \"<dateTime>\",\n  \"adp_link\": \"<string>\",\n  \"audience_type\": \"<string>\",\n  \"recruiter_email\": \"<email>\",\n  \"hiring_manager\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"candidate_journey\": \"<string>\",\n  \"candidate_journey_status\": \"<string>\",\n  \"candidate_attribute_data\": {\n    \"incididunt_2f\": \"<string>\",\n    \"officia_5\": \"<string>\",\n    \"ad9e\": \"<string>\"\n  },\n  \"note\": \"<string>\",\n  \"use_paradox_status_map\": \"<boolean>\",\n  \"status_map_name\": \"<string>\",\n  \"status_map_ex_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-7183208d-d8d2-40a3-8eaf-0fd3c510319f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-2b8a3d5a-1184-46f1-a5eb-f52663c0ccd9"
+            },
+            {
+              "name": "Paradox Delete candidate",
+              "id": "8cb874e4-a80b-4e52-9973-eba7797a9e49",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/candidates/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "380ec08c-fdb1-4796-bff4-4bce89494c04",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Candidate OID, external OID, or external ID"
+                    }
+                  ]
+                },
+                "description": "Delete a candidate by OID or external OID."
+              },
+              "response": [
+                {
+                  "id": "6b13d505-2fc8-47d2-9537-fc2d72a182d1",
+                  "name": "Candidate deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-6b13d505-2fc8-47d2-9537-fc2d72a182d1"
+                },
+                {
+                  "id": "9e36afed-229b-4abe-8202-6a4927417271",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-9e36afed-229b-4abe-8202-6a4927417271"
+                },
+                {
+                  "id": "0103811d-86e4-4101-9444-2774c3a579f5",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-0103811d-86e4-4101-9444-2774c3a579f5"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-8cb874e4-a80b-4e52-9973-eba7797a9e49"
+            }
+          ],
+          "id": "155092c0-0db8-4576-b350-998ec40f89d6",
+          "createdAt": "2026-07-28T02:31:39.000Z",
+          "updatedAt": "2026-07-28T02:31:39.000Z",
+          "uid": "35240-155092c0-0db8-4576-b350-998ec40f89d6"
+        },
+        {
+          "name": "unsubscribe",
+          "item": [
+            {
+              "name": "Paradox Unsubscribe candidate",
+              "id": "270352d7-307a-4367-9b10-2d8b43c08181",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OID\": \"<integer>\",\n  \"action_id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/candidates/unsubscribe",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates",
+                    "unsubscribe"
+                  ]
+                },
+                "description": "Unsubscribe or resubscribe a candidate from communications. Use action_id 1 to unsubscribe and 0 to resubscribe."
+              },
+              "response": [
+                {
+                  "id": "7ea09963-ef50-4ffd-9104-f9d5a9e87b8f",
+                  "name": "Subscription status updated successfully",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"OID\": \"<integer>\",\n  \"action_id\": 1\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/unsubscribe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        "unsubscribe"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"OID\": \"<integer>\",\n  \"unsubscribed\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-7ea09963-ef50-4ffd-9104-f9d5a9e87b8f"
+                },
+                {
+                  "id": "b32710dc-3003-48d8-a482-00338cfd1629",
+                  "name": "Invalid request data",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"OID\": \"<integer>\",\n  \"action_id\": 1\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/unsubscribe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        "unsubscribe"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-b32710dc-3003-48d8-a482-00338cfd1629"
+                },
+                {
+                  "id": "1717d615-06df-45eb-aa79-d6c1dfe19885",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"OID\": \"<integer>\",\n  \"action_id\": 1\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/unsubscribe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        "unsubscribe"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-1717d615-06df-45eb-aa79-d6c1dfe19885"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-270352d7-307a-4367-9b10-2d8b43c08181"
+            }
+          ],
+          "id": "b94bf9fb-e38e-402c-bee4-51c14093b08d",
+          "createdAt": "2026-07-28T02:31:39.000Z",
+          "updatedAt": "2026-07-28T02:31:39.000Z",
+          "uid": "35240-b94bf9fb-e38e-402c-bee4-51c14093b08d"
+        },
+        {
+          "name": "send_message",
+          "item": [
+            {
+              "name": "Paradox Send candidate message",
+              "id": "01ea38c7-e168-4305-83b9-c709f0111185",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OID\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"send_as\": \"<string>\",\n  \"contact_method\": \"<string>\",\n  \"email_subject\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/candidates/send_message",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates",
+                    "send_message"
+                  ]
+                },
+                "description": "Send a message to a candidate via their preferred contact method."
+              },
+              "response": [
+                {
+                  "id": "4dcb5d51-0ee2-4890-8052-7ea943b22854",
+                  "name": "Message sent successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"OID\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"send_as\": \"<string>\",\n  \"contact_method\": \"<string>\",\n  \"email_subject\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/send_message",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        "send_message"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-4dcb5d51-0ee2-4890-8052-7ea943b22854"
+                },
+                {
+                  "id": "96daecff-0717-4647-abae-ca322f5c0467",
+                  "name": "Invalid request data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"OID\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"send_as\": \"<string>\",\n  \"contact_method\": \"<string>\",\n  \"email_subject\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/send_message",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        "send_message"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-96daecff-0717-4647-abae-ca322f5c0467"
+                },
+                {
+                  "id": "0dd217a3-c276-4b14-bb5a-7c905af09948",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"OID\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"send_as\": \"<string>\",\n  \"contact_method\": \"<string>\",\n  \"email_subject\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/send_message",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        "send_message"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-0dd217a3-c276-4b14-bb5a-7c905af09948"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-01ea38c7-e168-4305-83b9-c709f0111185"
+            }
+          ],
+          "id": "45789e75-0c6a-4e37-b6a9-2cadfc7c30cb",
+          "createdAt": "2026-07-28T02:31:39.000Z",
+          "updatedAt": "2026-07-28T02:31:39.000Z",
+          "uid": "35240-45789e75-0c6a-4e37-b6a9-2cadfc7c30cb"
+        },
+        {
+          "name": "background_check",
+          "item": [
+            {
+              "name": "standard",
+              "item": [
+                {
+                  "name": "Paradox Send standard background check",
+                  "id": "3f68447b-d2ef-4d37-b540-fb092607a0ee",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"ex_application_id\": \"<string>\",\n  \"ex_candidate_id\": \"<string>\",\n  \"background_check_url\": \"<uri>\",\n  \"status\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/background_check/standard",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        "background_check",
+                        "standard"
+                      ]
+                    },
+                    "description": "Initiate a standard background check for a candidate."
+                  },
+                  "response": [
+                    {
+                      "id": "da04b140-8299-4b80-a60a-ae8d0a8d96fd",
+                      "name": "Background check initiated successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"ex_application_id\": \"<string>\",\n  \"ex_candidate_id\": \"<string>\",\n  \"background_check_url\": \"<uri>\",\n  \"status\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/candidates/background_check/standard",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidates",
+                            "background_check",
+                            "standard"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:31:40.000Z",
+                      "updatedAt": "2026-07-28T02:31:40.000Z",
+                      "uid": "35240-da04b140-8299-4b80-a60a-ae8d0a8d96fd"
+                    },
+                    {
+                      "id": "9dabef6a-c6b1-432c-a93a-2466c8840650",
+                      "name": "Invalid request data",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"ex_application_id\": \"<string>\",\n  \"ex_candidate_id\": \"<string>\",\n  \"background_check_url\": \"<uri>\",\n  \"status\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/candidates/background_check/standard",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidates",
+                            "background_check",
+                            "standard"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:40.000Z",
+                      "updatedAt": "2026-07-28T02:31:40.000Z",
+                      "uid": "35240-9dabef6a-c6b1-432c-a93a-2466c8840650"
+                    },
+                    {
+                      "id": "9f473e93-fed1-49ea-a177-65738707560e",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"ex_application_id\": \"<string>\",\n  \"ex_candidate_id\": \"<string>\",\n  \"background_check_url\": \"<uri>\",\n  \"status\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/candidates/background_check/standard",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidates",
+                            "background_check",
+                            "standard"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:40.000Z",
+                      "updatedAt": "2026-07-28T02:31:40.000Z",
+                      "uid": "35240-9f473e93-fed1-49ea-a177-65738707560e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-3f68447b-d2ef-4d37-b540-fb092607a0ee"
+                }
+              ],
+              "id": "0db835ee-e8bc-4e24-9533-c9de8942bc21",
+              "createdAt": "2026-07-28T02:31:39.000Z",
+              "updatedAt": "2026-07-28T02:31:39.000Z",
+              "uid": "35240-0db835ee-e8bc-4e24-9533-c9de8942bc21"
+            },
+            {
+              "name": "checkr",
+              "item": [
+                {
+                  "name": "Paradox Send Checkr background check",
+                  "id": "5d563ccc-4017-45a4-a507-751a0019a7c1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/background_check/checkr",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        "background_check",
+                        "checkr"
+                      ]
+                    },
+                    "description": "Initiate a background check through Checkr integration."
+                  },
+                  "response": [
+                    {
+                      "id": "759aa80b-1ec2-41ba-875b-aff3bc15faa1",
+                      "name": "Checkr background check initiated successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/candidates/background_check/checkr",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidates",
+                            "background_check",
+                            "checkr"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:31:40.000Z",
+                      "updatedAt": "2026-07-28T02:31:40.000Z",
+                      "uid": "35240-759aa80b-1ec2-41ba-875b-aff3bc15faa1"
+                    },
+                    {
+                      "id": "d7528e7f-b861-4a3c-8109-547da67e4cbf",
+                      "name": "Invalid request data",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/candidates/background_check/checkr",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidates",
+                            "background_check",
+                            "checkr"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:40.000Z",
+                      "updatedAt": "2026-07-28T02:31:40.000Z",
+                      "uid": "35240-d7528e7f-b861-4a3c-8109-547da67e4cbf"
+                    },
+                    {
+                      "id": "2f52cb33-0f1a-44ad-a0d9-65435b03b36e",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"candidate_id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/candidates/background_check/checkr",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidates",
+                            "background_check",
+                            "checkr"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:40.000Z",
+                      "updatedAt": "2026-07-28T02:31:40.000Z",
+                      "uid": "35240-2f52cb33-0f1a-44ad-a0d9-65435b03b36e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-5d563ccc-4017-45a4-a507-751a0019a7c1"
+                }
+              ],
+              "id": "b11b20c0-c0e1-4c41-ba60-d9572609490a",
+              "createdAt": "2026-07-28T02:31:39.000Z",
+              "updatedAt": "2026-07-28T02:31:39.000Z",
+              "uid": "35240-b11b20c0-c0e1-4c41-ba60-d9572609490a"
+            },
+            {
+              "name": "firstadvance",
+              "item": [
+                {
+                  "name": "Paradox Send First Advantage background check",
+                  "id": "694c60a1-834f-4184-91b2-702147c3f49f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<uri>\",\n  \"status\": \"<string>\",\n  \"sf_applicant_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/background_check/firstadvance",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        "background_check",
+                        "firstadvance"
+                      ]
+                    },
+                    "description": "Initiate a background check through First Advantage integration."
+                  },
+                  "response": [
+                    {
+                      "id": "67ba6227-55c6-4d88-87cc-28c4a111bd08",
+                      "name": "First Advantage background check initiated successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"status\": \"<string>\",\n  \"sf_applicant_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/candidates/background_check/firstadvance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidates",
+                            "background_check",
+                            "firstadvance"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:31:40.000Z",
+                      "updatedAt": "2026-07-28T02:31:40.000Z",
+                      "uid": "35240-67ba6227-55c6-4d88-87cc-28c4a111bd08"
+                    },
+                    {
+                      "id": "665ad438-a217-493b-ac2f-a34391293bf7",
+                      "name": "Invalid request data",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"status\": \"<string>\",\n  \"sf_applicant_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/candidates/background_check/firstadvance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidates",
+                            "background_check",
+                            "firstadvance"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:40.000Z",
+                      "updatedAt": "2026-07-28T02:31:40.000Z",
+                      "uid": "35240-665ad438-a217-493b-ac2f-a34391293bf7"
+                    },
+                    {
+                      "id": "ade7aa89-af71-4b5b-b417-8a5513a2c61b",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"status\": \"<string>\",\n  \"sf_applicant_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/candidates/background_check/firstadvance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidates",
+                            "background_check",
+                            "firstadvance"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:40.000Z",
+                      "updatedAt": "2026-07-28T02:31:40.000Z",
+                      "uid": "35240-ade7aa89-af71-4b5b-b417-8a5513a2c61b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:40.000Z",
+                  "updatedAt": "2026-07-28T02:31:40.000Z",
+                  "uid": "35240-694c60a1-834f-4184-91b2-702147c3f49f"
+                }
+              ],
+              "id": "4b290c84-d2cc-4272-9707-8065201c9ae5",
+              "createdAt": "2026-07-28T02:31:39.000Z",
+              "updatedAt": "2026-07-28T02:31:39.000Z",
+              "uid": "35240-4b290c84-d2cc-4272-9707-8065201c9ae5"
+            }
+          ],
+          "id": "1e8d52f9-1e0c-4162-82ae-3633b4bebc1c",
+          "createdAt": "2026-07-28T02:31:39.000Z",
+          "updatedAt": "2026-07-28T02:31:39.000Z",
+          "uid": "35240-1e8d52f9-1e0c-4162-82ae-3633b4bebc1c"
+        },
+        {
+          "name": "Paradox Get candidates",
+          "id": "da47fd18-c053-4ead-b546-0dfc1b32806d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/candidates?start_date=<dateTime>&end_date=<dateTime>&created_start_date=<dateTime>&start_keyword=<string>&limit=50&offset=0&page=<integer>&status=<string>&group_name=<string>&location_id=<string>&source=<string>&conversation=<boolean>&interviews=<boolean>&note=<boolean>&profile_id=<string>&include_attributes=<boolean>&candidate_journey_status=<string>&job_loc_code=<string>&job_req_id=<string>&ex_id=<string>&email=<email>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "candidates"
+              ],
+              "query": [
+                {
+                  "description": "Filter candidates created after this date (ISO 8601)",
+                  "key": "start_date",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter candidates created before this date (ISO 8601)",
+                  "key": "end_date",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter by candidate creation start date",
+                  "key": "created_start_date",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Search keyword filter",
+                  "key": "start_keyword",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of results to return (max 50)",
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "description": "Number of results to skip for pagination",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Page number for pagination",
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Filter by candidate status",
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by group name",
+                  "key": "group_name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by location identifier",
+                  "key": "location_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by candidate source",
+                  "key": "source",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Include conversation data",
+                  "key": "conversation",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Include interview data",
+                  "key": "interviews",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Include candidate notes",
+                  "key": "note",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Filter by profile identifier",
+                  "key": "profile_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Include candidate attribute data in response",
+                  "key": "include_attributes",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Filter by candidate journey status",
+                  "key": "candidate_journey_status",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by job location code",
+                  "key": "job_loc_code",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by job requisition ID",
+                  "key": "job_req_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by external candidate identifier",
+                  "key": "ex_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by candidate email",
+                  "key": "email",
+                  "value": "<email>"
+                }
+              ]
+            },
+            "description": "Retrieve a list of candidates with optional filtering by date range, status, group, location, source, and other criteria."
+          },
+          "response": [
+            {
+              "id": "63055bd0-ba0d-4ebe-b7e9-00dbb4b38762",
+              "name": "List of candidates returned successfully",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/candidates?start_date=<dateTime>&end_date=<dateTime>&created_start_date=<dateTime>&start_keyword=<string>&limit=50&offset=0&page=<integer>&status=<string>&group_name=<string>&location_id=<string>&source=<string>&conversation=<boolean>&interviews=<boolean>&note=<boolean>&profile_id=<string>&include_attributes=<boolean>&candidate_journey_status=<string>&job_loc_code=<string>&job_req_id=<string>&ex_id=<string>&email=<email>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter candidates created after this date (ISO 8601)",
+                      "key": "start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter candidates created before this date (ISO 8601)",
+                      "key": "end_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter by candidate creation start date",
+                      "key": "created_start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Search keyword filter",
+                      "key": "start_keyword",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results to return (max 50)",
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Number of results to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by candidate status",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by group name",
+                      "key": "group_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by location identifier",
+                      "key": "location_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by candidate source",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include conversation data",
+                      "key": "conversation",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Include interview data",
+                      "key": "interviews",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Include candidate notes",
+                      "key": "note",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by profile identifier",
+                      "key": "profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include candidate attribute data in response",
+                      "key": "include_attributes",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by candidate journey status",
+                      "key": "candidate_journey_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by job location code",
+                      "key": "job_loc_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by job requisition ID",
+                      "key": "job_req_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by external candidate identifier",
+                      "key": "ex_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by candidate email",
+                      "key": "email",
+                      "value": "<email>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"candidates\": [\n    {\n      \"OID\": \"<integer>\",\n      \"external_oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"ex_id\": \"<string>\",\n      \"ex_status\": \"<string>\",\n      \"ex_step\": \"<string>\",\n      \"ex_reason\": \"<string>\",\n      \"job_req_id\": \"<string>\",\n      \"job_title\": \"<string>\",\n      \"job_loc_code\": \"<string>\",\n      \"primary_contact_method\": 5,\n      \"hired_date\": \"<string,null-date-time>\",\n      \"hirevue_link\": \"<string>\",\n      \"pymetrics_link\": \"<string>\",\n      \"adp_link\": \"<string>\",\n      \"hirevue_instructions\": \"<string>\",\n      \"audience_type\": \"<string>\",\n      \"hm_cid\": \"<string>\",\n      \"external_group_id\": \"<string>\",\n      \"referrer_email\": \"<email>\",\n      \"referrer_name\": \"<string>\",\n      \"recruiter_email\": \"<email>\",\n      \"hiring_manager\": \"<string>\",\n      \"external_referrer\": \"<string>\",\n      \"language_preference\": \"en\",\n      \"candidate_journey\": \"<string>\",\n      \"candidate_journey_status\": \"<string>\",\n      \"candidate_attribute_data\": {\n        \"adipisicing_f1a\": \"<string>\",\n        \"sit_00\": \"<string>\"\n      },\n      \"job_application_id\": \"<string>\",\n      \"candidate_location_info\": \"<string>\",\n      \"external_source_id\": \"<string>\",\n      \"talent_community\": false,\n      \"community_of_interest\": \"<integer>\",\n      \"consent_to_marketing\": \"<string>\",\n      \"note\": \"<string>\"\n    },\n    {\n      \"OID\": \"<integer>\",\n      \"external_oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"ex_id\": \"<string>\",\n      \"ex_status\": \"<string>\",\n      \"ex_step\": \"<string>\",\n      \"ex_reason\": \"<string>\",\n      \"job_req_id\": \"<string>\",\n      \"job_title\": \"<string>\",\n      \"job_loc_code\": \"<string>\",\n      \"primary_contact_method\": 4,\n      \"hired_date\": \"<string,null-date-time>\",\n      \"hirevue_link\": \"<string>\",\n      \"pymetrics_link\": \"<string>\",\n      \"adp_link\": \"<string>\",\n      \"hirevue_instructions\": \"<string>\",\n      \"audience_type\": \"<string>\",\n      \"hm_cid\": \"<string>\",\n      \"external_group_id\": \"<string>\",\n      \"referrer_email\": \"<email>\",\n      \"referrer_name\": \"<string>\",\n      \"recruiter_email\": \"<email>\",\n      \"hiring_manager\": \"<string>\",\n      \"external_referrer\": \"<string>\",\n      \"language_preference\": \"en\",\n      \"candidate_journey\": \"<string>\",\n      \"candidate_journey_status\": \"<string>\",\n      \"candidate_attribute_data\": {\n        \"cillum_0\": \"<string>\",\n        \"et_412\": \"<string>\",\n        \"Ut95\": \"<string>\"\n      },\n      \"job_application_id\": \"<string>\",\n      \"candidate_location_info\": \"<string>\",\n      \"external_source_id\": \"<string>\",\n      \"talent_community\": false,\n      \"community_of_interest\": \"<integer>\",\n      \"consent_to_marketing\": \"<string>\",\n      \"note\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"count\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-63055bd0-ba0d-4ebe-b7e9-00dbb4b38762"
+            },
+            {
+              "id": "2edf0dc9-ec5c-4332-97f0-6992cf8ace2e",
+              "name": "Invalid request data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/candidates?start_date=<dateTime>&end_date=<dateTime>&created_start_date=<dateTime>&start_keyword=<string>&limit=50&offset=0&page=<integer>&status=<string>&group_name=<string>&location_id=<string>&source=<string>&conversation=<boolean>&interviews=<boolean>&note=<boolean>&profile_id=<string>&include_attributes=<boolean>&candidate_journey_status=<string>&job_loc_code=<string>&job_req_id=<string>&ex_id=<string>&email=<email>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter candidates created after this date (ISO 8601)",
+                      "key": "start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter candidates created before this date (ISO 8601)",
+                      "key": "end_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter by candidate creation start date",
+                      "key": "created_start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Search keyword filter",
+                      "key": "start_keyword",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results to return (max 50)",
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Number of results to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by candidate status",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by group name",
+                      "key": "group_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by location identifier",
+                      "key": "location_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by candidate source",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include conversation data",
+                      "key": "conversation",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Include interview data",
+                      "key": "interviews",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Include candidate notes",
+                      "key": "note",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by profile identifier",
+                      "key": "profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include candidate attribute data in response",
+                      "key": "include_attributes",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by candidate journey status",
+                      "key": "candidate_journey_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by job location code",
+                      "key": "job_loc_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by job requisition ID",
+                      "key": "job_req_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by external candidate identifier",
+                      "key": "ex_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by candidate email",
+                      "key": "email",
+                      "value": "<email>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-2edf0dc9-ec5c-4332-97f0-6992cf8ace2e"
+            },
+            {
+              "id": "962c7f7b-cc6a-4926-b4a0-a0090cf604e4",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/candidates?start_date=<dateTime>&end_date=<dateTime>&created_start_date=<dateTime>&start_keyword=<string>&limit=50&offset=0&page=<integer>&status=<string>&group_name=<string>&location_id=<string>&source=<string>&conversation=<boolean>&interviews=<boolean>&note=<boolean>&profile_id=<string>&include_attributes=<boolean>&candidate_journey_status=<string>&job_loc_code=<string>&job_req_id=<string>&ex_id=<string>&email=<email>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter candidates created after this date (ISO 8601)",
+                      "key": "start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter candidates created before this date (ISO 8601)",
+                      "key": "end_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter by candidate creation start date",
+                      "key": "created_start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Search keyword filter",
+                      "key": "start_keyword",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results to return (max 50)",
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Number of results to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by candidate status",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by group name",
+                      "key": "group_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by location identifier",
+                      "key": "location_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by candidate source",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include conversation data",
+                      "key": "conversation",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Include interview data",
+                      "key": "interviews",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Include candidate notes",
+                      "key": "note",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by profile identifier",
+                      "key": "profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include candidate attribute data in response",
+                      "key": "include_attributes",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by candidate journey status",
+                      "key": "candidate_journey_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by job location code",
+                      "key": "job_loc_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by job requisition ID",
+                      "key": "job_req_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by external candidate identifier",
+                      "key": "ex_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by candidate email",
+                      "key": "email",
+                      "value": "<email>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-962c7f7b-cc6a-4926-b4a0-a0090cf604e4"
+            }
+          ],
+          "createdAt": "2026-07-28T02:31:40.000Z",
+          "updatedAt": "2026-07-28T02:31:40.000Z",
+          "uid": "35240-da47fd18-c053-4ead-b546-0dfc1b32806d"
+        },
+        {
+          "name": "Paradox Create candidate",
+          "id": "06dd63e7-1143-4ee2-97cb-c636947c0e01",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"<string>\",\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"ex_id\": \"<string>\",\n  \"hirevue_link\": \"<string>\",\n  \"pymetrics_link\": \"<string>\",\n  \"ex_step\": \"<string>\",\n  \"ex_status\": \"<string>\",\n  \"ex_reason\": \"<string>\",\n  \"job_req_id\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"primary_contact_method\": \"<string>\",\n  \"hired_date\": \"<dateTime>\",\n  \"adp_link\": \"<string>\",\n  \"audience_type\": \"<string>\",\n  \"hm_cid\": \"<string>\",\n  \"external_group_id\": \"<string>\",\n  \"hirevue_instructions\": \"<string>\",\n  \"referrer_email\": \"<email>\",\n  \"referrer_name\": \"<string>\",\n  \"recruiter_email\": \"<email>\",\n  \"hiring_manager\": \"<string>\",\n  \"external_referrer\": \"<string>\",\n  \"language_preference\": \"en\",\n  \"candidate_journey\": \"<string>\",\n  \"candidate_journey_status\": \"<string>\",\n  \"candidate_attribute_data\": {\n    \"magna_c1\": \"<string>\",\n    \"exercitation9\": \"<string>\",\n    \"officiac5\": \"<string>\"\n  },\n  \"note\": \"<string>\",\n  \"job_application_id\": \"<string>\",\n  \"use_application_id_for_identity\": false,\n  \"candidate_location_info\": \"<string>\",\n  \"external_source_id\": \"<string>\",\n  \"offer_file_name\": \"<string>\",\n  \"use_paradox_status_map\": false,\n  \"status_map_name\": \"<string>\",\n  \"status_map_ex_id\": \"<string>\",\n  \"talent_community\": false,\n  \"community_of_interest\": \"<integer>\",\n  \"skip_send_opt_in\": \"<boolean>\",\n  \"consent_to_marketing\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/candidates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "candidates"
+              ]
+            },
+            "description": "Create a new candidate in the Paradox platform. Requires at minimum a name (or first_name and last_name), phone number, and email address."
+          },
+          "response": [
+            {
+              "id": "4ef10d13-9737-41ba-9729-aefbd3c108f0",
+              "name": "Candidate created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"ex_id\": \"<string>\",\n  \"hirevue_link\": \"<string>\",\n  \"pymetrics_link\": \"<string>\",\n  \"ex_step\": \"<string>\",\n  \"ex_status\": \"<string>\",\n  \"ex_reason\": \"<string>\",\n  \"job_req_id\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"primary_contact_method\": \"<string>\",\n  \"hired_date\": \"<dateTime>\",\n  \"adp_link\": \"<string>\",\n  \"audience_type\": \"<string>\",\n  \"hm_cid\": \"<string>\",\n  \"external_group_id\": \"<string>\",\n  \"hirevue_instructions\": \"<string>\",\n  \"referrer_email\": \"<email>\",\n  \"referrer_name\": \"<string>\",\n  \"recruiter_email\": \"<email>\",\n  \"hiring_manager\": \"<string>\",\n  \"external_referrer\": \"<string>\",\n  \"language_preference\": \"en\",\n  \"candidate_journey\": \"<string>\",\n  \"candidate_journey_status\": \"<string>\",\n  \"candidate_attribute_data\": {\n    \"magna_c1\": \"<string>\",\n    \"exercitation9\": \"<string>\",\n    \"officiac5\": \"<string>\"\n  },\n  \"note\": \"<string>\",\n  \"job_application_id\": \"<string>\",\n  \"use_application_id_for_identity\": false,\n  \"candidate_location_info\": \"<string>\",\n  \"external_source_id\": \"<string>\",\n  \"offer_file_name\": \"<string>\",\n  \"use_paradox_status_map\": false,\n  \"status_map_name\": \"<string>\",\n  \"status_map_ex_id\": \"<string>\",\n  \"talent_community\": false,\n  \"community_of_interest\": \"<integer>\",\n  \"skip_send_opt_in\": \"<boolean>\",\n  \"consent_to_marketing\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/candidates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"candidate\": {\n    \"OID\": \"<integer>\",\n    \"external_oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone\": \"<string>\",\n    \"ex_id\": \"<string>\",\n    \"ex_status\": \"<string>\",\n    \"ex_step\": \"<string>\",\n    \"ex_reason\": \"<string>\",\n    \"job_req_id\": \"<string>\",\n    \"job_title\": \"<string>\",\n    \"job_loc_code\": \"<string>\",\n    \"primary_contact_method\": 5,\n    \"hired_date\": \"<string,null-date-time>\",\n    \"hirevue_link\": \"<string>\",\n    \"pymetrics_link\": \"<string>\",\n    \"adp_link\": \"<string>\",\n    \"hirevue_instructions\": \"<string>\",\n    \"audience_type\": \"<string>\",\n    \"hm_cid\": \"<string>\",\n    \"external_group_id\": \"<string>\",\n    \"referrer_email\": \"<email>\",\n    \"referrer_name\": \"<string>\",\n    \"recruiter_email\": \"<email>\",\n    \"hiring_manager\": \"<string>\",\n    \"external_referrer\": \"<string>\",\n    \"language_preference\": \"en\",\n    \"candidate_journey\": \"<string>\",\n    \"candidate_journey_status\": \"<string>\",\n    \"candidate_attribute_data\": {\n      \"velit0_\": \"<string>\",\n      \"commodod2\": \"<string>\"\n    },\n    \"job_application_id\": \"<string>\",\n    \"candidate_location_info\": \"<string>\",\n    \"external_source_id\": \"<string>\",\n    \"talent_community\": false,\n    \"community_of_interest\": \"<integer>\",\n    \"consent_to_marketing\": \"<string>\",\n    \"note\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-4ef10d13-9737-41ba-9729-aefbd3c108f0"
+            },
+            {
+              "id": "4ab737ff-1605-4a80-bf5b-8b221d96d39c",
+              "name": "Invalid request data",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"ex_id\": \"<string>\",\n  \"hirevue_link\": \"<string>\",\n  \"pymetrics_link\": \"<string>\",\n  \"ex_step\": \"<string>\",\n  \"ex_status\": \"<string>\",\n  \"ex_reason\": \"<string>\",\n  \"job_req_id\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"primary_contact_method\": \"<string>\",\n  \"hired_date\": \"<dateTime>\",\n  \"adp_link\": \"<string>\",\n  \"audience_type\": \"<string>\",\n  \"hm_cid\": \"<string>\",\n  \"external_group_id\": \"<string>\",\n  \"hirevue_instructions\": \"<string>\",\n  \"referrer_email\": \"<email>\",\n  \"referrer_name\": \"<string>\",\n  \"recruiter_email\": \"<email>\",\n  \"hiring_manager\": \"<string>\",\n  \"external_referrer\": \"<string>\",\n  \"language_preference\": \"en\",\n  \"candidate_journey\": \"<string>\",\n  \"candidate_journey_status\": \"<string>\",\n  \"candidate_attribute_data\": {\n    \"magna_c1\": \"<string>\",\n    \"exercitation9\": \"<string>\",\n    \"officiac5\": \"<string>\"\n  },\n  \"note\": \"<string>\",\n  \"job_application_id\": \"<string>\",\n  \"use_application_id_for_identity\": false,\n  \"candidate_location_info\": \"<string>\",\n  \"external_source_id\": \"<string>\",\n  \"offer_file_name\": \"<string>\",\n  \"use_paradox_status_map\": false,\n  \"status_map_name\": \"<string>\",\n  \"status_map_ex_id\": \"<string>\",\n  \"talent_community\": false,\n  \"community_of_interest\": \"<integer>\",\n  \"skip_send_opt_in\": \"<boolean>\",\n  \"consent_to_marketing\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/candidates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-4ab737ff-1605-4a80-bf5b-8b221d96d39c"
+            },
+            {
+              "id": "4f3a556e-441d-443b-959b-d14b4a06102c",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"ex_id\": \"<string>\",\n  \"hirevue_link\": \"<string>\",\n  \"pymetrics_link\": \"<string>\",\n  \"ex_step\": \"<string>\",\n  \"ex_status\": \"<string>\",\n  \"ex_reason\": \"<string>\",\n  \"job_req_id\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"job_loc_code\": \"<string>\",\n  \"primary_contact_method\": \"<string>\",\n  \"hired_date\": \"<dateTime>\",\n  \"adp_link\": \"<string>\",\n  \"audience_type\": \"<string>\",\n  \"hm_cid\": \"<string>\",\n  \"external_group_id\": \"<string>\",\n  \"hirevue_instructions\": \"<string>\",\n  \"referrer_email\": \"<email>\",\n  \"referrer_name\": \"<string>\",\n  \"recruiter_email\": \"<email>\",\n  \"hiring_manager\": \"<string>\",\n  \"external_referrer\": \"<string>\",\n  \"language_preference\": \"en\",\n  \"candidate_journey\": \"<string>\",\n  \"candidate_journey_status\": \"<string>\",\n  \"candidate_attribute_data\": {\n    \"magna_c1\": \"<string>\",\n    \"exercitation9\": \"<string>\",\n    \"officiac5\": \"<string>\"\n  },\n  \"note\": \"<string>\",\n  \"job_application_id\": \"<string>\",\n  \"use_application_id_for_identity\": false,\n  \"candidate_location_info\": \"<string>\",\n  \"external_source_id\": \"<string>\",\n  \"offer_file_name\": \"<string>\",\n  \"use_paradox_status_map\": false,\n  \"status_map_name\": \"<string>\",\n  \"status_map_ex_id\": \"<string>\",\n  \"talent_community\": false,\n  \"community_of_interest\": \"<integer>\",\n  \"skip_send_opt_in\": \"<boolean>\",\n  \"consent_to_marketing\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/candidates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:31:40.000Z",
+              "updatedAt": "2026-07-28T02:31:40.000Z",
+              "uid": "35240-4f3a556e-441d-443b-959b-d14b4a06102c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:31:40.000Z",
+          "updatedAt": "2026-07-28T02:31:40.000Z",
+          "uid": "35240-06dd63e7-1143-4ee2-97cb-c636947c0e01"
+        }
+      ],
+      "id": "606f2b13-2549-4b91-b9e4-1f5a7a828567",
+      "createdAt": "2026-07-28T02:31:39.000Z",
+      "updatedAt": "2026-07-28T02:31:39.000Z",
+      "uid": "35240-606f2b13-2549-4b91-b9e4-1f5a7a828567"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}

@@ -1,0 +1,585 @@
+{
+  "info": {
+    "_postman_id": "c991ccd3-00c3-483c-977a-ff1b61c5f4a1",
+    "name": "Paradox Authentication Reporting API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:52.000Z",
+    "updatedAt": "2026-07-28T02:31:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c991ccd3-00c3-483c-977a-ff1b61c5f4a1"
+  },
+  "item": [
+    {
+      "name": "reporting",
+      "item": [
+        {
+          "name": "reports",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Paradox Get single report",
+                  "id": "0633d765-6d57-4483-88e8-9c897e8bbe36",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/reports/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "reports",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5720058e-04a4-4654-bcf7-b843e338721a",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Report identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details for a specific report."
+                  },
+                  "response": [
+                    {
+                      "id": "89e1e875-22c2-41f5-9371-5aa88e82aee2",
+                      "name": "Report details returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reporting/reports/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reporting",
+                            "reports",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"report\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:52.000Z",
+                      "updatedAt": "2026-07-28T02:31:52.000Z",
+                      "uid": "35240-89e1e875-22c2-41f5-9371-5aa88e82aee2"
+                    },
+                    {
+                      "id": "f9e0ea90-0cda-48ca-a6c8-2500297a9890",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reporting/reports/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reporting",
+                            "reports",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:52.000Z",
+                      "updatedAt": "2026-07-28T02:31:52.000Z",
+                      "uid": "35240-f9e0ea90-0cda-48ca-a6c8-2500297a9890"
+                    },
+                    {
+                      "id": "6f196c19-2372-479a-9ae6-d4f4d40e66fc",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reporting/reports/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reporting",
+                            "reports",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:52.000Z",
+                      "updatedAt": "2026-07-28T02:31:52.000Z",
+                      "uid": "35240-6f196c19-2372-479a-9ae6-d4f4d40e66fc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:52.000Z",
+                  "updatedAt": "2026-07-28T02:31:52.000Z",
+                  "uid": "35240-0633d765-6d57-4483-88e8-9c897e8bbe36"
+                }
+              ],
+              "id": "43433304-869f-4047-9a94-dee6120972c5",
+              "createdAt": "2026-07-28T02:31:52.000Z",
+              "updatedAt": "2026-07-28T02:31:52.000Z",
+              "uid": "35240-43433304-869f-4047-9a94-dee6120972c5"
+            },
+            {
+              "name": "Paradox Get report list",
+              "id": "8fc0eb9a-828d-4867-82ff-b500f856bb4d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reporting/reports",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reporting",
+                    "reports"
+                  ]
+                },
+                "description": "Retrieve a list of all available reports."
+              },
+              "response": [
+                {
+                  "id": "b4bdc977-a688-4c8c-80ac-3a5c145946f2",
+                  "name": "Report list returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/reports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "reports"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"reports\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:31:52.000Z",
+                  "updatedAt": "2026-07-28T02:31:52.000Z",
+                  "uid": "35240-b4bdc977-a688-4c8c-80ac-3a5c145946f2"
+                },
+                {
+                  "id": "0d1c3316-f923-4bbe-9481-2bb0bb7428d1",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/reports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "reports"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:52.000Z",
+                  "updatedAt": "2026-07-28T02:31:52.000Z",
+                  "uid": "35240-0d1c3316-f923-4bbe-9481-2bb0bb7428d1"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:52.000Z",
+              "updatedAt": "2026-07-28T02:31:52.000Z",
+              "uid": "35240-8fc0eb9a-828d-4867-82ff-b500f856bb4d"
+            },
+            {
+              "name": "Paradox Create report",
+              "id": "23124d00-6ac6-4847-9939-d4718b8f89dd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"filters\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reporting/reports",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reporting",
+                    "reports"
+                  ]
+                },
+                "description": "Create a new report."
+              },
+              "response": [
+                {
+                  "id": "afa98df0-4718-41a3-a220-8f18354cc2e5",
+                  "name": "Report created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"filters\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/reports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "reports"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"report\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:31:52.000Z",
+                  "updatedAt": "2026-07-28T02:31:52.000Z",
+                  "uid": "35240-afa98df0-4718-41a3-a220-8f18354cc2e5"
+                },
+                {
+                  "id": "7557d655-1924-43af-8298-eb9b486fad1f",
+                  "name": "Invalid request data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"filters\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/reports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "reports"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:52.000Z",
+                  "updatedAt": "2026-07-28T02:31:52.000Z",
+                  "uid": "35240-7557d655-1924-43af-8298-eb9b486fad1f"
+                },
+                {
+                  "id": "36ece024-b372-4a3b-bb3d-36c538316e9c",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"filters\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/reports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "reports"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:52.000Z",
+                  "updatedAt": "2026-07-28T02:31:52.000Z",
+                  "uid": "35240-36ece024-b372-4a3b-bb3d-36c538316e9c"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:52.000Z",
+              "updatedAt": "2026-07-28T02:31:52.000Z",
+              "uid": "35240-23124d00-6ac6-4847-9939-d4718b8f89dd"
+            }
+          ],
+          "id": "29cd1f03-9257-434b-a9c5-f5987420bdd6",
+          "createdAt": "2026-07-28T02:31:52.000Z",
+          "updatedAt": "2026-07-28T02:31:52.000Z",
+          "uid": "35240-29cd1f03-9257-434b-a9c5-f5987420bdd6"
+        }
+      ],
+      "id": "21a304fc-4382-47d6-b706-58cce2fa0b7a",
+      "createdAt": "2026-07-28T02:31:52.000Z",
+      "updatedAt": "2026-07-28T02:31:52.000Z",
+      "uid": "35240-21a304fc-4382-47d6-b706-58cce2fa0b7a"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}

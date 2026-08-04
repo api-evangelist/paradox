@@ -1,0 +1,2354 @@
+{
+  "info": {
+    "_postman_id": "0d177bc3-5c4b-4906-9da1-cd9e7b98d515",
+    "name": "Paradox Authentication Users API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:59.000Z",
+    "updatedAt": "2026-07-28T02:31:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0d177bc3-5c4b-4906-9da1-cd9e7b98d515"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{oid}",
+          "item": [
+            {
+              "name": "deactivate",
+              "item": [
+                {
+                  "name": "Paradox Deactivate user",
+                  "id": "6ae134f4-1783-49ff-94bc-9c0077ca2bcd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid/deactivate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid",
+                        "deactivate"
+                      ],
+                      "variable": [
+                        {
+                          "id": "666c15ca-d4d2-4fca-8905-b5d2d7551b51",
+                          "key": "oid",
+                          "value": "<string>",
+                          "description": "(Required) User OID or external identifier"
+                        }
+                      ]
+                    },
+                    "description": "Deactivate a user account, preventing login and API access."
+                  },
+                  "response": [
+                    {
+                      "id": "aa02f9c1-88dc-4d88-9598-791172d675ac",
+                      "name": "User deactivated successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:oid/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":oid",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "oid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-aa02f9c1-88dc-4d88-9598-791172d675ac"
+                    },
+                    {
+                      "id": "ad27a86d-d609-4ab4-8fcb-421aeafc646b",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:oid/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":oid",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "oid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-ad27a86d-d609-4ab4-8fcb-421aeafc646b"
+                    },
+                    {
+                      "id": "e11d7a55-0e1f-4375-bd09-2403adfbb8b7",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:oid/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":oid",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "oid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-e11d7a55-0e1f-4375-bd09-2403adfbb8b7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-6ae134f4-1783-49ff-94bc-9c0077ca2bcd"
+                }
+              ],
+              "id": "333ba481-50d9-4f40-97cb-c6c24dd5930e",
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-333ba481-50d9-4f40-97cb-c6c24dd5930e"
+            },
+            {
+              "name": "reactivate",
+              "item": [
+                {
+                  "name": "Paradox Reactivate user",
+                  "id": "8348b295-47f4-41ef-b320-cb9f958ae571",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid/reactivate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid",
+                        "reactivate"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ac79ccf5-c58f-47f5-8c7d-c51f061a5bb9",
+                          "key": "oid",
+                          "value": "<string>",
+                          "description": "(Required) User OID or external identifier"
+                        }
+                      ]
+                    },
+                    "description": "Reactivate a previously deactivated user account."
+                  },
+                  "response": [
+                    {
+                      "id": "32523b68-0e4c-429b-bed7-86b8220bfa53",
+                      "name": "User reactivated successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:oid/reactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":oid",
+                            "reactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "oid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-32523b68-0e4c-429b-bed7-86b8220bfa53"
+                    },
+                    {
+                      "id": "21f633a3-c8dd-4f6a-af35-673a315a015b",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:oid/reactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":oid",
+                            "reactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "oid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-21f633a3-c8dd-4f6a-af35-673a315a015b"
+                    },
+                    {
+                      "id": "6b5d6590-2d98-45a0-8975-fcda78e53973",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:oid/reactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":oid",
+                            "reactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "oid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-6b5d6590-2d98-45a0-8975-fcda78e53973"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-8348b295-47f4-41ef-b320-cb9f958ae571"
+                }
+              ],
+              "id": "931a41e7-4078-4049-a927-ca733b5e35ef",
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-931a41e7-4078-4049-a927-ca733b5e35ef"
+            },
+            {
+              "name": "Paradox Get single user",
+              "id": "579c9278-15bf-475f-b9a9-a3579fb5ebbb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:oid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":oid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b2ecefcc-f300-4f31-a059-688803055792",
+                      "key": "oid",
+                      "value": "<string>",
+                      "description": "(Required) User OID or external identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details for a specific user by OID or external identifier."
+              },
+              "response": [
+                {
+                  "id": "52393b4e-f815-4219-9531-e7dddb69073b",
+                  "name": "User details returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "oid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"user\": {\n    \"OID\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone_number\": \"<string>\",\n    \"role_id\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"language_preference\": \"<string>\",\n    \"employee_id\": \"<string>\",\n    \"job_title\": \"<string>\",\n    \"location_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"active\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-52393b4e-f815-4219-9531-e7dddb69073b"
+                },
+                {
+                  "id": "92c974d0-4154-4e41-8917-3d6bd264fe29",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "oid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-92c974d0-4154-4e41-8917-3d6bd264fe29"
+                },
+                {
+                  "id": "52ac41cc-66ee-4f83-a1d2-547bcb45f6e4",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "oid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-52ac41cc-66ee-4f83-a1d2-547bcb45f6e4"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-579c9278-15bf-475f-b9a9-a3579fb5ebbb"
+            },
+            {
+              "name": "Paradox Update user",
+              "id": "1074555e-7300-48aa-bc31-a6f4ae7a50b0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"job_title\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users/:oid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":oid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "004e8f73-c94a-46ed-a2fa-833806571f77",
+                      "key": "oid",
+                      "value": "<string>",
+                      "description": "(Required) User OID or external identifier"
+                    }
+                  ]
+                },
+                "description": "Update an existing user by OID."
+              },
+              "response": [
+                {
+                  "id": "5bae7c9d-7e41-47b1-ae75-db7af5cc985b",
+                  "name": "User updated successfully",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"job_title\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "oid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"user\": {\n    \"OID\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone_number\": \"<string>\",\n    \"role_id\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"language_preference\": \"<string>\",\n    \"employee_id\": \"<string>\",\n    \"job_title\": \"<string>\",\n    \"location_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"active\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-5bae7c9d-7e41-47b1-ae75-db7af5cc985b"
+                },
+                {
+                  "id": "f2fcc8cc-42b5-4e16-839f-4b262c4fd847",
+                  "name": "Invalid request data",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"job_title\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "oid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-f2fcc8cc-42b5-4e16-839f-4b262c4fd847"
+                },
+                {
+                  "id": "27ec6616-708b-4b33-9dc8-ab977e86e476",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"job_title\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "oid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-27ec6616-708b-4b33-9dc8-ab977e86e476"
+                },
+                {
+                  "id": "7d3a028d-f16f-4d0d-9a5e-56b99fb2c81f",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"job_title\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "oid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-7d3a028d-f16f-4d0d-9a5e-56b99fb2c81f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-1074555e-7300-48aa-bc31-a6f4ae7a50b0"
+            },
+            {
+              "name": "Paradox Delete user",
+              "id": "affbec1b-9866-481a-88be-9d4212867468",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:oid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":oid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "acb16eb8-77f8-46b0-bd4e-482686cce682",
+                      "key": "oid",
+                      "value": "<string>",
+                      "description": "(Required) User OID or external identifier"
+                    }
+                  ]
+                },
+                "description": "Delete a user by OID."
+              },
+              "response": [
+                {
+                  "id": "af92ecde-7849-48e0-bd3e-d05897c1edbd",
+                  "name": "User deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "oid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-af92ecde-7849-48e0-bd3e-d05897c1edbd"
+                },
+                {
+                  "id": "6ad5d2dc-4549-4641-90f2-e83703e61b29",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "oid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-6ad5d2dc-4549-4641-90f2-e83703e61b29"
+                },
+                {
+                  "id": "9e24f971-95f9-48d1-a966-f0cd6e470b7b",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "oid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-9e24f971-95f9-48d1-a966-f0cd6e470b7b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-affbec1b-9866-481a-88be-9d4212867468"
+            }
+          ],
+          "id": "7b62ef8d-7114-4d3e-8561-ab6b87bcd9dc",
+          "createdAt": "2026-07-28T02:31:59.000Z",
+          "updatedAt": "2026-07-28T02:31:59.000Z",
+          "uid": "35240-7b62ef8d-7114-4d3e-8561-ab6b87bcd9dc"
+        },
+        {
+          "name": "roles",
+          "item": [
+            {
+              "name": "Paradox Get user roles",
+              "id": "b0e8f314-0776-40ad-864f-4af4212ac5ad",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/roles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    "roles"
+                  ]
+                },
+                "description": "Retrieve the list of available user roles."
+              },
+              "response": [
+                {
+                  "id": "8657d0de-5b82-45b1-91d8-529b4a05750e",
+                  "name": "User roles returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "roles"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"roles\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-8657d0de-5b82-45b1-91d8-529b4a05750e"
+                },
+                {
+                  "id": "9506e80b-cdc2-427b-b2f5-3821742e0aad",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "roles"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-9506e80b-cdc2-427b-b2f5-3821742e0aad"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-b0e8f314-0776-40ad-864f-4af4212ac5ad"
+            }
+          ],
+          "id": "2b67272c-bd5d-472e-ae0c-1857cc79f2c3",
+          "createdAt": "2026-07-28T02:31:59.000Z",
+          "updatedAt": "2026-07-28T02:31:59.000Z",
+          "uid": "35240-2b67272c-bd5d-472e-ae0c-1857cc79f2c3"
+        },
+        {
+          "name": "employees",
+          "item": [
+            {
+              "name": "{employee_id}",
+              "item": [
+                {
+                  "name": "Paradox Get user by employee ID",
+                  "id": "812f69c2-de33-4d91-8f10-d4ddcd03b2b1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/employees/:employee_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "employees",
+                        ":employee_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "13844aeb-2423-4b70-816d-a59a93b49663",
+                          "key": "employee_id",
+                          "value": "<string>",
+                          "description": "(Required) Employee identifier"
+                        }
+                      ]
+                    },
+                    "description": "Look up a user by their employee ID."
+                  },
+                  "response": [
+                    {
+                      "id": "e45a1160-08f4-4470-8753-a348ffdb4214",
+                      "name": "User details returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/employees/:employee_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            "employees",
+                            ":employee_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employee_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"user\": {\n    \"OID\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone_number\": \"<string>\",\n    \"role_id\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"language_preference\": \"<string>\",\n    \"employee_id\": \"<string>\",\n    \"job_title\": \"<string>\",\n    \"location_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"active\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-e45a1160-08f4-4470-8753-a348ffdb4214"
+                    },
+                    {
+                      "id": "b131a3d2-bf8d-4278-9c94-01cbc8f883c4",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/employees/:employee_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            "employees",
+                            ":employee_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employee_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-b131a3d2-bf8d-4278-9c94-01cbc8f883c4"
+                    },
+                    {
+                      "id": "ab0e059a-7366-4224-993c-d4e0f81d34f4",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/employees/:employee_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            "employees",
+                            ":employee_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employee_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-ab0e059a-7366-4224-993c-d4e0f81d34f4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-812f69c2-de33-4d91-8f10-d4ddcd03b2b1"
+                },
+                {
+                  "name": "Paradox Update user by employee ID",
+                  "id": "b905c8c5-929e-4038-bb4e-6af22395d5c7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"job_title\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/employees/:employee_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "employees",
+                        ":employee_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7ae1f236-c7c5-417e-934e-445de05e6220",
+                          "key": "employee_id",
+                          "value": "<string>",
+                          "description": "(Required) Employee identifier"
+                        }
+                      ]
+                    },
+                    "description": "Update a user identified by their employee ID."
+                  },
+                  "response": [
+                    {
+                      "id": "9a8bacc7-6ab0-4978-9180-7147ec9cc33c",
+                      "name": "User updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"job_title\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/users/employees/:employee_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            "employees",
+                            ":employee_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employee_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"user\": {\n    \"OID\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone_number\": \"<string>\",\n    \"role_id\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"language_preference\": \"<string>\",\n    \"employee_id\": \"<string>\",\n    \"job_title\": \"<string>\",\n    \"location_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"active\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-9a8bacc7-6ab0-4978-9180-7147ec9cc33c"
+                    },
+                    {
+                      "id": "8c6000c4-7815-4249-b543-44df3fb302d3",
+                      "name": "Invalid request data",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"job_title\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/users/employees/:employee_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            "employees",
+                            ":employee_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employee_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-8c6000c4-7815-4249-b543-44df3fb302d3"
+                    },
+                    {
+                      "id": "b9a0cb2c-74ee-41bb-bf9c-4f5488017c83",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"job_title\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/users/employees/:employee_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            "employees",
+                            ":employee_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employee_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-b9a0cb2c-74ee-41bb-bf9c-4f5488017c83"
+                    },
+                    {
+                      "id": "1ef3f432-2d28-413e-b708-346fa7b497a9",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"job_title\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/users/employees/:employee_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            "employees",
+                            ":employee_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employee_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-1ef3f432-2d28-413e-b708-346fa7b497a9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-b905c8c5-929e-4038-bb4e-6af22395d5c7"
+                },
+                {
+                  "name": "Paradox Delete user by employee ID",
+                  "id": "2e4bbad9-308c-49f3-afa7-6a1a7a802015",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/employees/:employee_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "employees",
+                        ":employee_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "99643df7-6e8e-404d-8341-0ec68589a1a6",
+                          "key": "employee_id",
+                          "value": "<string>",
+                          "description": "(Required) Employee identifier"
+                        }
+                      ]
+                    },
+                    "description": "Delete a user identified by their employee ID."
+                  },
+                  "response": [
+                    {
+                      "id": "33f02a4a-7af1-4cab-8c54-169e65aa158f",
+                      "name": "User deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/employees/:employee_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            "employees",
+                            ":employee_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employee_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-33f02a4a-7af1-4cab-8c54-169e65aa158f"
+                    },
+                    {
+                      "id": "4910fb39-3f3b-4fb1-907d-a2f0268ced38",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/employees/:employee_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            "employees",
+                            ":employee_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employee_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-4910fb39-3f3b-4fb1-907d-a2f0268ced38"
+                    },
+                    {
+                      "id": "7abfa935-bb90-44a5-850d-535224fd0343",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/employees/:employee_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            "employees",
+                            ":employee_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employee_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:59.000Z",
+                      "updatedAt": "2026-07-28T02:31:59.000Z",
+                      "uid": "35240-7abfa935-bb90-44a5-850d-535224fd0343"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:59.000Z",
+                  "updatedAt": "2026-07-28T02:31:59.000Z",
+                  "uid": "35240-2e4bbad9-308c-49f3-afa7-6a1a7a802015"
+                }
+              ],
+              "id": "9ffdbe8b-a054-45c1-b550-7d1bdae24f8e",
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-9ffdbe8b-a054-45c1-b550-7d1bdae24f8e"
+            }
+          ],
+          "id": "ea3ce7dc-7e86-4135-af7e-53a763c7b854",
+          "createdAt": "2026-07-28T02:31:59.000Z",
+          "updatedAt": "2026-07-28T02:31:59.000Z",
+          "uid": "35240-ea3ce7dc-7e86-4135-af7e-53a763c7b854"
+        },
+        {
+          "name": "Paradox Get users",
+          "id": "526c7a1f-cf46-424f-a231-04e0754870c1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users?limit=<integer>&page=<integer>&include_campus_permission=<boolean>&external_role_id=<string>&location_id=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of results to return",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Page number for pagination",
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Include campus permission data in response",
+                  "key": "include_campus_permission",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Filter by external role identifier",
+                  "key": "external_role_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by location identifier",
+                  "key": "location_id",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of users in the Paradox platform."
+          },
+          "response": [
+            {
+              "id": "643a8428-a796-42ab-a673-d27593f11060",
+              "name": "List of users returned successfully",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?limit=<integer>&page=<integer>&include_campus_permission=<boolean>&external_role_id=<string>&location_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of results to return",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Include campus permission data in response",
+                      "key": "include_campus_permission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by external role identifier",
+                      "key": "external_role_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by location identifier",
+                      "key": "location_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"users\": [\n    {\n      \"OID\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone_number\": \"<string>\",\n      \"role_id\": \"<string>\",\n      \"timezone\": \"<string>\",\n      \"language_preference\": \"<string>\",\n      \"employee_id\": \"<string>\",\n      \"job_title\": \"<string>\",\n      \"location_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"active\": \"<boolean>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"OID\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone_number\": \"<string>\",\n      \"role_id\": \"<string>\",\n      \"timezone\": \"<string>\",\n      \"language_preference\": \"<string>\",\n      \"employee_id\": \"<string>\",\n      \"job_title\": \"<string>\",\n      \"location_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"active\": \"<boolean>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"count\": \"<integer>\",\n  \"page\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-643a8428-a796-42ab-a673-d27593f11060"
+            },
+            {
+              "id": "c70313aa-f2c7-4968-8de6-1951e6e64bb1",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?limit=<integer>&page=<integer>&include_campus_permission=<boolean>&external_role_id=<string>&location_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of results to return",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Include campus permission data in response",
+                      "key": "include_campus_permission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by external role identifier",
+                      "key": "external_role_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by location identifier",
+                      "key": "location_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-c70313aa-f2c7-4968-8de6-1951e6e64bb1"
+            }
+          ],
+          "createdAt": "2026-07-28T02:31:59.000Z",
+          "updatedAt": "2026-07-28T02:31:59.000Z",
+          "uid": "35240-526c7a1f-cf46-424f-a231-04e0754870c1"
+        },
+        {
+          "name": "Paradox Create user",
+          "id": "1dc79fb7-118a-4ea0-b796-2f7fc51488aa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"location_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employee_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Create a new user in the Paradox platform."
+          },
+          "response": [
+            {
+              "id": "4e32c6e4-cbd9-4428-a613-e323b1a3891f",
+              "name": "User created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"location_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employee_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"user\": {\n    \"OID\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone_number\": \"<string>\",\n    \"role_id\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"language_preference\": \"<string>\",\n    \"employee_id\": \"<string>\",\n    \"job_title\": \"<string>\",\n    \"location_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"active\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-4e32c6e4-cbd9-4428-a613-e323b1a3891f"
+            },
+            {
+              "id": "f0b5eb5f-65b2-429b-bb59-9da69c68d27c",
+              "name": "Invalid request data",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"location_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employee_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-f0b5eb5f-65b2-429b-bb59-9da69c68d27c"
+            },
+            {
+              "id": "225f54b8-8520-4a87-bfd7-620b5b6c3c11",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"role\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"language_preference\": \"<string>\",\n  \"location_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employee_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:31:59.000Z",
+              "updatedAt": "2026-07-28T02:31:59.000Z",
+              "uid": "35240-225f54b8-8520-4a87-bfd7-620b5b6c3c11"
+            }
+          ],
+          "createdAt": "2026-07-28T02:31:59.000Z",
+          "updatedAt": "2026-07-28T02:31:59.000Z",
+          "uid": "35240-1dc79fb7-118a-4ea0-b796-2f7fc51488aa"
+        }
+      ],
+      "id": "5c18345e-f12b-47ec-8d44-166dca1eaa2e",
+      "createdAt": "2026-07-28T02:31:59.000Z",
+      "updatedAt": "2026-07-28T02:31:59.000Z",
+      "uid": "35240-5c18345e-f12b-47ec-8d44-166dca1eaa2e"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}

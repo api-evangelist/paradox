@@ -1,0 +1,1180 @@
+{
+  "info": {
+    "_postman_id": "2fa1d004-6cfc-48c4-b9cb-279366f1141c",
+    "name": "Paradox Authentication Location Areas API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:44.000Z",
+    "updatedAt": "2026-07-28T02:31:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2fa1d004-6cfc-48c4-b9cb-279366f1141c"
+  },
+  "item": [
+    {
+      "name": "location",
+      "item": [
+        {
+          "name": "{location_id}",
+          "item": [
+            {
+              "name": "areas",
+              "item": [
+                {
+                  "name": "{area_id}",
+                  "item": [
+                    {
+                      "name": "Paradox Get single location area",
+                      "id": "0a29ba81-71aa-4ff9-bc60-ee174c3b4868",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "areas",
+                            ":area_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e1814f02-fe4d-4480-9347-2ecb0297c515",
+                              "key": "location_id",
+                              "value": "<string>",
+                              "description": "(Required) Location identifier"
+                            },
+                            {
+                              "id": "4f262474-59f3-413a-bcec-eeb645fb967f",
+                              "key": "area_id",
+                              "value": "<string>",
+                              "description": "(Required) Area identifier"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve details for a specific area within a location."
+                      },
+                      "response": [
+                        {
+                          "id": "345c08fa-d147-49cf-ba0a-2f0b75ba384a",
+                          "name": "Area details returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "areas",
+                                ":area_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "area_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"area\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"location_id\": \"<string>\",\n    \"type\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:31:45.000Z",
+                          "updatedAt": "2026-07-28T02:31:45.000Z",
+                          "uid": "35240-345c08fa-d147-49cf-ba0a-2f0b75ba384a"
+                        },
+                        {
+                          "id": "48c4070c-954e-4335-b582-0eb4d2445280",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "areas",
+                                ":area_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "area_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:45.000Z",
+                          "updatedAt": "2026-07-28T02:31:45.000Z",
+                          "uid": "35240-48c4070c-954e-4335-b582-0eb4d2445280"
+                        },
+                        {
+                          "id": "d251464f-7e3e-48db-8639-35b17a9bc480",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "areas",
+                                ":area_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "area_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:45.000Z",
+                          "updatedAt": "2026-07-28T02:31:45.000Z",
+                          "uid": "35240-d251464f-7e3e-48db-8639-35b17a9bc480"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:31:45.000Z",
+                      "updatedAt": "2026-07-28T02:31:45.000Z",
+                      "uid": "35240-0a29ba81-71aa-4ff9-bc60-ee174c3b4868"
+                    },
+                    {
+                      "name": "Paradox Update location area",
+                      "id": "39aec388-fc82-48f5-987c-9b2a315fe307",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "areas",
+                            ":area_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "799ddb87-2522-48aa-8c99-608697b45a1a",
+                              "key": "location_id",
+                              "value": "<string>",
+                              "description": "(Required) Location identifier"
+                            },
+                            {
+                              "id": "d857ba35-4995-4e64-a4d7-adef61a8618d",
+                              "key": "area_id",
+                              "value": "<string>",
+                              "description": "(Required) Area identifier"
+                            }
+                          ]
+                        },
+                        "description": "Update an existing area within a location."
+                      },
+                      "response": [
+                        {
+                          "id": "dc416f71-9e5e-4207-a8f6-3dcb8491f52c",
+                          "name": "Area updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "areas",
+                                ":area_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "area_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"area\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"location_id\": \"<string>\",\n    \"type\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:31:45.000Z",
+                          "updatedAt": "2026-07-28T02:31:45.000Z",
+                          "uid": "35240-dc416f71-9e5e-4207-a8f6-3dcb8491f52c"
+                        },
+                        {
+                          "id": "f5529e7f-8fad-4d53-9c49-291c5ffaf1ef",
+                          "name": "Invalid request data",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "areas",
+                                ":area_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "area_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:45.000Z",
+                          "updatedAt": "2026-07-28T02:31:45.000Z",
+                          "uid": "35240-f5529e7f-8fad-4d53-9c49-291c5ffaf1ef"
+                        },
+                        {
+                          "id": "882fd2f2-cafe-42ad-b448-d896868183ef",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "areas",
+                                ":area_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "area_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:45.000Z",
+                          "updatedAt": "2026-07-28T02:31:45.000Z",
+                          "uid": "35240-882fd2f2-cafe-42ad-b448-d896868183ef"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:31:45.000Z",
+                      "updatedAt": "2026-07-28T02:31:45.000Z",
+                      "uid": "35240-39aec388-fc82-48f5-987c-9b2a315fe307"
+                    },
+                    {
+                      "name": "Paradox Delete location area",
+                      "id": "aa0851d9-9360-4990-8e78-2610e0e0293b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "areas",
+                            ":area_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "59e9d90b-b862-47bc-9062-e885c82f1558",
+                              "key": "location_id",
+                              "value": "<string>",
+                              "description": "(Required) Location identifier"
+                            },
+                            {
+                              "id": "60131a22-56a2-4eaf-b688-ee4fe4f9c176",
+                              "key": "area_id",
+                              "value": "<string>",
+                              "description": "(Required) Area identifier"
+                            }
+                          ]
+                        },
+                        "description": "Delete an area within a location."
+                      },
+                      "response": [
+                        {
+                          "id": "7193ab54-5fcc-4bca-bc57-810d71424e27",
+                          "name": "Area deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "areas",
+                                ":area_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "area_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T02:31:45.000Z",
+                          "updatedAt": "2026-07-28T02:31:45.000Z",
+                          "uid": "35240-7193ab54-5fcc-4bca-bc57-810d71424e27"
+                        },
+                        {
+                          "id": "47f0c6c2-b4c2-4a93-a8e7-3423418c0595",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "areas",
+                                ":area_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "area_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:45.000Z",
+                          "updatedAt": "2026-07-28T02:31:45.000Z",
+                          "uid": "35240-47f0c6c2-b4c2-4a93-a8e7-3423418c0595"
+                        },
+                        {
+                          "id": "9a075668-4918-4b21-9861-9794608b7f90",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/location/:location_id/areas/:area_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "location",
+                                ":location_id",
+                                "areas",
+                                ":area_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "location_id"
+                                },
+                                {
+                                  "key": "area_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:45.000Z",
+                          "updatedAt": "2026-07-28T02:31:45.000Z",
+                          "uid": "35240-9a075668-4918-4b21-9861-9794608b7f90"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:31:45.000Z",
+                      "updatedAt": "2026-07-28T02:31:45.000Z",
+                      "uid": "35240-aa0851d9-9360-4990-8e78-2610e0e0293b"
+                    }
+                  ],
+                  "id": "77aead3c-d0b5-47a0-895e-0c0f887c6261",
+                  "createdAt": "2026-07-28T02:31:45.000Z",
+                  "updatedAt": "2026-07-28T02:31:45.000Z",
+                  "uid": "35240-77aead3c-d0b5-47a0-895e-0c0f887c6261"
+                },
+                {
+                  "name": "Paradox Get location areas",
+                  "id": "e02bad06-605a-4a51-bfd7-a1cf83c48922",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:location_id/areas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":location_id",
+                        "areas"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ca3638f5-d659-49ff-9265-7f48ca2bbaa8",
+                          "key": "location_id",
+                          "value": "<string>",
+                          "description": "(Required) Location identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all areas for a specific location."
+                  },
+                  "response": [
+                    {
+                      "id": "7a88def7-2a16-48f9-a4c5-0833290cbcfa",
+                      "name": "Areas returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/areas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "areas"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"areas\": [\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"location_id\": \"<string>\",\n      \"type\": \"<integer>\"\n    },\n    {\n      \"oid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"location_id\": \"<string>\",\n      \"type\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:31:45.000Z",
+                      "updatedAt": "2026-07-28T02:31:45.000Z",
+                      "uid": "35240-7a88def7-2a16-48f9-a4c5-0833290cbcfa"
+                    },
+                    {
+                      "id": "29962099-f0f7-47c7-bcea-4a381bc73bae",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/areas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "areas"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:45.000Z",
+                      "updatedAt": "2026-07-28T02:31:45.000Z",
+                      "uid": "35240-29962099-f0f7-47c7-bcea-4a381bc73bae"
+                    },
+                    {
+                      "id": "7e420bfd-c956-41e5-81f1-40087abba6bd",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/areas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "areas"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:45.000Z",
+                      "updatedAt": "2026-07-28T02:31:45.000Z",
+                      "uid": "35240-7e420bfd-c956-41e5-81f1-40087abba6bd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:45.000Z",
+                  "updatedAt": "2026-07-28T02:31:45.000Z",
+                  "uid": "35240-e02bad06-605a-4a51-bfd7-a1cf83c48922"
+                },
+                {
+                  "name": "Paradox Create location area",
+                  "id": "2c5bd2bb-7a6e-4636-8021-824417f63495",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:location_id/areas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":location_id",
+                        "areas"
+                      ],
+                      "variable": [
+                        {
+                          "id": "093a3cc0-2b41-4192-8570-9631758de394",
+                          "key": "location_id",
+                          "value": "<string>",
+                          "description": "(Required) Location identifier"
+                        }
+                      ]
+                    },
+                    "description": "Create a new area within a location."
+                  },
+                  "response": [
+                    {
+                      "id": "61e2a2a9-c646-4e72-a4fb-6b42a5cd716e",
+                      "name": "Area created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/areas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "areas"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"area\": {\n    \"oid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"location_id\": \"<string>\",\n    \"type\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:45.000Z",
+                      "updatedAt": "2026-07-28T02:31:45.000Z",
+                      "uid": "35240-61e2a2a9-c646-4e72-a4fb-6b42a5cd716e"
+                    },
+                    {
+                      "id": "2902f4f5-a990-41d9-bae1-eed7f84a1e79",
+                      "name": "Invalid request data",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/areas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "areas"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:45.000Z",
+                      "updatedAt": "2026-07-28T02:31:45.000Z",
+                      "uid": "35240-2902f4f5-a990-41d9-bae1-eed7f84a1e79"
+                    },
+                    {
+                      "id": "8a373a2f-4f52-48f7-bf05-cd4ef6692f61",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/areas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "areas"
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:45.000Z",
+                      "updatedAt": "2026-07-28T02:31:45.000Z",
+                      "uid": "35240-8a373a2f-4f52-48f7-bf05-cd4ef6692f61"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:45.000Z",
+                  "updatedAt": "2026-07-28T02:31:45.000Z",
+                  "uid": "35240-2c5bd2bb-7a6e-4636-8021-824417f63495"
+                }
+              ],
+              "id": "eec94b11-6473-4a2a-88cc-5221db06f229",
+              "createdAt": "2026-07-28T02:31:45.000Z",
+              "updatedAt": "2026-07-28T02:31:45.000Z",
+              "uid": "35240-eec94b11-6473-4a2a-88cc-5221db06f229"
+            }
+          ],
+          "id": "acb7b09c-54e2-45ac-b6c0-1eb3895c554f",
+          "createdAt": "2026-07-28T02:31:45.000Z",
+          "updatedAt": "2026-07-28T02:31:45.000Z",
+          "uid": "35240-acb7b09c-54e2-45ac-b6c0-1eb3895c554f"
+        }
+      ],
+      "id": "3d4aa16f-43bc-41d5-8ec2-660031d88c32",
+      "createdAt": "2026-07-28T02:31:45.000Z",
+      "updatedAt": "2026-07-28T02:31:45.000Z",
+      "uid": "35240-3d4aa16f-43bc-41d5-8ec2-660031d88c32"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}

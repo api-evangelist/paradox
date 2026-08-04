@@ -1,0 +1,684 @@
+{
+  "info": {
+    "_postman_id": "793232de-35d7-4472-b09d-dd1cfb756019",
+    "name": "Paradox Authentication Candidate Attributes API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:38.000Z",
+    "updatedAt": "2026-07-28T02:31:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-793232de-35d7-4472-b09d-dd1cfb756019"
+  },
+  "item": [
+    {
+      "name": "candidate",
+      "item": [
+        {
+          "name": "attributes",
+          "item": [
+            {
+              "name": "{oid}",
+              "item": [
+                {
+                  "name": "Paradox Get candidate attributes",
+                  "id": "88355601-b736-4414-85bb-8fad06640ee3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/candidate/attributes/:oid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidate",
+                        "attributes",
+                        ":oid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "aa88b19e-a782-4858-bc22-620130422a63",
+                          "key": "oid",
+                          "value": "<string>",
+                          "description": "(Required) Candidate OID or external OID"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all current custom attributes for a specific candidate."
+                  },
+                  "response": [
+                    {
+                      "id": "3650d5cb-9a44-4839-a43e-75a25e063840",
+                      "name": "Candidate attributes returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/candidate/attributes/:oid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidate",
+                            "attributes",
+                            ":oid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "oid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"attributes\": {\n    \"mollit_03\": \"<string>\",\n    \"elit_9\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:38.000Z",
+                      "updatedAt": "2026-07-28T02:31:38.000Z",
+                      "uid": "35240-3650d5cb-9a44-4839-a43e-75a25e063840"
+                    },
+                    {
+                      "id": "ed122950-79fe-4746-99e8-3749b024f285",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/candidate/attributes/:oid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidate",
+                            "attributes",
+                            ":oid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "oid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:38.000Z",
+                      "updatedAt": "2026-07-28T02:31:38.000Z",
+                      "uid": "35240-ed122950-79fe-4746-99e8-3749b024f285"
+                    },
+                    {
+                      "id": "3dd2f108-db6d-4fac-8119-90dfee807ee0",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/candidate/attributes/:oid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "candidate",
+                            "attributes",
+                            ":oid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "oid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:38.000Z",
+                      "updatedAt": "2026-07-28T02:31:38.000Z",
+                      "uid": "35240-3dd2f108-db6d-4fac-8119-90dfee807ee0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:38.000Z",
+                  "updatedAt": "2026-07-28T02:31:38.000Z",
+                  "uid": "35240-88355601-b736-4414-85bb-8fad06640ee3"
+                }
+              ],
+              "id": "b494ba5c-3429-4324-80d5-e89c8b8d2feb",
+              "createdAt": "2026-07-28T02:31:38.000Z",
+              "updatedAt": "2026-07-28T02:31:38.000Z",
+              "uid": "35240-b494ba5c-3429-4324-80d5-e89c8b8d2feb"
+            },
+            {
+              "name": "Paradox Patch candidate attributes",
+              "id": "8cba15fb-ed37-4cb3-bba1-7a5ba69605b5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"oid\": \"<string>\",\n  \"attributes\": {\n    \"reprehenderit_3\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/candidate/attributes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidate",
+                    "attributes"
+                  ]
+                },
+                "description": "Partially update candidate attributes. Only the specified attributes will be modified; existing attributes not included will remain unchanged."
+              },
+              "response": [
+                {
+                  "id": "f137af35-ed60-4eed-be49-e9f5da6bd35c",
+                  "name": "Candidate attributes patched successfully",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"oid\": \"<string>\",\n  \"attributes\": {\n    \"reprehenderit_3\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidate/attributes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidate",
+                        "attributes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:31:38.000Z",
+                  "updatedAt": "2026-07-28T02:31:38.000Z",
+                  "uid": "35240-f137af35-ed60-4eed-be49-e9f5da6bd35c"
+                },
+                {
+                  "id": "77bc947c-3a56-4eed-8ae7-b425e073881f",
+                  "name": "Invalid request data",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"oid\": \"<string>\",\n  \"attributes\": {\n    \"reprehenderit_3\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidate/attributes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidate",
+                        "attributes"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:38.000Z",
+                  "updatedAt": "2026-07-28T02:31:38.000Z",
+                  "uid": "35240-77bc947c-3a56-4eed-8ae7-b425e073881f"
+                },
+                {
+                  "id": "04297722-60e4-4544-ae90-ec9155a91165",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"oid\": \"<string>\",\n  \"attributes\": {\n    \"reprehenderit_3\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidate/attributes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidate",
+                        "attributes"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:38.000Z",
+                  "updatedAt": "2026-07-28T02:31:38.000Z",
+                  "uid": "35240-04297722-60e4-4544-ae90-ec9155a91165"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:38.000Z",
+              "updatedAt": "2026-07-28T02:31:38.000Z",
+              "uid": "35240-8cba15fb-ed37-4cb3-bba1-7a5ba69605b5"
+            },
+            {
+              "name": "Paradox Update candidate attributes",
+              "id": "b4efe78c-f945-4223-b520-5f92388521a0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"oid\": \"<string>\",\n  \"attributes\": {\n    \"pariatur_8\": \"<string>\",\n    \"id1\": \"<string>\",\n    \"Ut_ec\": \"<string>\",\n    \"ullamcodb\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/candidate/attributes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidate",
+                    "attributes"
+                  ]
+                },
+                "description": "Replace all candidate attributes with the provided set. Any attributes not included in the request will be removed."
+              },
+              "response": [
+                {
+                  "id": "643e03d6-4f4c-426c-a784-a8902e975150",
+                  "name": "Candidate attributes updated successfully",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"oid\": \"<string>\",\n  \"attributes\": {\n    \"pariatur_8\": \"<string>\",\n    \"id1\": \"<string>\",\n    \"Ut_ec\": \"<string>\",\n    \"ullamcodb\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidate/attributes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidate",
+                        "attributes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:31:38.000Z",
+                  "updatedAt": "2026-07-28T02:31:38.000Z",
+                  "uid": "35240-643e03d6-4f4c-426c-a784-a8902e975150"
+                },
+                {
+                  "id": "8469c01f-9df8-4a9f-bb76-dcb71f685b46",
+                  "name": "Invalid request data",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"oid\": \"<string>\",\n  \"attributes\": {\n    \"pariatur_8\": \"<string>\",\n    \"id1\": \"<string>\",\n    \"Ut_ec\": \"<string>\",\n    \"ullamcodb\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidate/attributes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidate",
+                        "attributes"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:38.000Z",
+                  "updatedAt": "2026-07-28T02:31:38.000Z",
+                  "uid": "35240-8469c01f-9df8-4a9f-bb76-dcb71f685b46"
+                },
+                {
+                  "id": "4342e2d8-9382-4f74-a69e-0001f8394107",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"oid\": \"<string>\",\n  \"attributes\": {\n    \"pariatur_8\": \"<string>\",\n    \"id1\": \"<string>\",\n    \"Ut_ec\": \"<string>\",\n    \"ullamcodb\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/candidate/attributes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidate",
+                        "attributes"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:38.000Z",
+                  "updatedAt": "2026-07-28T02:31:38.000Z",
+                  "uid": "35240-4342e2d8-9382-4f74-a69e-0001f8394107"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:38.000Z",
+              "updatedAt": "2026-07-28T02:31:38.000Z",
+              "uid": "35240-b4efe78c-f945-4223-b520-5f92388521a0"
+            }
+          ],
+          "id": "f3444ea7-2c15-469d-a02e-1f55aec896df",
+          "createdAt": "2026-07-28T02:31:38.000Z",
+          "updatedAt": "2026-07-28T02:31:38.000Z",
+          "uid": "35240-f3444ea7-2c15-469d-a02e-1f55aec896df"
+        }
+      ],
+      "id": "cb05891f-bbef-458f-8d8b-f6407215f104",
+      "createdAt": "2026-07-28T02:31:38.000Z",
+      "updatedAt": "2026-07-28T02:31:38.000Z",
+      "uid": "35240-cb05891f-bbef-458f-8d8b-f6407215f104"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}

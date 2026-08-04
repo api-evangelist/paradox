@@ -1,0 +1,398 @@
+{
+  "info": {
+    "_postman_id": "9bc98b3b-917d-494b-86e4-87673c2ceb9c",
+    "name": "Paradox Authentication API",
+    "description": "API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.\n\nContact Support:\n Name: Paradox Support\n Email: support@paradox.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:37.000Z",
+    "updatedAt": "2026-07-28T02:31:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9bc98b3b-917d-494b-86e4-87673c2ceb9c"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Paradox Get OAuth 2.0 access token",
+              "id": "45d028a9-3a81-4e5a-bb9f-403d568226c9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Account ID provided by Paradox",
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Secret key provided by Paradox",
+                      "key": "client_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OAuth 2.0 grant type",
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "token"
+                  ]
+                },
+                "description": "Obtain an access token using OAuth 2.0 client credentials grant. The returned token should be included in the Authorization header as a Bearer token for subsequent API requests."
+              },
+              "response": [
+                {
+                  "id": "80db3240-b745-48f0-a05f-74a3ae52e446",
+                  "name": "Access token issued successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Account ID provided by Paradox",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Secret key provided by Paradox",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OAuth 2.0 grant type",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"token_type\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:38.000Z",
+                  "updatedAt": "2026-07-28T02:31:38.000Z",
+                  "uid": "35240-80db3240-b745-48f0-a05f-74a3ae52e446"
+                },
+                {
+                  "id": "28ca637a-eb20-4ba0-91d0-602bc1e161f8",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Account ID provided by Paradox",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Secret key provided by Paradox",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OAuth 2.0 grant type",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:31:38.000Z",
+                  "updatedAt": "2026-07-28T02:31:38.000Z",
+                  "uid": "35240-28ca637a-eb20-4ba0-91d0-602bc1e161f8"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:38.000Z",
+              "updatedAt": "2026-07-28T02:31:38.000Z",
+              "uid": "35240-45d028a9-3a81-4e5a-bb9f-403d568226c9"
+            }
+          ],
+          "id": "3b9918b1-8d83-4e8a-8d08-1800a51c497b",
+          "createdAt": "2026-07-28T02:31:38.000Z",
+          "updatedAt": "2026-07-28T02:31:38.000Z",
+          "uid": "35240-3b9918b1-8d83-4e8a-8d08-1800a51c497b"
+        }
+      ],
+      "id": "9a9c1fd2-1e2d-4cdb-af7c-28b78b73e20f",
+      "createdAt": "2026-07-28T02:31:38.000Z",
+      "updatedAt": "2026-07-28T02:31:38.000Z",
+      "uid": "35240-9a9c1fd2-1e2d-4cdb-af7c-28b78b73e20f"
+    },
+    {
+      "name": "verify-jwt",
+      "item": [
+        {
+          "name": "Paradox Verify JWT token",
+          "id": "6716398a-101b-41f3-9550-0090d2056f9d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/verify-jwt",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "verify-jwt"
+              ]
+            },
+            "description": "Verify the validity of a JWT authentication token."
+          },
+          "response": [
+            {
+              "id": "91e70856-10f5-4480-9426-d293ccbb1d34",
+              "name": "Token is valid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/verify-jwt",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "verify-jwt"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T02:31:38.000Z",
+              "updatedAt": "2026-07-28T02:31:38.000Z",
+              "uid": "35240-91e70856-10f5-4480-9426-d293ccbb1d34"
+            },
+            {
+              "id": "97c083b8-3904-4601-aa09-171477c6affb",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/verify-jwt",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "verify-jwt"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:31:38.000Z",
+              "updatedAt": "2026-07-28T02:31:38.000Z",
+              "uid": "35240-97c083b8-3904-4601-aa09-171477c6affb"
+            },
+            {
+              "id": "4873755f-f264-4946-9e81-f01e80568eab",
+              "name": "Token expired",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/verify-jwt",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "verify-jwt"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:31:38.000Z",
+              "updatedAt": "2026-07-28T02:31:38.000Z",
+              "uid": "35240-4873755f-f264-4946-9e81-f01e80568eab"
+            }
+          ],
+          "createdAt": "2026-07-28T02:31:38.000Z",
+          "updatedAt": "2026-07-28T02:31:38.000Z",
+          "uid": "35240-6716398a-101b-41f3-9550-0090d2056f9d"
+        }
+      ],
+      "id": "3eb8ee44-86a6-4ea7-91f3-6b5d47ddf052",
+      "createdAt": "2026-07-28T02:31:38.000Z",
+      "updatedAt": "2026-07-28T02:31:38.000Z",
+      "uid": "35240-3eb8ee44-86a6-4ea7-91f3-6b5d47ddf052"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.paradox.ai/api/v1/public"
+    }
+  ]
+}
