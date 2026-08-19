@@ -1,0 +1,331 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paradox Authentication Candidates API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "/auth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Candidates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get candidates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/candidates",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter candidates created after this date (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter candidates created before this date (ISO 8601)"
+              },
+              {
+                "name": "created_start_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate creation start date"
+              },
+              {
+                "name": "start_keyword",
+                "value": "",
+                "type": "query",
+                "description": "Search keyword filter"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return (max 50)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip for pagination"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate status"
+              },
+              {
+                "name": "group_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group name"
+              },
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by location identifier"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate source"
+              },
+              {
+                "name": "conversation",
+                "value": "",
+                "type": "query",
+                "description": "Include conversation data"
+              },
+              {
+                "name": "interviews",
+                "value": "",
+                "type": "query",
+                "description": "Include interview data"
+              },
+              {
+                "name": "note",
+                "value": "",
+                "type": "query",
+                "description": "Include candidate notes"
+              },
+              {
+                "name": "profile_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by profile identifier"
+              },
+              {
+                "name": "include_attributes",
+                "value": "",
+                "type": "query",
+                "description": "Include candidate attribute data in response"
+              },
+              {
+                "name": "candidate_journey_status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate journey status"
+              },
+              {
+                "name": "job_loc_code",
+                "value": "",
+                "type": "query",
+                "description": "Filter by job location code"
+              },
+              {
+                "name": "job_req_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by job requisition ID"
+              },
+              {
+                "name": "ex_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by external candidate identifier"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate email"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of candidates with optional filtering by date range, status, group, location, source, and other criteria."
+        },
+        {
+          "info": {
+            "name": "Paradox Create candidate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/candidates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new candidate in the Paradox platform. Requires at minimum a name (or first_name and last_name), phone number, and email address."
+        },
+        {
+          "info": {
+            "name": "Paradox Get single candidate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Candidate OID, external OID, or external ID"
+              },
+              {
+                "name": "conversation",
+                "value": "",
+                "type": "query",
+                "description": "Include conversation history"
+              },
+              {
+                "name": "note",
+                "value": "",
+                "type": "query",
+                "description": "Include candidate notes"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific candidate by OID or external OID."
+        },
+        {
+          "info": {
+            "name": "Paradox Update candidate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Candidate OID, external OID, or external ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing candidate by OID, external OID, or external ID. Supports updating name, contact information, status, journey details, attributes, and attached documents."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete candidate",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Candidate OID, external OID, or external ID"
+              }
+            ]
+          },
+          "docs": "Delete a candidate by OID or external OID."
+        },
+        {
+          "info": {
+            "name": "Paradox Unsubscribe candidate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/unsubscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unsubscribe or resubscribe a candidate from communications. Use action_id 1 to unsubscribe and 0 to resubscribe."
+        },
+        {
+          "info": {
+            "name": "Paradox Send candidate message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/send_message",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a message to a candidate via their preferred contact method."
+        },
+        {
+          "info": {
+            "name": "Paradox Send standard background check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/background_check/standard",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a standard background check for a candidate."
+        },
+        {
+          "info": {
+            "name": "Paradox Send Checkr background check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/background_check/checkr",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a background check through Checkr integration."
+        },
+        {
+          "info": {
+            "name": "Paradox Send First Advantage background check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/candidates/background_check/firstadvance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a background check through First Advantage integration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

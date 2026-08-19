@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paradox Authentication Locations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "/auth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/company/locations"
+          },
+          "docs": "Retrieve a list of all locations in the company."
+        },
+        {
+          "info": {
+            "name": "Paradox Create location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/location",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new location in the Paradox platform."
+        },
+        {
+          "info": {
+            "name": "Paradox Get single location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/location/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific location by identifier."
+        },
+        {
+          "info": {
+            "name": "Paradox Update location",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/location/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing location."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/location/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Location identifier"
+              }
+            ]
+          },
+          "docs": "Delete a location by identifier."
+        },
+        {
+          "info": {
+            "name": "Paradox Get location by job location code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/location/code/:job_loc_code",
+            "params": [
+              {
+                "name": "job_loc_code",
+                "value": "",
+                "type": "path",
+                "description": "Job location code"
+              }
+            ]
+          },
+          "docs": "Look up a location by its job location code."
+        },
+        {
+          "info": {
+            "name": "Paradox Update location by job location code",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/location/code/:job_loc_code",
+            "params": [
+              {
+                "name": "job_loc_code",
+                "value": "",
+                "type": "path",
+                "description": "Job location code"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a location identified by its job location code."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

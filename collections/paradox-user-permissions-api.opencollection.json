@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paradox Authentication User Permissions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "/auth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get user location permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid/permissions/locations",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve location-based access permissions for a user."
+        },
+        {
+          "info": {
+            "name": "Paradox Add user location permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid/permissions/locations",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a location-based access permission for a user."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete user location permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid/permissions/locations",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a location-based access permission from a user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

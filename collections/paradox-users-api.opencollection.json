@@ -1,0 +1,258 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paradox Authentication Users API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "/auth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/users",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "include_campus_permission",
+                "value": "",
+                "type": "query",
+                "description": "Include campus permission data in response"
+              },
+              {
+                "name": "external_role_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by external role identifier"
+              },
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by location identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of users in the Paradox platform."
+        },
+        {
+          "info": {
+            "name": "Paradox Create user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new user in the Paradox platform."
+        },
+        {
+          "info": {
+            "name": "Paradox Get single user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific user by OID or external identifier."
+        },
+        {
+          "info": {
+            "name": "Paradox Update user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing user by OID."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ]
+          },
+          "docs": "Delete a user by OID."
+        },
+        {
+          "info": {
+            "name": "Paradox Deactivate user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid/deactivate",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ]
+          },
+          "docs": "Deactivate a user account, preventing login and API access."
+        },
+        {
+          "info": {
+            "name": "Paradox Reactivate user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/users/:oid/reactivate",
+            "params": [
+              {
+                "name": "oid",
+                "value": "",
+                "type": "path",
+                "description": "User OID or external identifier"
+              }
+            ]
+          },
+          "docs": "Reactivate a previously deactivated user account."
+        },
+        {
+          "info": {
+            "name": "Paradox Get user roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/users/roles"
+          },
+          "docs": "Retrieve the list of available user roles."
+        },
+        {
+          "info": {
+            "name": "Paradox Get user by employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/users/employees/:employee_id",
+            "params": [
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "path",
+                "description": "Employee identifier"
+              }
+            ]
+          },
+          "docs": "Look up a user by their employee ID."
+        },
+        {
+          "info": {
+            "name": "Paradox Update user by employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/users/employees/:employee_id",
+            "params": [
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "path",
+                "description": "Employee identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a user identified by their employee ID."
+        },
+        {
+          "info": {
+            "name": "Paradox Delete user by employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paradox.ai/api/v1/public/users/employees/:employee_id",
+            "params": [
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "path",
+                "description": "Employee identifier"
+              }
+            ]
+          },
+          "docs": "Delete a user identified by their employee ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

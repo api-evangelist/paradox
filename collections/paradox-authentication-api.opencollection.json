@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paradox Authentication API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "/auth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get OAuth 2.0 access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/auth/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                },
+                {
+                  "name": "grant_type",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Obtain an access token using OAuth 2.0 client credentials grant. The returned token should be included in the Authorization header as a Bearer token for subsequent API requests."
+        },
+        {
+          "info": {
+            "name": "Paradox Verify JWT token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/verify-jwt"
+          },
+          "docs": "Verify the validity of a JWT authentication token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

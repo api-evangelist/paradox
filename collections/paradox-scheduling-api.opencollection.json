@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paradox Authentication Scheduling API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "/auth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scheduling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paradox Get multiparty interviewers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/multiparty-interviewers"
+          },
+          "docs": "Retrieve the list of available multiparty interviewers for scheduling."
+        },
+        {
+          "info": {
+            "name": "Paradox Get interview settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/interview-settings"
+          },
+          "docs": "Retrieve interview scheduling configuration settings."
+        },
+        {
+          "info": {
+            "name": "Paradox Get job location rooms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/job-location-rooms"
+          },
+          "docs": "Retrieve available interview rooms for job locations."
+        },
+        {
+          "info": {
+            "name": "Paradox Send interview alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/send-interview-alerts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send interview alert notifications to candidates and/or interviewers about upcoming or changed interviews."
+        },
+        {
+          "info": {
+            "name": "Paradox Get interview history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/interview-history",
+            "params": [
+              {
+                "name": "candidate_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by candidate identifier"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter by start date"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter by end date"
+              }
+            ]
+          },
+          "docs": "Retrieve interview history records."
+        },
+        {
+          "info": {
+            "name": "Paradox Schedule shortlist review",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paradox.ai/api/v1/public/scheduling/communication",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an email to hiring manager(s) with a shortlist of candidates for review and scheduling."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
