@@ -26,6 +26,17 @@ specificationVersion: '0.23'
 tags:
   - Artificial Intelligence
   - Candidate Screening
+  - Chatbots
+  - Conversational AI
+  - Hiring Automation
+  - HR Technology
+  - Interview Scheduling
+  - Recruiting
+  - SMS
+  - Talent Acquisition
+tags_raw:
+  - Artificial Intelligence
+  - Candidate Screening
   - Chatbot
   - Conversational AI
   - Hiring Automation
@@ -514,6 +525,8 @@ apis:
   humanURL: https://www.paradox.ai
   baseURL: https://api.paradox.ai
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
