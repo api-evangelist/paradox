@@ -58,6 +58,9 @@ tags_raw:
   - SMS
   - Talent Acquisition
 common:
+  - type: CapabilityMap
+    url: capabilities/paradox-capability-edges.yml
+    name: Paradox Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/paradox/overview
   - type: AgenticAccess

@@ -1,0 +1,53 @@
+slug: paradox
+provider: Paradox
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Candidates
+  spec_file: paradox-candidates-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.95
+  evidence: POST /candidates  createCandidate  Paradox Create candidate ... POST /candidates/background_check/checkr  sendBackgroundCheckCheckr  Paradox
+    Send Checkr background check
+  reason: Full candidate record lifecycle plus candidate messaging and pre-employment background checks
+    — recruiting/hiring operations, i.e. Talent Acquisition Management.
+- tag: Scheduling
+  spec_file: paradox-scheduling-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.9
+  evidence: GET /scheduling/interview-settings; PUT /scheduling/send-interview-alerts; GET /scheduling/interview-history;
+    schemas InterviewSettings, Interviewer
+  reason: Operations manage interviewers, interview settings, alerts and interview history — recruiting/interview
+    scheduling, squarely Talent Acquisition Management.
+- tag: Candidate Attributes
+  spec_file: paradox-candidate-attributes-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.85
+  evidence: GET /candidate/attributes/{oid}  getCandidateAttributes  Paradox Get candidate attributes
+  reason: Read and update of attributes held against job candidates in a conversational recruiting platform
+    — data supporting candidate screening, squarely Talent Acquisition Management.
+- tag: User Permissions
+  spec_file: paradox-user-permissions-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: GET /users/{oid}/permissions/locations 'Paradox Get user location permissions'; schema LocationPermission
+  reason: Grant/revoke of application user permissions scoped to locations is access management for platform
+    users, not an HR capability.
