@@ -58,6 +58,8 @@ tags_raw:
   - SMS
   - Talent Acquisition
 common:
+  - type: Website
+    url: https://www.paradox.ai/
   - type: CapabilityMap
     url: capabilities/paradox-capability-edges.yml
     name: Paradox Business Capability Map
