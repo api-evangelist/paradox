@@ -373,6 +373,8 @@ apis:
   humanURL: https://www.paradox.ai
   baseURL: https://api.paradox.ai
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
