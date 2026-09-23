@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Paradox Authentication Location Rooms API
+  title: Paradox Location Rooms API
   description: API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
   version: 1.0.0
   contact:
@@ -207,6 +207,23 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    RoomCreate:
+      type: object
+      description: Request body for creating a new room
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Room name
+        capacity:
+          type: integer
+          description: Room capacity
     Room:
       type: object
       description: A room within a location used for interviews
@@ -226,26 +243,9 @@ components:
         active:
           type: boolean
           description: Whether the room is active
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    RoomCreate:
-      type: object
-      description: Request body for creating a new room
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Room name
-        capacity:
-          type: integer
-          description: Room capacity
   responses:
-    Unauthorized:
-      description: Authentication failed
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -268,8 +268,8 @@ components:
                 const: false
               message:
                 type: string
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:

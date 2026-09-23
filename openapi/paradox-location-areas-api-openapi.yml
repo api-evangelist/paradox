@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Paradox Authentication Location Areas API
+  title: Paradox Location Areas API
   description: API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
   version: 1.0.0
   contact:
@@ -207,6 +207,11 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
     Area:
       type: object
       description: An area within a location
@@ -235,14 +240,9 @@ components:
         type:
           type: integer
           description: 'Area type: 1=area, 2=school'
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
   responses:
-    Unauthorized:
-      description: Authentication failed
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -265,8 +265,8 @@ components:
                 const: false
               message:
                 type: string
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:

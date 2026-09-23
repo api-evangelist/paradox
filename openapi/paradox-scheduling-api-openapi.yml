@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Paradox Authentication Scheduling API
+  title: Paradox Scheduling API
   description: API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
   version: 1.0.0
   contact:
@@ -220,6 +220,51 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Interview:
+      type: object
+      description: An interview scheduling record
+      properties:
+        id:
+          type: string
+          description: Interview identifier
+        candidate_id:
+          type: string
+          description: Associated candidate identifier
+        interviewer_id:
+          type: string
+          description: Assigned interviewer identifier
+        location_id:
+          type: string
+          description: Interview location identifier
+        room_id:
+          type: string
+          description: Interview room identifier
+        scheduled_at:
+          type: string
+          format: date-time
+          description: Scheduled interview date and time
+        duration:
+          type: integer
+          description: Interview duration in minutes
+        status:
+          type: string
+          description: Interview status
+        type:
+          type: string
+          description: Interview type
+        created_at:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
     Interviewer:
       type: object
       description: An interviewer available for multiparty scheduling
@@ -275,54 +320,9 @@ components:
         reminder_enabled:
           type: boolean
           description: Whether interview reminders are enabled
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    Interview:
-      type: object
-      description: An interview scheduling record
-      properties:
-        id:
-          type: string
-          description: Interview identifier
-        candidate_id:
-          type: string
-          description: Associated candidate identifier
-        interviewer_id:
-          type: string
-          description: Assigned interviewer identifier
-        location_id:
-          type: string
-          description: Interview location identifier
-        room_id:
-          type: string
-          description: Interview room identifier
-        scheduled_at:
-          type: string
-          format: date-time
-          description: Scheduled interview date and time
-        duration:
-          type: integer
-          description: Interview duration in minutes
-        status:
-          type: string
-          description: Interview status
-        type:
-          type: string
-          description: Interview type
-        created_at:
-          type: string
-          format: date-time
-          description: Record creation timestamp
-        updated_at:
-          type: string
-          format: date-time
-          description: Last update timestamp
   responses:
-    Unauthorized:
-      description: Authentication failed
+    BadRequest:
+      description: Invalid request data
       content:
         application/json:
           schema:
@@ -333,8 +333,8 @@ components:
                 const: false
               message:
                 type: string
-    BadRequest:
-      description: Invalid request data
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:

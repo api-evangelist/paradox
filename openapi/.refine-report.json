@@ -1,17 +1,7 @@
 {
   "provider": "paradox",
   "sources": [
-    "paradox-authentication-api-openapi.yml",
-    "paradox-candidate-attributes-api-openapi.yml",
-    "paradox-candidates-api-openapi.yml",
-    "paradox-company-api-openapi.yml",
-    "paradox-location-areas-api-openapi.yml",
-    "paradox-location-rooms-api-openapi.yml",
-    "paradox-locations-api-openapi.yml",
-    "paradox-reporting-api-openapi.yml",
-    "paradox-scheduling-api-openapi.yml",
-    "paradox-user-permissions-api-openapi.yml",
-    "paradox-users-api-openapi.yml"
+    "_original/paradox-api-openapi.yml"
   ],
   "outputs": [
     "paradox-authentication-api-openapi.yml",
@@ -29,6 +19,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "paradox-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "paradox-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paradox-candidate-attributes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paradox-candidates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paradox-company-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paradox-location-areas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paradox-location-rooms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paradox-locations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paradox-reporting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paradox-scheduling-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paradox-user-permissions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paradox-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

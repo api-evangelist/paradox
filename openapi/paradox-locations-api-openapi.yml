@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Paradox Authentication Locations API
+  title: Paradox Locations API
   description: API for the Paradox conversational AI recruiting platform powered by Olivia. Provides endpoints for managing candidates, users, interview scheduling, locations, company data, reporting, and candidate attributes. Paradox automates candidate screening, interview scheduling, and hiring workflows through chat, SMS, and mobile-driven experiences.
   version: 1.0.0
   contact:
@@ -227,56 +227,33 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    LocationId:
-      name: id
-      in: path
-      required: true
-      description: Location identifier
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    BadRequest:
-      description: Invalid request data
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
   schemas:
     SuccessResponse:
       type: object
       properties:
         success:
+          type: boolean
+    LocationUpdate:
+      type: object
+      description: Request body for updating an existing location
+      properties:
+        name:
+          type: string
+        job_loc_code:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip_code:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+        active:
           type: boolean
     Location:
       type: object
@@ -345,28 +322,51 @@ components:
           type: string
         timezone:
           type: string
-    LocationUpdate:
-      type: object
-      description: Request body for updating an existing location
-      properties:
-        name:
-          type: string
-        job_loc_code:
-          type: string
-        address:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip_code:
-          type: string
-        country:
-          type: string
-        timezone:
-          type: string
-        active:
-          type: boolean
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+  parameters:
+    LocationId:
+      name: id
+      in: path
+      required: true
+      description: Location identifier
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
