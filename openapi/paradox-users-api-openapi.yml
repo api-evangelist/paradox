@@ -346,46 +346,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    UserCreate:
-      type: object
-      description: Request body for creating a new user
-      required:
-      - name
-      - email
-      - phone_number
-      properties:
-        name:
-          type: string
-          description: Full name
-        email:
-          type: string
-          format: email
-          description: Email address
-        phone_number:
-          type: string
-          description: Phone number
-        role:
-          type: string
-          description: User role
-        timezone:
-          type: string
-          description: User timezone
-        language_preference:
-          type: string
-          description: Preferred language code
-        location_ids:
-          type: array
-          items:
-            type: string
-          description: Associated location identifiers
-        employee_id:
-          type: string
-          description: Employee identifier
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     UserUpdate:
       type: object
       description: Request body for updating an existing user
@@ -460,6 +420,41 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
+    UserCreate:
+      type: object
+      description: Request body for creating a new user
+      required:
+      - name
+      - email
+      - phone_number
+      properties:
+        name:
+          type: string
+          description: Full name
+        email:
+          type: string
+          format: email
+          description: Email address
+        phone_number:
+          type: string
+          description: Phone number
+        role:
+          type: string
+          description: User role
+        timezone:
+          type: string
+          description: User timezone
+        language_preference:
+          type: string
+          description: Preferred language code
+        location_ids:
+          type: array
+          items:
+            type: string
+          description: Associated location identifiers
+        employee_id:
+          type: string
+          description: Employee identifier
     Role:
       type: object
       description: A user role definition
@@ -473,6 +468,11 @@ components:
         description:
           type: string
           description: Role description
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
   responses:
     NotFound:
       description: Resource not found
@@ -486,8 +486,8 @@ components:
                 const: false
               message:
                 type: string
-    BadRequest:
-      description: Invalid request data
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:
@@ -498,8 +498,8 @@ components:
                 const: false
               message:
                 type: string
-    Unauthorized:
-      description: Authentication failed
+    BadRequest:
+      description: Invalid request data
       content:
         application/json:
           schema:

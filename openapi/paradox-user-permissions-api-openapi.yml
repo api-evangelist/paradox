@@ -119,11 +119,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     LocationPermission:
       type: object
       description: A location-based access permission
@@ -138,6 +133,11 @@ components:
           type: string
           format: date-time
           description: When the permission was granted
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
   responses:
     NotFound:
       description: Resource not found
@@ -151,8 +151,8 @@ components:
                 const: false
               message:
                 type: string
-    BadRequest:
-      description: Invalid request data
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:
@@ -163,8 +163,8 @@ components:
                 const: false
               message:
                 type: string
-    Unauthorized:
-      description: Authentication failed
+    BadRequest:
+      description: Invalid request data
       content:
         application/json:
           schema:

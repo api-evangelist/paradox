@@ -220,6 +220,25 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    InterviewSettings:
+      type: object
+      description: Interview scheduling configuration
+      properties:
+        duration:
+          type: integer
+          description: Default interview duration in minutes
+        buffer_time:
+          type: integer
+          description: Buffer time between interviews in minutes
+        scheduling_window:
+          type: integer
+          description: Number of days to look ahead for scheduling
+        confirmation_required:
+          type: boolean
+          description: Whether interview confirmation is required
+        reminder_enabled:
+          type: boolean
+          description: Whether interview reminders are enabled
     Interview:
       type: object
       description: An interview scheduling record
@@ -260,11 +279,6 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     Interviewer:
       type: object
       description: An interviewer available for multiparty scheduling
@@ -301,28 +315,14 @@ components:
         active:
           type: boolean
           description: Whether the room is active
-    InterviewSettings:
+    SuccessResponse:
       type: object
-      description: Interview scheduling configuration
       properties:
-        duration:
-          type: integer
-          description: Default interview duration in minutes
-        buffer_time:
-          type: integer
-          description: Buffer time between interviews in minutes
-        scheduling_window:
-          type: integer
-          description: Number of days to look ahead for scheduling
-        confirmation_required:
+        success:
           type: boolean
-          description: Whether interview confirmation is required
-        reminder_enabled:
-          type: boolean
-          description: Whether interview reminders are enabled
   responses:
-    BadRequest:
-      description: Invalid request data
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:
@@ -333,8 +333,8 @@ components:
                 const: false
               message:
                 type: string
-    Unauthorized:
-      description: Authentication failed
+    BadRequest:
+      description: Invalid request data
       content:
         application/json:
           schema:

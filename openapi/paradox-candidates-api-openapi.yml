@@ -515,11 +515,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     CandidateUpdate:
       type: object
       description: Request body for updating an existing candidate
@@ -891,6 +886,11 @@ components:
         note:
           type: string
           description: Internal candidate notes
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
   responses:
     NotFound:
       description: Resource not found
@@ -904,8 +904,8 @@ components:
                 const: false
               message:
                 type: string
-    BadRequest:
-      description: Invalid request data
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:
@@ -916,8 +916,8 @@ components:
                 const: false
               message:
                 type: string
-    Unauthorized:
-      description: Authentication failed
+    BadRequest:
+      description: Invalid request data
       content:
         application/json:
           schema:

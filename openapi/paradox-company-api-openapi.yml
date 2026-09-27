@@ -117,7 +117,44 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
   schemas:
+    AiAssistant:
+      type: object
+      description: AI assistant configuration
+      properties:
+        id:
+          type: string
+          description: Assistant identifier
+        ai_name:
+          type: string
+          description: AI assistant display name
+        ai_logo_uri:
+          type: string
+          format: uri
+          description: AI assistant logo image URL
+    Group:
+      type: object
+      description: A company group
+      properties:
+        oid:
+          type: string
+          description: Group identifier
+        name:
+          type: string
+          description: Group name
     SchoolArea:
       type: object
       description: A school or area associated with the company
@@ -134,20 +171,6 @@ components:
           - 1
           - 2
           description: 'Type: 1=area, 2=school'
-    AiAssistant:
-      type: object
-      description: AI assistant configuration
-      properties:
-        id:
-          type: string
-          description: Assistant identifier
-        ai_name:
-          type: string
-          description: AI assistant display name
-        ai_logo_uri:
-          type: string
-          format: uri
-          description: AI assistant logo image URL
     Conversation:
       type: object
       description: A conversation configuration
@@ -178,29 +201,6 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
-    Group:
-      type: object
-      description: A company group
-      properties:
-        oid:
-          type: string
-          description: Group identifier
-        name:
-          type: string
-          description: Group name
-  responses:
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
   securitySchemes:
     oauth2:
       type: oauth2

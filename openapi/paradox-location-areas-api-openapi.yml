@@ -207,11 +207,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     Area:
       type: object
       description: An area within a location
@@ -240,6 +235,11 @@ components:
         type:
           type: integer
           description: 'Area type: 1=area, 2=school'
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
   responses:
     NotFound:
       description: Resource not found
@@ -253,8 +253,8 @@ components:
                 const: false
               message:
                 type: string
-    BadRequest:
-      description: Invalid request data
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:
@@ -265,8 +265,8 @@ components:
                 const: false
               message:
                 type: string
-    Unauthorized:
-      description: Authentication failed
+    BadRequest:
+      description: Invalid request data
       content:
         application/json:
           schema:

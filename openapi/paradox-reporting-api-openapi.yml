@@ -124,8 +124,8 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Invalid request data
       content:
         application/json:
           schema:
@@ -136,8 +136,8 @@ components:
                 const: false
               message:
                 type: string
-    BadRequest:
-      description: Invalid request data
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

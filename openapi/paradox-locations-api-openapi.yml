@@ -227,22 +227,30 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    LocationId:
+      name: id
+      in: path
+      required: true
+      description: Location identifier
+      schema:
+        type: string
   schemas:
-    SuccessResponse:
+    LocationCreate:
       type: object
-      properties:
-        success:
-          type: boolean
-    LocationUpdate:
-      type: object
-      description: Request body for updating an existing location
+      description: Request body for creating a new location
+      required:
+      - name
       properties:
         name:
           type: string
+          description: Location name
         job_loc_code:
           type: string
+          description: Job location code
         address:
           type: string
+          description: Street address
         city:
           type: string
         state:
@@ -253,8 +261,6 @@ components:
           type: string
         timezone:
           type: string
-        active:
-          type: boolean
     Location:
       type: object
       description: A physical location or job site in the Paradox platform
@@ -297,21 +303,16 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
-    LocationCreate:
+    LocationUpdate:
       type: object
-      description: Request body for creating a new location
-      required:
-      - name
+      description: Request body for updating an existing location
       properties:
         name:
           type: string
-          description: Location name
         job_loc_code:
           type: string
-          description: Job location code
         address:
           type: string
-          description: Street address
         city:
           type: string
         state:
@@ -322,21 +323,16 @@ components:
           type: string
         timezone:
           type: string
+        active:
+          type: boolean
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
   responses:
     NotFound:
       description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    BadRequest:
-      description: Invalid request data
       content:
         application/json:
           schema:
@@ -359,14 +355,18 @@ components:
                 const: false
               message:
                 type: string
-  parameters:
-    LocationId:
-      name: id
-      in: path
-      required: true
-      description: Location identifier
-      schema:
-        type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
   securitySchemes:
     oauth2:
       type: oauth2
