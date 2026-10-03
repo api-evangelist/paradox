@@ -219,6 +219,31 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
   schemas:
     InterviewSettings:
       type: object
@@ -279,6 +304,11 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
     Interviewer:
       type: object
       description: An interviewer available for multiparty scheduling
@@ -315,36 +345,6 @@ components:
         active:
           type: boolean
           description: Whether the room is active
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-  responses:
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    BadRequest:
-      description: Invalid request data
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
   securitySchemes:
     oauth2:
       type: oauth2

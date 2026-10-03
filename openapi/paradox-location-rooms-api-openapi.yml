@@ -207,8 +207,8 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:
@@ -219,8 +219,8 @@ components:
                 const: false
               message:
                 type: string
-    Unauthorized:
-      description: Authentication failed
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -256,6 +256,11 @@ components:
         capacity:
           type: integer
           description: Room capacity
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
     Room:
       type: object
       description: A room within a location used for interviews
@@ -275,11 +280,6 @@ components:
         active:
           type: boolean
           description: Whether the room is active
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
   securitySchemes:
     oauth2:
       type: oauth2

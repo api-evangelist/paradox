@@ -118,29 +118,9 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  schemas:
-    LocationPermission:
-      type: object
-      description: A location-based access permission
-      properties:
-        location_id:
-          type: string
-          description: Location identifier
-        location_name:
-          type: string
-          description: Location name
-        granted_at:
-          type: string
-          format: date-time
-          description: When the permission was granted
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:
@@ -151,8 +131,8 @@ components:
                 const: false
               message:
                 type: string
-    Unauthorized:
-      description: Authentication failed
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -183,6 +163,26 @@ components:
       description: User OID or external identifier
       schema:
         type: string
+  schemas:
+    LocationPermission:
+      type: object
+      description: A location-based access permission
+      properties:
+        location_id:
+          type: string
+          description: Location identifier
+        location_name:
+          type: string
+          description: Location name
+        granted_at:
+          type: string
+          format: date-time
+          description: When the permission was granted
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
   securitySchemes:
     oauth2:
       type: oauth2

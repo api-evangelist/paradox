@@ -117,20 +117,23 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
   schemas:
+    SchoolArea:
+      type: object
+      description: A school or area associated with the company
+      properties:
+        oid:
+          type: string
+          description: School/area identifier
+        name:
+          type: string
+          description: School/area name
+        type:
+          type: integer
+          enum:
+          - 1
+          - 2
+          description: 'Type: 1=area, 2=school'
     AiAssistant:
       type: object
       description: AI assistant configuration
@@ -155,22 +158,6 @@ components:
         name:
           type: string
           description: Group name
-    SchoolArea:
-      type: object
-      description: A school or area associated with the company
-      properties:
-        oid:
-          type: string
-          description: School/area identifier
-        name:
-          type: string
-          description: School/area name
-        type:
-          type: integer
-          enum:
-          - 1
-          - 2
-          description: 'Type: 1=area, 2=school'
     Conversation:
       type: object
       description: A conversation configuration
@@ -201,6 +188,19 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
   securitySchemes:
     oauth2:
       type: oauth2

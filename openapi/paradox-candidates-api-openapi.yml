@@ -514,84 +514,52 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+  parameters:
+    CandidateId:
+      name: id
+      in: path
+      required: true
+      description: Candidate OID, external OID, or external ID
+      schema:
+        type: string
   schemas:
-    CandidateUpdate:
-      type: object
-      description: Request body for updating an existing candidate
-      properties:
-        name:
-          type: string
-          maxLength: 50
-        first_name:
-          type: string
-        last_name:
-          type: string
-        phone:
-          type: string
-          maxLength: 20
-        email:
-          type: string
-          format: email
-          maxLength: 50
-        ex_id:
-          type: string
-          maxLength: 255
-        hirevue_link:
-          type: string
-          maxLength: 255
-        pymetrics_link:
-          type: string
-          maxLength: 255
-        ex_step:
-          type: string
-        ex_status:
-          type: string
-        ex_reason:
-          type: string
-        job_req_id:
-          type: string
-          maxLength: 255
-        job_title:
-          type: string
-          maxLength: 255
-        job_loc_code:
-          type: string
-          maxLength: 20
-        primary_contact_method:
-          type: string
-        hired_date:
-          type: string
-          format: date-time
-        adp_link:
-          type: string
-          maxLength: 255
-        audience_type:
-          type: string
-          maxLength: 255
-        recruiter_email:
-          type: string
-          format: email
-        hiring_manager:
-          type: string
-        language_preference:
-          type: string
-        candidate_journey:
-          type: string
-        candidate_journey_status:
-          type: string
-        candidate_attribute_data:
-          type: object
-          additionalProperties:
-            type: string
-            maxLength: 255
-        note:
-          type: string
-        use_paradox_status_map:
-          type: boolean
-        status_map_name:
-          type: string
-        status_map_ex_id:
-          type: string
     CandidateCreate:
       type: object
       description: Request body for creating a new candidate
@@ -728,6 +696,83 @@ components:
           type: boolean
           description: Bypass opt-in messaging
         consent_to_marketing:
+          type: string
+    CandidateUpdate:
+      type: object
+      description: Request body for updating an existing candidate
+      properties:
+        name:
+          type: string
+          maxLength: 50
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone:
+          type: string
+          maxLength: 20
+        email:
+          type: string
+          format: email
+          maxLength: 50
+        ex_id:
+          type: string
+          maxLength: 255
+        hirevue_link:
+          type: string
+          maxLength: 255
+        pymetrics_link:
+          type: string
+          maxLength: 255
+        ex_step:
+          type: string
+        ex_status:
+          type: string
+        ex_reason:
+          type: string
+        job_req_id:
+          type: string
+          maxLength: 255
+        job_title:
+          type: string
+          maxLength: 255
+        job_loc_code:
+          type: string
+          maxLength: 20
+        primary_contact_method:
+          type: string
+        hired_date:
+          type: string
+          format: date-time
+        adp_link:
+          type: string
+          maxLength: 255
+        audience_type:
+          type: string
+          maxLength: 255
+        recruiter_email:
+          type: string
+          format: email
+        hiring_manager:
+          type: string
+        language_preference:
+          type: string
+        candidate_journey:
+          type: string
+        candidate_journey_status:
+          type: string
+        candidate_attribute_data:
+          type: object
+          additionalProperties:
+            type: string
+            maxLength: 255
+        note:
+          type: string
+        use_paradox_status_map:
+          type: boolean
+        status_map_name:
+          type: string
+        status_map_ex_id:
           type: string
     Candidate:
       type: object
@@ -891,51 +936,6 @@ components:
       properties:
         success:
           type: boolean
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    BadRequest:
-      description: Invalid request data
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-  parameters:
-    CandidateId:
-      name: id
-      in: path
-      required: true
-      description: Candidate OID, external OID, or external ID
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

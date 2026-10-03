@@ -124,8 +124,8 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    BadRequest:
-      description: Invalid request data
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:
@@ -148,8 +148,8 @@ components:
                 const: false
               message:
                 type: string
-    Unauthorized:
-      description: Authentication failed
+    BadRequest:
+      description: Invalid request data
       content:
         application/json:
           schema:
