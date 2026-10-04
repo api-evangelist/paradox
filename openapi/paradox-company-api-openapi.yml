@@ -134,30 +134,6 @@ components:
           - 1
           - 2
           description: 'Type: 1=area, 2=school'
-    AiAssistant:
-      type: object
-      description: AI assistant configuration
-      properties:
-        id:
-          type: string
-          description: Assistant identifier
-        ai_name:
-          type: string
-          description: AI assistant display name
-        ai_logo_uri:
-          type: string
-          format: uri
-          description: AI assistant logo image URL
-    Group:
-      type: object
-      description: A company group
-      properties:
-        oid:
-          type: string
-          description: Group identifier
-        name:
-          type: string
-          description: Group name
     Conversation:
       type: object
       description: A conversation configuration
@@ -188,6 +164,30 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
+    AiAssistant:
+      type: object
+      description: AI assistant configuration
+      properties:
+        id:
+          type: string
+          description: Assistant identifier
+        ai_name:
+          type: string
+          description: AI assistant display name
+        ai_logo_uri:
+          type: string
+          format: uri
+          description: AI assistant logo image URL
+    Group:
+      type: object
+      description: A company group
+      properties:
+        oid:
+          type: string
+          description: Group identifier
+        name:
+          type: string
+          description: Group name
   responses:
     Unauthorized:
       description: Authentication failed

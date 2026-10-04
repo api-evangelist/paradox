@@ -227,104 +227,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    BadRequest:
-      description: Invalid request data
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-  parameters:
-    LocationId:
-      name: id
-      in: path
-      required: true
-      description: Location identifier
-      schema:
-        type: string
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    LocationCreate:
-      type: object
-      description: Request body for creating a new location
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Location name
-        job_loc_code:
-          type: string
-          description: Job location code
-        address:
-          type: string
-          description: Street address
-        city:
-          type: string
-        state:
-          type: string
-        zip_code:
-          type: string
-        country:
-          type: string
-        timezone:
-          type: string
-    LocationUpdate:
-      type: object
-      description: Request body for updating an existing location
-      properties:
-        name:
-          type: string
-        job_loc_code:
-          type: string
-        address:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip_code:
-          type: string
-        country:
-          type: string
-        timezone:
-          type: string
-        active:
-          type: boolean
     Location:
       type: object
       description: A physical location or job site in the Paradox platform
@@ -367,6 +270,103 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
+    LocationUpdate:
+      type: object
+      description: Request body for updating an existing location
+      properties:
+        name:
+          type: string
+        job_loc_code:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip_code:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+        active:
+          type: boolean
+    LocationCreate:
+      type: object
+      description: Request body for creating a new location
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Location name
+        job_loc_code:
+          type: string
+          description: Job location code
+        address:
+          type: string
+          description: Street address
+        city:
+          type: string
+        state:
+          type: string
+        zip_code:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+  parameters:
+    LocationId:
+      name: id
+      in: path
+      required: true
+      description: Location identifier
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
   securitySchemes:
     oauth2:
       type: oauth2

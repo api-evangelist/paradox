@@ -514,51 +514,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    BadRequest:
-      description: Invalid request data
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-  parameters:
-    CandidateId:
-      name: id
-      in: path
-      required: true
-      description: Candidate OID, external OID, or external ID
-      schema:
-        type: string
   schemas:
     CandidateCreate:
       type: object
@@ -774,6 +729,11 @@ components:
           type: string
         status_map_ex_id:
           type: string
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
     Candidate:
       type: object
       description: A candidate in the Paradox recruiting platform
@@ -931,11 +891,51 @@ components:
         note:
           type: string
           description: Internal candidate notes
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+  parameters:
+    CandidateId:
+      name: id
+      in: path
+      required: true
+      description: Candidate OID, external OID, or external ID
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

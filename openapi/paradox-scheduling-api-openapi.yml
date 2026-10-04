@@ -219,32 +219,24 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    BadRequest:
-      description: Invalid request data
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
   schemas:
+    Interviewer:
+      type: object
+      description: An interviewer available for multiparty scheduling
+      properties:
+        id:
+          type: string
+          description: Interviewer identifier
+        name:
+          type: string
+          description: Interviewer name
+        email:
+          type: string
+          format: email
+          description: Interviewer email address
+        timezone:
+          type: string
+          description: Interviewer timezone
     InterviewSettings:
       type: object
       description: Interview scheduling configuration
@@ -264,6 +256,30 @@ components:
         reminder_enabled:
           type: boolean
           description: Whether interview reminders are enabled
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    Room:
+      type: object
+      description: A room within a location used for interviews
+      properties:
+        oid:
+          type: string
+          description: Room identifier
+        name:
+          type: string
+          description: Room name
+        location_id:
+          type: string
+          description: Parent location identifier
+        capacity:
+          type: integer
+          description: Room capacity
+        active:
+          type: boolean
+          description: Whether the room is active
     Interview:
       type: object
       description: An interview scheduling record
@@ -304,47 +320,31 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    Interviewer:
-      type: object
-      description: An interviewer available for multiparty scheduling
-      properties:
-        id:
-          type: string
-          description: Interviewer identifier
-        name:
-          type: string
-          description: Interviewer name
-        email:
-          type: string
-          format: email
-          description: Interviewer email address
-        timezone:
-          type: string
-          description: Interviewer timezone
-    Room:
-      type: object
-      description: A room within a location used for interviews
-      properties:
-        oid:
-          type: string
-          description: Room identifier
-        name:
-          type: string
-          description: Room name
-        location_id:
-          type: string
-          description: Parent location identifier
-        capacity:
-          type: integer
-          description: Room capacity
-        active:
-          type: boolean
-          description: Whether the room is active
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
   securitySchemes:
     oauth2:
       type: oauth2

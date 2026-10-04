@@ -358,8 +358,8 @@ components:
                 const: false
               message:
                 type: string
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Invalid request data
       content:
         application/json:
           schema:
@@ -370,8 +370,8 @@ components:
                 const: false
               message:
                 type: string
-    BadRequest:
-      description: Invalid request data
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -431,6 +431,32 @@ components:
         employee_id:
           type: string
           description: Employee identifier
+    UserUpdate:
+      type: object
+      description: Request body for updating an existing user
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone_number:
+          type: string
+        role:
+          type: string
+        timezone:
+          type: string
+        language_preference:
+          type: string
+        employee_id:
+          type: string
+        job_title:
+          type: string
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
     User:
       type: object
       description: A user in the Paradox platform
@@ -484,32 +510,6 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    UserUpdate:
-      type: object
-      description: Request body for updating an existing user
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        phone_number:
-          type: string
-        role:
-          type: string
-        timezone:
-          type: string
-        language_preference:
-          type: string
-        employee_id:
-          type: string
-        job_title:
-          type: string
   parameters:
     UserOid:
       name: oid
