@@ -58,6 +58,12 @@ tags_raw:
   - SMS
   - Talent Acquisition
 common:
+  - type: Plans
+    url: plans/paradox-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/paradox-rate-limits.yml
+  - type: FinOps
+    url: finops/paradox-finops.yml
   - type: Website
     url: https://www.paradox.ai/
   - type: CapabilityMap
