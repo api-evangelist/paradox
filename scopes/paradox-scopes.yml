@@ -1,17 +1,77 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/paradox-api-openapi.yml
-docs: https://readme.paradox.ai/reference/authentication
-note: >-
-  Paradox does not publish OAuth scopes; the API uses an OAuth 2.0 client
-  credentials flow (or Basic auth) with an account ID and secret key issued by
-  the Paradox Integrations Team, with no scope parameter documented
-  (https://readme.paradox.ai/reference/authentication).
+generated: '2026-10-14'
+method: none
+source: openapi/paradox-authentication-api-openapi.yml, openapi/paradox-candidate-attributes-api-openapi.yml,
+  openapi/paradox-candidates-api-openapi.yml, openapi/paradox-company-api-openapi.yml, openapi/paradox-location-areas-api-openapi.yml,
+  openapi/paradox-location-rooms-api-openapi.yml, openapi/paradox-locations-api-openapi.yml,
+  openapi/paradox-reporting-api-openapi.yml, openapi/paradox-scheduling-api-openapi.yml, openapi/paradox-user-permissions-api-openapi.yml,
+  openapi/paradox-users-api-openapi.yml
 schemes:
 - name: oauth2
-  source: openapi/paradox-api-openapi.yml
+  source: openapi/paradox-authentication-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+- name: oauth2
+  source: openapi/paradox-candidate-attributes-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+- name: oauth2
+  source: openapi/paradox-candidates-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+- name: oauth2
+  source: openapi/paradox-company-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+- name: oauth2
+  source: openapi/paradox-location-areas-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+- name: oauth2
+  source: openapi/paradox-location-rooms-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+- name: oauth2
+  source: openapi/paradox-locations-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+- name: oauth2
+  source: openapi/paradox-reporting-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+- name: oauth2
+  source: openapi/paradox-scheduling-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+- name: oauth2
+  source: openapi/paradox-user-permissions-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /auth/token
+  description: OAuth 2.0 client credentials authentication
+- name: oauth2
+  source: openapi/paradox-users-api-openapi.yml
   flows:
   - flow: clientCredentials
     tokenUrl: /auth/token
   description: OAuth 2.0 client credentials authentication
 scopes: []
+note: The OAuth2 security scheme(s) in the OpenAPI declare no scopes, and no security requirement
+  references one.
