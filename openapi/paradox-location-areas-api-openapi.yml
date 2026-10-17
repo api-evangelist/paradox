@@ -244,6 +244,23 @@ components:
               message:
                 type: string
   schemas:
+    AreaCreate:
+      type: object
+      description: Request body for creating a new area
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Area name
+        type:
+          type: integer
+          description: 'Area type: 1=area, 2=school'
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
     Area:
       type: object
       description: An area within a location
@@ -257,23 +274,6 @@ components:
         location_id:
           type: string
           description: Parent location identifier
-        type:
-          type: integer
-          description: 'Area type: 1=area, 2=school'
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    AreaCreate:
-      type: object
-      description: Request body for creating a new area
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Area name
         type:
           type: integer
           description: 'Area type: 1=area, 2=school'

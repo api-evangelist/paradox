@@ -383,19 +383,6 @@ components:
               message:
                 type: string
   schemas:
-    Role:
-      type: object
-      description: A user role definition
-      properties:
-        id:
-          type: string
-          description: Role identifier
-        name:
-          type: string
-          description: Role name
-        description:
-          type: string
-          description: Role description
     UserCreate:
       type: object
       description: Request body for creating a new user
@@ -457,6 +444,19 @@ components:
       properties:
         success:
           type: boolean
+    Role:
+      type: object
+      description: A user role definition
+      properties:
+        id:
+          type: string
+          description: Role identifier
+        name:
+          type: string
+          description: Role name
+        description:
+          type: string
+          description: Role description
     User:
       type: object
       description: A user in the Paradox platform

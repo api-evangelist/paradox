@@ -99,6 +99,12 @@ paths:
         '432':
           description: Token expired
 components:
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
   responses:
     Unauthorized:
       description: Authentication failed
@@ -112,12 +118,6 @@ components:
                 const: false
               message:
                 type: string
-  schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
   securitySchemes:
     oauth2:
       type: oauth2

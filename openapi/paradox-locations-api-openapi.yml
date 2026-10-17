@@ -227,6 +227,43 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    BadRequest:
+      description: Invalid request data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                const: false
+              message:
+                type: string
   schemas:
     Location:
       type: object
@@ -270,6 +307,11 @@ components:
           type: string
           format: date-time
           description: Last update timestamp
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
     LocationUpdate:
       type: object
       description: Request body for updating an existing location
@@ -317,11 +359,6 @@ components:
           type: string
         timezone:
           type: string
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
   parameters:
     LocationId:
       name: id
@@ -330,43 +367,6 @@ components:
       description: Location identifier
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    BadRequest:
-      description: Invalid request data
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                const: false
-              message:
-                type: string
   securitySchemes:
     oauth2:
       type: oauth2

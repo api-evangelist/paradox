@@ -138,9 +138,15 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
   responses:
-    BadRequest:
-      description: Invalid request data
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -163,8 +169,8 @@ components:
                 const: false
               message:
                 type: string
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Invalid request data
       content:
         application/json:
           schema:
@@ -175,12 +181,6 @@ components:
                 const: false
               message:
                 type: string
-  schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
   securitySchemes:
     oauth2:
       type: oauth2
