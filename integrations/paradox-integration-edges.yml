@@ -1,4 +1,38 @@
 edges:
+- partner_name: ADP (own)
+  partner: adp
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.adp.com/apps/405131/paradox-connector-for-adp-workforce-now
+  mirror_of: adp/integrations/adp-integration-edges.yml
+  apps:
+  - Paradox Connector for ADP Workforce Now®
+  - Paradox Connector for ADP SmartCompliance® Tax Credits Screening
+  listing_count: 2
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
+  category: EeT
+- partner_name: Greenhouse (own)
+  partner: greenhouse
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://integrations.greenhouse.com/partners/paradox
+  mirror_of: greenhouse/integrations/greenhouse-integration-edges.yml
+  apps:
+  - Paradox
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
 - partner_name: Microsoft Teams (own)
   partner: microsoft-teams
   partner_match: mirror
@@ -41,5 +75,7 @@ source:
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
 - zoom/integrations/zoom-integration-edges.yml
 checked:
+- adp/integrations/adp-integration-edges.yml
+- greenhouse/integrations/greenhouse-integration-edges.yml
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
 - zoom/integrations/zoom-integration-edges.yml
